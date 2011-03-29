@@ -20,7 +20,7 @@ namespace Discuz.Web.Admin
         public string pagelink;
         public int currentpage = 0;
         public string postname;
-        string tablelist;
+        int tablelist;
         int forumid;
         string posterlist;
         string keylist;
@@ -67,9 +67,7 @@ namespace Discuz.Web.Admin
                 startdate = DNTRequest.GetString("postdatetimeStart:postdatetimeStart");
                 enddate = DNTRequest.GetString("postdatetimeEnd:postdatetimeEnd");
                 currentpage = DNTRequest.GetInt("currentpage", 1);
-                tablelist = DNTRequest.GetString("tablelist");
-                if (tablelist == "")
-                    tablelist = Posts.GetMaxPostTableId().ToString();
+                tablelist = DNTRequest.GetInt("tablelist", Posts.GetMaxPostTableId());
                 postname = BaseConfigs.GetTablePrefix + "posts" + tablelist;
                 //获取当前页数
                 if (DNTRequest.GetInt("postnumber", 0) > 0)

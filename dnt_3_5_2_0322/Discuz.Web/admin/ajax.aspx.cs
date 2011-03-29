@@ -16,7 +16,7 @@ namespace Discuz.Web.Admin
     /// <summary>
     /// Ajax 的摘要说明。
     /// </summary>
-    public partial class ajax : System.Web.UI.Page
+    public partial class ajax : AdminPage
     {
         protected internal string ascxpath = "UserControls/"; //用户控件路径值
 
@@ -42,11 +42,11 @@ namespace Discuz.Web.Admin
                 catch
                 {
                 }
-            }            
-        }     
+            }
+        }
     }
 
-    public partial class RemoteScript : Page
+    public partial class RemoteScript : AdminPage
     {
         private void Page_Load(object sender, EventArgs e)
         {
@@ -84,7 +84,6 @@ namespace Discuz.Web.Admin
                 {
                 }
             }
-
         }
 
         public static string ToJavaScriptString(string str)
