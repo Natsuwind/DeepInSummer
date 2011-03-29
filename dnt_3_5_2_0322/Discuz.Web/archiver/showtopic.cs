@@ -2,6 +2,7 @@
 using System.Web;
 using System.Data;
 using System.Data.Common;
+using System.Text.RegularExpressions;
 
 using Discuz.Common;
 using Discuz.Forum;
@@ -176,13 +177,36 @@ namespace Discuz.Web.Archiver
 
             HttpContext.Current.Response.Write("</div>\r\n");
 
+            //将帖子内容中复杂的图片附件html解析为简单的无js脚本的标签
+            Regex regex = new Regex("<img alt=.*? imageid=\"(.*?)\".*?newsrc=\"(.*?)\".*?>", RegexOptions.IgnoreCase);
+            Regex regex2 = new Regex("<img imageid=\"(.*?)\" src=\"(.*?)\".*?>", RegexOptions.IgnoreCase);
+            Match match;
+
             foreach (ShowtopicPagePostInfo postinfo in postlist)
             {
                 HttpContext.Current.Response.Write("<div class=\"postitem\">\r\n");
                 HttpContext.Current.Response.Write("\t<div class=\"postitemtitle\">\r\n");
                 HttpContext.Current.Response.Write(Utils.HtmlEncode(postinfo.Poster) + " - " + postinfo.Postdatetime);
                 HttpContext.Current.Response.Write("</div><div class=\"postitemcontent\">");
+
+                if (config.Showimgattachmode == 1)
+                {
+                    for (match = regex.Match(postinfo.Message); match.Success; match = match.NextMatch())
+                    {
+                        postinfo.Message = postinfo.Message.Replace(match.Value, string.Format("<a href=\"{0}\" target=\"_blank\">点击显示图片:{1}</a>",
+                            match.Groups[2].Value, match.Groups[1].Value));
+                    }
+                }
+                else
+                {
+                    for (match = regex2.Match(postinfo.Message); match.Success; match = match.NextMatch())
+                    {
+                        postinfo.Message = postinfo.Message.Replace(match.Value, string.Format("<img alt=\"{0}\" src=\"{1}\" />",
+                            match.Groups[1].Value, match.Groups[2].Value));
+                    }
+                }
                 HttpContext.Current.Response.Write(postinfo.Message);
+
                 foreach (ShowtopicPageAttachmentInfo attinfo in attachmentlist)
                 {
                     if (attinfo.Pid == postinfo.Pid)
