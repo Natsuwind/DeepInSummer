@@ -276,16 +276,18 @@ namespace Discuz.Common
         public static void MakeThumbnailImage(Image original, string newFileName, int maxWidth, int maxHeight)
 		{
 			Size _newSize = ResizeImage(original.Width,original.Height,maxWidth, maxHeight);
-			Image displayImage = new Bitmap(original,_newSize);
 
-			try
-			{
-                displayImage.Save(newFileName, original.RawFormat);
-			}
-			finally
-			{
-				original.Dispose();
-			}	
+            using (Image displayImage = new Bitmap(original, _newSize))
+            {
+                try
+                {
+                    displayImage.Save(newFileName, original.RawFormat);
+                }
+                finally
+                {
+                    original.Dispose();
+                }
+            }
 		}
 
         /// <summary>
@@ -297,7 +299,14 @@ namespace Discuz.Common
         /// <param name="maxHeight">最大高度</param>
         public static void MakeThumbnailImage(string fileName, string newFileName, int maxWidth, int maxHeight)
         {
-            MakeThumbnailImage(Image.FromFile(fileName), newFileName, maxWidth, maxHeight);
+            try
+            {                
+                MakeThumbnailImage(Image.FromFile(fileName), newFileName, maxWidth, maxHeight);
+            }
+            catch (Exception ex)
+            {
+                //System.Web.HttpContext.Current.Response.Write(string.Format("<!--{0},{1},{2},{3},{4}-->", fileName,newFileName, maxHeight,maxWidth,ex.Message));
+            }
         }
 
         /// <summary>
