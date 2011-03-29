@@ -367,9 +367,14 @@ namespace Discuz.Forum
                     //后台设置的项为多少天外的老帖删除不减积分，而不是多少天内删帖可以不减分
                     if (configinfo.Losslessdel == 0 || Utils.StrDateDiffHours(dr["postdatetime"].ToString(), configinfo.Losslessdel * 24) < 0)
                     {
-                        //获取版块积分规则
-                        float[] creditsValue = Forums.GetValues(Forums.GetForumInfo(TypeConverter.ObjectToInt(dr["fid"])).Postcredits);
                         CreditsOperationType creditsOperationType = TypeConverter.ObjectToInt(dr["layer"]) == 0 ? CreditsOperationType.PostTopic : CreditsOperationType.PostReply;
+                        //获取版块积分规则
+                        float[] creditsValue = Forums.GetValues(
+                            creditsOperationType == CreditsOperationType.PostTopic ? 
+                            Forums.GetForumInfo(TypeConverter.ObjectToInt(dr["fid"])).Postcredits : 
+                            Forums.GetForumInfo(TypeConverter.ObjectToInt(dr["fid"])).Replycredits
+                            );
+
                         //如果未定义版块积分规则
                         if (creditsValue == null)
                             creditsValue = Scoresets.GetUserExtCredits(creditsOperationType);
