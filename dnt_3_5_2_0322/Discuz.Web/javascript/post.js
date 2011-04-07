@@ -1104,7 +1104,7 @@ function delAttach(id, type) {
 	ATTACHNUM['attach' + (type ? 'un' : '') + 'used']--;
 	updateattachnum('attach');
 	data=id.toString().split(",")
-	_sendRequest('tools/ajax.aspx?t=deletenouseattach&aid='+data[0]+'&fid='+data[1], delnouseAttach_callback, false);
+	_sendRequest('tools/ajax.aspx?t=deleteattach&aid=' + data[0] + '&fid=' + data[1], delnouseAttach_callback, false);
 }
 
 function delnouseAttach_callback(doc)
@@ -1127,7 +1127,7 @@ function delImgAttach(id, type) {
         $('image_desc_' + id).disabled = true;
     }
 	data = id.toString().split(",")
-	_sendRequest('tools/ajax.aspx?t=deletenouseattach&aid=' + data[0] + '&fid=' + data[1], delnouseAttach_callback, false);
+	_sendRequest('tools/ajax.aspx?t=deleteattach&aid=' + data[0] + '&fid=' + data[1], delnouseAttach_callback, false);
 	//delAttach(id, type);
 	ATTACHNUM['image' + (type ? 'un' : '') + 'used']--;
 	updateattachnum('image');

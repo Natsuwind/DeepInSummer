@@ -44,7 +44,7 @@ namespace Discuz.Web.UI
 
 
             string type = DNTRequest.GetString("t");
-            if (Utils.InArray(type, "deletenouseattach,getattachlist,deletepostsbyuidanddays,deletepost,ignorepost,passpost,deletetopic,ignoretopic,passtopic,getimagelist,getblocklist,getpagelist,forumtree,topictree,quickreply,report,getdebatepostpage,confirmbuyattach,getnewpms,getnewnotifications,getajaxforums,checkuserextcredit,diggdebates,imagelist"))
+            if (Utils.InArray(type, "deleteattach,getattachlist,deletepostsbyuidanddays,deletepost,ignorepost,passpost,deletetopic,ignoretopic,passtopic,getimagelist,getblocklist,getpagelist,forumtree,topictree,quickreply,report,getdebatepostpage,confirmbuyattach,getnewpms,getnewnotifications,getajaxforums,checkuserextcredit,diggdebates,imagelist"))
             {
                 //如果需要验证用户身份，跳转至继承了PageBase的页面
                 try

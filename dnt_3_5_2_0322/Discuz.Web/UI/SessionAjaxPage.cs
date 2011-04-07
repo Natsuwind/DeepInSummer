@@ -209,8 +209,8 @@ namespace Discuz.Web.UI
                 case"getattachlist":
                     GetAttachList();
                     break;
-                case "deletenouseattach":
-                    DeleteNoUseAttach();
+                case "deleteattach":
+                    DeleteAttach();
                     break;
                 case "imagelist":
                     GetImageList();
@@ -330,13 +330,14 @@ namespace Discuz.Web.UI
         //}
         //#endregion
 
-        private void DeleteNoUseAttach()
+        private void DeleteAttach()
         {
             int aid = DNTRequest.GetInt("aid", 0);
             int fid = DNTRequest.GetInt("fid", 0);
             AttachmentInfo attachmentInfo = Attachments.GetAttachmentInfo(aid);
-            if ((attachmentInfo.Uid == userid && attachmentInfo.Tid == 0 && attachmentInfo.Pid == 0) 
-                || Moderators.IsModer(useradminid, userid, fid))
+            //if ((attachmentInfo.Uid == userid && attachmentInfo.Tid == 0 && attachmentInfo.Pid == 0) 
+            //    || Moderators.IsModer(useradminid, userid, fid))
+            if (attachmentInfo.Uid == userid || Moderators.IsModer(useradminid, userid, fid))
             {
                 Attachments.DeleteAttachment(aid.ToString());
                 ResponseJSON(string.Format("[{{'aid':{0}}}]",aid).ToString());
