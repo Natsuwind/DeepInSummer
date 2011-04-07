@@ -2210,24 +2210,29 @@ namespace Discuz.Data.SqlServer
                                             string.Format("DELETE FROM [{0}topics] WHERE [tid] = {1}", BaseConfigs.GetTablePrefix, tid));
         }
 
-
-        public int RepairTopics(string topicList, string postTable)
+        /// <summary>
+        /// 修复主题操作
+        /// </summary>
+        /// <param name="topicId">主题ID(此处只能传入一个主题id)</param>
+        /// <param name="postTable">帖子分表名称</param>
+        /// <returns></returns>
+        public int RepairTopics(string topicId, string postTable)
         {
             string commandText = string.Format("SELECT TOP 1 [postdatetime],[pid],[poster],[posterid]  FROM [{0}] WHERE  [tid]={1}  ORDER BY [{0}].[PID] DESC",
                                                 postTable,
-                                                topicList);
+                                                topicId);
             IDataReader iDataReader = DbHelper.ExecuteReader(CommandType.Text, commandText);
             commandText = null;
             if (iDataReader.Read())
             {
-                commandText = string.Format("UPDATE [{0}topics] SET [lastpost] = '{1}' ,[lastpostid] = {2}, [lastposter] = '{3}', [lastposterid] = {4}, [replies] = (SELECT COUNT([pid]) FROM [{5}] WHERE [{0}topics].[tid] = [{5}].[tid] AND [{5}].[invisible] = 0) - 1  WHERE [{0}topics].[tid] IN ({6})",
+                commandText = string.Format("UPDATE [{0}topics] SET [lastpost] = '{1}' ,[lastpostid] = {2}, [lastposter] = '{3}', [lastposterid] = {4}, [replies] = (SELECT COUNT([pid]) FROM [{5}] WHERE [{0}topics].[tid] = [{5}].[tid] AND ([{5}].[invisible] = 0 OR [{5}].[invisible] = -2) AND [{5}].[layer]>0)  WHERE [{0}topics].[tid] IN ({6})",
                                              BaseConfigs.GetTablePrefix,
                                              iDataReader["postdatetime"],
                                              iDataReader["pid"],
                                              iDataReader["poster"],
                                              iDataReader["posterid"],
                                              postTable,
-                                             topicList);
+                                             topicId);
             }
             iDataReader.Close();
             return Utils.StrIsNullOrEmpty(commandText) ? 0 : DbHelper.ExecuteNonQuery(CommandType.Text, commandText);
