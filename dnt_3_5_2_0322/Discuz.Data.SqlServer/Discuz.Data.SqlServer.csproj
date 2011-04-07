@@ -35,7 +35,9 @@
     <BaseAddress>4194304</BaseAddress>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.SQLDMO, Version=8.0.0.0, Culture=neutral" />
+    <Reference Include="Interop.SQLDMO, Version=8.0.0.0, Culture=neutral">
+      <HintPath>..\RefDLL\Interop.SQLDMO.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />

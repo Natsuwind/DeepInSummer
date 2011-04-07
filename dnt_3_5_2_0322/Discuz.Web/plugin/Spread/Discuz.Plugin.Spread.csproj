@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="App_Code\CreditStrategy.Designer.cs" />
     <Compile Include="App_Code\CreditStrategy.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App_Code\SpreadConfigFileManager.cs" />
     <Compile Include="App_Code\SpreadConfigInfo.cs" />
