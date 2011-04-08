@@ -202,11 +202,11 @@ namespace Discuz.Web.UI
                 case "ignoretopic":
                 case "deletetopic":
                     AuditPost(type, DNTRequest.GetString("reason"));
-                    break;;
+                    break; ;
                 case "deletepostsbyuidanddays":
                     DeletePostsByUidAndDays(DNTRequest.GetInt("uid", 0), 7);
                     break;
-                case"getattachlist":
+                case "getattachlist":
                     GetAttachList();
                     break;
                 case "deleteattach":
@@ -215,7 +215,7 @@ namespace Discuz.Web.UI
                 case "imagelist":
                     GetImageList();
                     break;
-                 
+
             }
 
 
@@ -337,13 +337,18 @@ namespace Discuz.Web.UI
             AttachmentInfo attachmentInfo = Attachments.GetAttachmentInfo(aid);
             //if ((attachmentInfo.Uid == userid && attachmentInfo.Tid == 0 && attachmentInfo.Pid == 0) 
             //    || Moderators.IsModer(useradminid, userid, fid))
-            if (attachmentInfo.Uid == userid || Moderators.IsModer(useradminid, userid, fid))
+
+            if (attachmentInfo.Uid == userid
+                || (attachmentInfo.Pid > 0
+                   && Moderators.IsModer(useradminid, userid, Posts.GetPostInfo(attachmentInfo.Tid, attachmentInfo.Pid).Fid)
+                   )
+                )
             {
                 Attachments.DeleteAttachment(aid.ToString());
-                ResponseJSON(string.Format("[{{'aid':{0}}}]",aid).ToString());
+                ResponseJSON(string.Format("[{{'aid':{0}}}]", aid).ToString());
                 return;
             }
-            ResponseJSON("[]");
+            ResponseJSON(string.Format("['attachment_uid':{0};'userid':{1};'usesradminid':{2};'fid(no_used)':{3}];'tid':{4};'pid':{5}]", attachmentInfo.Uid, userid, useradminid, fid, attachmentInfo.Tid, attachmentInfo.Pid));
         }
 
         private void GetAttachList()
@@ -356,9 +361,9 @@ namespace Discuz.Web.UI
             else
                 attachlist = Data.Attachments.GetNoUsedAttachmentList(userid, posttime);
             sb.Append("[");
-            foreach(AttachmentInfo info in attachlist)
+            foreach (AttachmentInfo info in attachlist)
             {
-                sb.Append(string.Format("{{'aid':{0},'attachment':'{1}','filetype':'{2}','readperm':{3},'attachprice':{4},'width':{5},'height':{6},'extname':'{7}'}},", info.Aid, info.Attachment.Replace("'","\\'"), info.Filetype, info.Readperm, info.Attachprice,info.Width,info.Height,Utils.GetFileExtName(info.Attachment)));
+                sb.Append(string.Format("{{'aid':{0},'attachment':'{1}','filetype':'{2}','readperm':{3},'attachprice':{4},'width':{5},'height':{6},'extname':'{7}'}},", info.Aid, info.Attachment.Replace("'", "\\'"), info.Filetype, info.Readperm, info.Attachprice, info.Width, info.Height, Utils.GetFileExtName(info.Attachment)));
             }
             //if (sb.ToString() != "" && sb.ToString()[sb.Length-1]==',')
             ResponseJSON(sb.ToString().TrimEnd(',') + "]");
@@ -384,7 +389,7 @@ namespace Discuz.Web.UI
             //string posttime = DNTRequest.GetString("posttime");
             //List<AttachmentInfo> attachlist = Data.Attachments.GetNoUsedAttachmentList(userid, posttime, AttachmentFileType.ImageAttachment);
 
-            
+
             //xml.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
             //xml.Append("<root><![CDATA[");
             //if (posttime == "" && attachlist.Count > 0)
@@ -2033,8 +2038,8 @@ namespace Discuz.Web.UI
                     pid = pid.TrimEnd(',');
                 }
                 //判断版主是否有权限管理帖子
-                if(usergroupinfo.Radminid == 3 && "passpost,ignorepost,deletepost".Contains(type) && !Posts.GetModPostCountByPidList(username, Posts.GetPostTableId(), pid))
-                    return ;
+                if (usergroupinfo.Radminid == 3 && "passpost,ignorepost,deletepost".Contains(type) && !Posts.GetModPostCountByPidList(username, Posts.GetPostTableId(), pid))
+                    return;
 
                 if (("passtopic,ignoretopic,deletetopic".Contains(type) && !CreateNoticeInfo(type, tid, reason)) ||
                     ("passpost,ignorepost,deletepost".Contains(type) && !CreateNoticeInfo(type, DNTRequest.GetString("pid"), reason)))
@@ -2138,7 +2143,7 @@ namespace Discuz.Web.UI
                 {
                     int pid = TypeConverter.StrToInt(id.Split('|')[0]);
                     int tid = TypeConverter.StrToInt(id.Split('|')[1]);
-                    PostInfo postInfo = Posts.GetPostInfo(tid,pid);
+                    PostInfo postInfo = Posts.GetPostInfo(tid, pid);
                     if (postInfo == null || postInfo.Posterid == -1)
                         continue;
 
