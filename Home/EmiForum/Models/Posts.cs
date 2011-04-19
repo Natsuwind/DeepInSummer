@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Natsuhime.Data;
 using System.Data;
 using System.Data.Common;
+using MySql.Data.MySqlClient;
 
 namespace EmiForum.Models
 {
@@ -34,15 +35,15 @@ namespace EmiForum.Models
         {
             DbParameter[] prams = 
 		    {
-			    DbHelper.MakeInParam("@poster", DbType.String, 50,newPost.Poster),
-			    DbHelper.MakeInParam("@posterid", DbType.Int32, 4,newPost.PosterId),
-			    DbHelper.MakeInParam("@content", DbType.String, 5000,newPost.Content),
-			    DbHelper.MakeInParam("@postdate", DbType.DateTime, 8,newPost.PostDate),
-			    DbHelper.MakeInParam("@ip", DbType.String, 50,newPost.Ip),
-			    DbHelper.MakeInParam("@email", DbType.String, 100,newPost.Email),
-			    DbHelper.MakeInParam("@website", DbType.String, 100,newPost.Website)
+			    DbHelper.MakeInParam("?poster", (DbType)MySqlDbType.String, 50,newPost.Poster),
+			    DbHelper.MakeInParam("?posterid", (DbType)MySqlDbType.Int32, 4,newPost.PosterId),
+			    DbHelper.MakeInParam("?content", (DbType)MySqlDbType.String, 5000,newPost.Content),
+			    DbHelper.MakeInParam("?postdate", (DbType)MySqlDbType.DateTime, 8,newPost.PostDate),
+			    DbHelper.MakeInParam("?ip", (DbType)MySqlDbType.String, 50,newPost.Ip),
+			    DbHelper.MakeInParam("?email", (DbType)MySqlDbType.String, 100,newPost.Email),
+			    DbHelper.MakeInParam("?website", (DbType)MySqlDbType.String, 100,newPost.Website)
 		    };
-            DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO posts (poster,posterid,content,postdate,ip,email,website) VALUES(@poster,@posterid,@content,@postdate,@ip,@email,@website)", prams);
+            DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO posts (poster,posterid,content,postdate,ip,email,website) VALUES(?poster,?posterid,?content,?postdate,?ip,?email,?website)", prams);
         }
     }
 }

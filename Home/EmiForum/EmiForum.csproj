@@ -33,9 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.3.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.XML" />
@@ -50,7 +50,7 @@
     <Compile Include="Models\Data\DBConfigs.cs" />
     <Compile Include="Models\Data\DbHelper.cs" />
     <Compile Include="Models\Data\DbProviders\Access.cs" />
-    <Compile Include="Models\Data\DbProviders\Sqlite.cs" />
+    <Compile Include="Models\Data\DbProviders\MySql.cs" />
     <Compile Include="Models\Data\DbProviders\SqlServer.cs" />
     <Compile Include="Models\Data\IDbProvider.cs" />
     <Compile Include="Models\Entity\PostInfo.cs" />
@@ -106,9 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Create.cshtml" />
