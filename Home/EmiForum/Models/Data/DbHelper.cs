@@ -156,7 +156,7 @@ namespace Natsuhime.Data
                             }
                             catch
                             {
-                                throw new Exception("请检查Dbtype节点数据库类型是否正确，例如：SqlServer、Access、MySql");
+                                throw new Exception("请检查Dbtype节点数据库类型是否正确，例如：SqlServer、Access、MySql:" + string.Format("Natsuhime.Data.DbProviders.{0}, EmiForum", Dbtype));
                             }
 
                         }
