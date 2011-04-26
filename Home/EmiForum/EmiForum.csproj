@@ -41,11 +41,18 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MeController.cs" />
+    <Compile Include="Data\Database\MysqlScript.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MysqlScript.resx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admins.cs" />
     <Compile Include="Models\Data\DbConfigInfo.cs" />
     <Compile Include="Models\Data\DBConfigs.cs" />
     <Compile Include="Models\Data\DbHelper.cs" />
@@ -111,10 +118,22 @@
     <Content Include="Views\Home\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data\config\NSWindBase.config" />
+    <Content Include="Data\Config\NSWindBase.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data\database\guestbook.config" />
+    <Content Include="Data\Database\guestbook.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\Database\MysqlScript.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MysqlScript.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AdminLogin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

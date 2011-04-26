@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "管理后台";
+}
+<hr />
+<div style="min-height: 700px;">
+    <h1>
+        欢迎管理员登录 [@Html.ActionLink("退出", "Logout")]</h1>
+    <fieldset>
+        <legend>服务器信息 </legend>
+        <ul>
+            <li style="width: 420px; float: left;">服务器名称: @Server.MachineName</li>
+            <li style="width: 420px; float: left;">服务器操作系统:@Environment.OSVersion.ToString()</li>
+            <li style="width: 420px; float: left;">服务器IIS版本: @Request.ServerVariables["SERVER_SOFTWARE"]</li>
+            <li style="width: 420px; float: left;">.NET引擎版本: @Environment.Version.ToString()</li>
+        </ul>
+    </fieldset>
+    @using (Html.BeginForm("ExecSql", "Admin"))
+    {
+        @Html.ValidationSummary(true)       
+        
+        <fieldset>
+            <legend>快捷操作</legend>
+            <div class="editor-label">
+                <label for="SqlContent">
+                    执行 SQL</label>
+            </div>
+            <div class="editor-field">
+                <textarea rows="5" name="SqlScript" id="SqlScript" cols="40"></textarea>
+                <span data-valmsg-replace="true" data-valmsg-for="SqlScript" class="field-validation-valid">
+                </span>
+            </div>
+            <p>
+                <input type="submit" value="执行" />
+            </p>
+        </fieldset>
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+</div>
