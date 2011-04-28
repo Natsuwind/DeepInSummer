@@ -113,7 +113,7 @@ namespace Natsuhime.Data
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {
@@ -143,7 +143,7 @@ namespace Natsuhime.Data
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {
@@ -197,7 +197,7 @@ namespace Natsuhime.Data
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {

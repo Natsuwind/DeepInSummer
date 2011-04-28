@@ -14,7 +14,7 @@
             <li style="width: 420px; float: left;">.NET引擎版本: @Environment.Version.ToString()</li>
         </ul>
     </fieldset>
-    @using (Html.BeginForm("ExecSql", "Admin"))
+    @using (Html.BeginForm())
     {
         @Html.ValidationSummary(true)       
         

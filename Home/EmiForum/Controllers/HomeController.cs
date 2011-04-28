@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Natsuhime.Data;
 using EmiForum.Models;
+using EmiForum.Models.Entity;
 
 namespace EmiForum.Controllers
 {

@@ -4,6 +4,7 @@ using Natsuhime.Data;
 using System.Data;
 using System.Data.Common;
 using MySql.Data.MySqlClient;
+using EmiForum.Models.Entity;
 
 namespace EmiForum.Models
 {

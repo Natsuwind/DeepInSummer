@@ -13,5 +13,10 @@ namespace EmiForum.Models
         {
             return DbHelper.ExecuteNonQuery(SqlScript);
         }
+
+        public static bool IsLogined()
+        {
+            return false;
+        }
     }
 }

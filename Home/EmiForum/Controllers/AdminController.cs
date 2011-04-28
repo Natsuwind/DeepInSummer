@@ -11,16 +11,19 @@ namespace EmiForum.Controllers
     {
         //
         // GET: /Admin/
-
+        public bool IsLogined()
+        {
+            return (Session["admin"] != null && Session["admin"].ToString() == "admin");
+        }
         public ActionResult Index()
         {
-            if (Session["admin"] == null || Session["admin"].ToString() != "admin")
+            if (IsLogined())
             {
-                return RedirectToAction("AdminLogin", "Admin");
+                return View();
             }
             else
             {
-                return View();
+                return RedirectToAction("AdminLogin", "Admin");
             }
         }
 
@@ -35,38 +38,49 @@ namespace EmiForum.Controllers
             if (username.Trim() == "adminywen" && password == "123321aa")
             {
                 Session["admin"] = "admin";
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Index");
             }
             else
             {
+                ModelState.AddModelError("", "用户名或密码错误");
                 return View();
             }
         }
         public ActionResult Logout()
         {
-            Session.Abandon();
-            return View("Index", "Home");
+            if (IsLogined())
+            {
+                Session.Abandon();
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
-        public ActionResult ExecSql(string SqlScript)
+        public ActionResult Index(string SqlScript)
         {
-            if (SqlScript.Trim() != string.Empty)
+            if (IsLogined())
             {
-                try
+                if (SqlScript.Trim() != string.Empty)
                 {
-                    Admins.ExecSql(SqlScript);
+                    try
+                    {
+                        Admins.ExecSql(SqlScript);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", string.Format("执行失败，{0}", ex.Message));
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    ModelState.AddModelError("", string.Format("执行失败，{0}", ex.Message));
+                    ModelState.AddModelError("", "请输入内容！");
                 }
             }
             else
             {
-                ModelState.AddModelError("", "请输入内容！");
+                ModelState.AddModelError("", "请登录！");
             }
-            return View("Index");
+            return View();
         }
     }
 }
