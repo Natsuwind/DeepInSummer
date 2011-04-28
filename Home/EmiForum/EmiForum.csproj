@@ -63,6 +63,7 @@
     <Compile Include="Models\Entity\PostInfo.cs" />
     <Compile Include="Models\Entity\ShortUserInfo.cs" />
     <Compile Include="Models\Posts.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EmiForum.Models.Entity;
+using EmiForum.Models;
 
 namespace EmiForum.Controllers
 {
@@ -26,7 +27,21 @@ namespace EmiForum.Controllers
         [HttpPost]
         public ActionResult Create(ShortUserInfo shortUserInfo)
         {
-            return View("Index");
+            if (ModelState.IsValid)
+            {
+                shortUserInfo.LastLoginDate = DateTime.MinValue;
+                shortUserInfo.LastLoginIp = "";
+                shortUserInfo.RegDate = DateTime.Now;
+                shortUserInfo.RegIp = Request.UserHostAddress;
+                shortUserInfo.Salt = "";
+                shortUserInfo.SecQues = "";
+                Users.CreateUser(shortUserInfo);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(shortUserInfo);
+            }
         }
 
         [HttpPost]
