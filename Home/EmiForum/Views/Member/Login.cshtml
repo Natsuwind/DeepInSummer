@@ -1,0 +1,35 @@
+﻿@model EmiForum.Models.Users
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>登录</legend>
+        <div class="editor-label">
+            <label for="Email">
+                邮箱</label>
+        </div>
+        <div class="editor-field">
+            <input type="text" value="" name="Email" id="Email" class="text-box single-line">
+            <span data-valmsg-replace="true" data-valmsg-for="Email" class="field-validation-valid">
+            </span>
+        </div>
+        <div class="editor-label">
+            <label for="Password">
+                密码</label>
+        </div>
+        <div class="editor-field">
+            <input type = "password" name="Password" id="Password"  class="text-box single-line"/>
+            <span data-valmsg-replace="true" data-valmsg-for="Password" class="field-validation-valid">
+            </span>
+        </div>
+        <p>
+            <input type="submit" value="登录" />
+        </p>
+    </fieldset>
+}
