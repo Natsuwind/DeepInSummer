@@ -1,0 +1,75 @@
+﻿@model IEnumerable<EmiForum.Models.Entity.ShortUserInfo>
+
+@{
+    ViewBag.Title = "UserList";
+}
+
+<h2>UserList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Uid
+        </th>
+        <th>
+            Username
+        </th>
+        <th style="display:none;">
+            Password
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            RegIp
+        </th>
+        <th>
+            RegDate
+        </th>
+        <th>
+            LastLoginIp
+        </th>
+        <th>
+            LastLoginDate
+        </th>        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td style="display:none;">
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegIp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastLoginIp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastLoginDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

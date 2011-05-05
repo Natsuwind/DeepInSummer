@@ -82,5 +82,17 @@ namespace EmiForum.Controllers
             }
             return View();
         }
+
+        public ActionResult UserList()
+        {
+            if (IsLogined())
+            {
+                return View(Users.GetUserList());
+            }
+            else
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+        }
     }
 }

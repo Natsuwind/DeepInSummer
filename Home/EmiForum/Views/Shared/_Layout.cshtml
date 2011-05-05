@@ -18,9 +18,6 @@
             <div id="nav">
                 <ul>
                     <li>@Html.ActionLink("首页", "Index", "Home")</li>
-                    <li>@Html.ActionLink("登录", "Login", "Member")</li>
-                    <li>@Html.ActionLink("退出", "Logout", "Member")</li>
-                    <li>@Html.ActionLink("注册", "Create", "Member")</li>
                     <li>@Html.ActionLink("关于", "About", "Home")</li>
                 </ul>
             </div>
@@ -30,17 +27,29 @@
         <div id="main">
             @RenderBody()
         </div>
-        <div id="footer" style="margin: 5px 2px;">
+        <div id="footer">
             Powered by <span>WySky</span><br />
             Created @@2011
         </div>
-    </div>
-    <!-- JiaThis Button BEGIN -->
-    <script type="text/javascript">
-        var jiathis_config = { "data_track_clickback": true };
-    </script>
-    <script type="text/javascript" src="http://v1.jiathis.com/code/jiathis_r.js?btn=r3.gif&amp;uid=889565"
-        charset="utf-8"></script>
-    <!-- JiaThis Button END -->
+        <div style="clear: both">
+            <div id="toolbar">
+                @if (ViewBag.IsLogined != null && ViewBag.IsLogined)
+                {
+                    <text>欢迎 @ViewBag.LoginUserInfo.Username [@Html.ActionLink("退出", "Logout", "Member")]</text>
+                }
+                else
+                {
+                    <text>点击 @Html.ActionLink("登录", "Login", "Member") 或 @Html.ActionLink("注册帐号", "Create", "Member")</text>
+                }
+                | 公告：网站玩耍中，大家请随意～
+            </div>
+        </div>
+        <!-- JiaThis Button BEGIN -->
+        <script type="text/javascript">
+            var jiathis_config = { "data_track_clickback": true };
+        </script>
+        <script type="text/javascript" src="http://v1.jiathis.com/code/jiathis_r.js?btn=r1.gif&amp;uid=889565"
+            charset="utf-8"></script>
+        <!-- JiaThis Button END -->
 </body>
 </html>

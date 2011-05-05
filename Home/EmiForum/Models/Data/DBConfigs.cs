@@ -176,7 +176,7 @@ namespace Natsuhime.Data
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {

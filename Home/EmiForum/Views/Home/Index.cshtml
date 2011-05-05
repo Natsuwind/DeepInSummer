@@ -16,11 +16,21 @@
             <label for="Poster">
                 昵称</label>
         </div>
-        <div class="editor-field">
-            <input type="text" value="" name="Poster" id="Poster" class="text-box single-line" autofocus="true" required>
-            <span data-valmsg-replace="true" data-valmsg-for="Poster" class="field-validation-valid">
-            </span>
-        </div>
+        @if (ViewBag.IsLogined != null && ViewBag.IsLogined)
+        {
+            <div class="editor-field">
+                <text>@ViewBag.LoginUserInfo.Username</text>
+            </div>
+        }
+        else
+        {
+            <div class="editor-field">
+                <input type="text" value="" name="Poster" id="Poster" class="text-box single-line"
+                    autofocus="true" required>
+                <span data-valmsg-replace="true" data-valmsg-for="Poster" class="field-validation-valid">
+                </span>
+            </div>
+        }
         <div class="editor-label">
             <label for="Content">
                 内容</label>
@@ -45,7 +55,16 @@
         {
             <li class="post_info">
                 <div class="postheader">
-                    <span class="poster">@item.Poster</span><span class="date">(@String.Format("{0:g}", item.PostDate))</span></div>
+                    <span class="poster">
+                        @if (item.PosterId > 0)
+                        {
+                            @item.Poster
+                        }
+                        else
+                        {
+                            @item.Poster <text>[游客]</text>
+                        }</span><span class="date">[@String.Format("{0:g}", item.PostDate)]</span></div>
+                <hr />
                 <div class="content">@Html.Raw(item.Content)</div>
             </li>
         }

@@ -1,9 +1,9 @@
 body
 {
     font-size: 14px;
-    font-family: Tahoma,'Microsoft Yahei','Simsun', Arial, "Helvetica Neue" , Helvetica, Sans-Serif;
+    font-family: Tahoma, 'Microsoft Yahei' , 'Simsun' , Arial, "Helvetica Neue" , Helvetica, Sans-Serif;
     color: #232323;
-    background-color: Gray;
+    background-color: #006400;
 }
 ul, li
 {
@@ -37,27 +37,42 @@ ul
     padding: 5px;
 }
 
-#wp, .post_info
+#wp, .post_info, #toolbar
 {
     -moz-border-radius: 5px;
     -khtml-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    -moz-box-shadow: 2px 2px 5px #333333;
-    -webkit-box-shadow: 2px 2px 5px #333333;
-    box-shadow: 2px 2px 5px #333333;
+    -moz-box-shadow: 2px 2px 5px #228B22;
+    -webkit-box-shadow: 2px 2px 5px #228B22;
+    box-shadow: 2px 2px 5px #228B22;
 }
-
+.post_info, input, textarea
+{
+    background-color: #EEFAEE;
+}
+input, textarea, fieldset
+{
+    border: 1px solid #228B22;
+}
+.post_info hr
+{
+    color: #32CD32;
+}
+.post_info .date
+{
+    margin-left: 5px;
+}
 #Content
 {
     width: 915px;
 }
-#nav 
+#nav
 {
-    height:31px;
-    -moz-box-shadow: 2px 2px 5px #333333;
-    -webkit-box-shadow: 2px 2px 5px #333333;
-    box-shadow: 2px 2px 5px #333333;
+    height: 31px;
+    -moz-box-shadow: 2px 2px 5px #228B22;
+    -webkit-box-shadow: 2px 2px 5px #228B22;
+    box-shadow: 2px 2px 5px #228B22;
 }
 #nav li
 {
@@ -67,25 +82,49 @@ ul
     line-height: 31px;
     text-align: center;
 }
-#nav a
+a
 {
     text-decoration: none;
+}
+#nav a
+{
     font-size: 16px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-#nav a,a:visited
+#nav a, a:visited
 {
-    color:Black;
+    color: Black;
+}
+#main
+{
+    margin-top:20px;
+}
+#toolbar
+{
+    position: fixed;
+    bottom: 5px;
+    z-index: 9999;
+    height: 30px;
+    width: 560px;
+    border: 1px solid #228B22;
+    background-color: #EEFAEE;
+    line-height: 30px;
+    padding-left: 6px;
+}
+#footer
+{
+    margin: 5px 2px;
+    float:right;
 }
 /* Styles for basic forms
 -----------------------------------------------------------*/
 
 fieldset
 {
-    border: 1px solid #ddd;
-    padding: 0 1.4em 1.4em 1.4em;
-    margin: 0 0 1.5em 0;
+    /*border: 1px solid #ddd;*/
+    padding: 0 14px 14px 14px;
+    margin: 0 0 15px 0;
 }
 
 legend

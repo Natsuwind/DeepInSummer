@@ -62,6 +62,15 @@ namespace EmiForum.Models
             return 0;
         }
 
+        public static List<ShortUserInfo> GetUserList()
+        {
+            IDataReader dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM members");
+            List<ShortUserInfo> userList = BindUserInfoList(dr);
+            dr.Close();
+            return userList;
+        }
+
+
         public static ShortUserInfo GetUserInfo(int uid)
         {
             if (uid <= 0)
@@ -96,6 +105,24 @@ namespace EmiForum.Models
             return shortUserInfo;
         }
 
+        public static ShortUserInfo CheckUserLogin(string email, string password)
+        {
+            if (email.Trim() == string.Empty)
+            {
+                return null;
+            }
+
+            DbParameter[] prams = 
+                {
+			    DbHelper.MakeInParam("?email", (DbType)MySqlDbType.String, 32,email),
+			    DbHelper.MakeInParam("?password", (DbType)MySqlDbType.String, 32,password)
+                };
+            IDataReader dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM members WHERE email=?email AND password=?password", prams);
+            ShortUserInfo shortUserInfo = BindUserInfo(dr);
+            dr.Close();
+            return shortUserInfo;
+        }
+
         static ShortUserInfo BindUserInfo(IDataReader dr)
         {
             ShortUserInfo shortUserInfo = null;
@@ -115,6 +142,27 @@ namespace EmiForum.Models
             }
             return shortUserInfo;
         }
+        static List<ShortUserInfo> BindUserInfoList(IDataReader dr)
+        {
+            List<ShortUserInfo> userList = new List<ShortUserInfo>();
+            while (dr.Read())
+            {
+                ShortUserInfo shortUserInfo = new ShortUserInfo();
+                shortUserInfo.Uid = Convert.ToInt32(dr["uid"]);
+                shortUserInfo.Username = dr["username"].ToString();
+                shortUserInfo.Password = dr["password"].ToString();
+                shortUserInfo.Email = dr["email"].ToString();
+                shortUserInfo.RegIp = dr["regip"].ToString();
+                shortUserInfo.RegDate = Convert.ToDateTime(dr["regdate"]);
+                shortUserInfo.LastLoginIp = dr["lastloginip"].ToString();
+                shortUserInfo.LastLoginDate = Convert.ToDateTime(dr["lastlogindate"]);
+                shortUserInfo.Salt = dr["salt"].ToString();
+                shortUserInfo.SecQues = dr["secques"].ToString();
+
+                userList.Add(shortUserInfo);
+            }
+            return userList;
+        }
 
         public static void SetLoginStatus(ShortUserInfo shortUserInfo)
         {
@@ -125,6 +173,21 @@ namespace EmiForum.Models
         {
             ShortUserInfo shortUserInfo = GetUserInfo(email);
             SetLoginStatus(shortUserInfo);
+        }
+
+        public static void Logout()
+        {
+            HttpContext.Current.Session.Abandon();
+        }
+
+        public static ShortUserInfo GetLoginStatus()
+        {
+            int uid = -1;
+            if (HttpContext.Current.Session["login"] != null && int.TryParse(HttpContext.Current.Session["login"].ToString(), out uid))
+            {
+                return GetUserInfo(uid);
+            }
+            return null;
         }
     }
 }

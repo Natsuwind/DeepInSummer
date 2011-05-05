@@ -10,7 +10,7 @@
         <ul>
             <li style="width: 420px; float: left;">服务器名称: @Server.MachineName</li>
             <li style="width: 420px; float: left;">服务器操作系统:@Environment.OSVersion.ToString()</li>
-            <li style="width: 420px; float: left;">服务器IIS版本: @Request.ServerVariables["SERVER_SOFTWARE"]</li>
+            <li style="width: 420px; float: left;">服务器软件: @Request.ServerVariables["SERVER_SOFTWARE"]</li>
             <li style="width: 420px; float: left;">.NET引擎版本: @Environment.Version.ToString()</li>
         </ul>
     </fieldset>
