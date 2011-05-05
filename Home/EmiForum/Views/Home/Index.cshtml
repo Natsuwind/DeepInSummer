@@ -17,7 +17,7 @@
                 昵称</label>
         </div>
         <div class="editor-field">
-            <input type="text" value="" name="Poster" id="Poster" class="text-box single-line">
+            <input type="text" value="" name="Poster" id="Poster" class="text-box single-line" autofocus="true" required>
             <span data-valmsg-replace="true" data-valmsg-for="Poster" class="field-validation-valid">
             </span>
         </div>
@@ -26,7 +26,7 @@
                 内容</label>
         </div>
         <div class="editor-field">
-            <textarea rows="2" name="Content" id="Content" cols="20"></textarea>
+            <textarea rows="2" name="Content" id="Content" cols="20" autofocus="true" required></textarea>
             <span data-valmsg-replace="true" data-valmsg-for="Content" class="field-validation-valid">
             </span>
         </div>
@@ -46,7 +46,7 @@
             <li class="post_info">
                 <div class="postheader">
                     <span class="poster">@item.Poster</span><span class="date">(@String.Format("{0:g}", item.PostDate))</span></div>
-                <div class="content">@item.Content</div>
+                <div class="content">@Html.Raw(item.Content)</div>
             </li>
         }
     </ul>

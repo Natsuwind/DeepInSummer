@@ -39,7 +39,7 @@ namespace EmiForum.Models
 			    DbHelper.MakeInParam("?email", (DbType)MySqlDbType.String, 32,email)
 		    };
             IDataReader dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT username,email FROM members WHERE username=?username OR email=?email", prams);
-            while (dr.Read() && !IsExitsUsername && !IsExitsEmail)
+            while (dr.Read() && (!IsExitsUsername || !IsExitsEmail))
             {
                 if (!IsExitsUsername && dr["username"].ToString().Trim() == username)
                 {
@@ -85,7 +85,7 @@ namespace EmiForum.Models
             {
                 return null;
             }
-            
+
             DbParameter[] prams = 
                 {
 			    DbHelper.MakeInParam("?email", (DbType)MySqlDbType.String, 32,email)
@@ -121,7 +121,7 @@ namespace EmiForum.Models
             HttpContext.Current.Session["login"] = shortUserInfo.Uid;
         }
 
-        internal static void SetLoginStatus(string email)
+        public static void SetLoginStatus(string email)
         {
             ShortUserInfo shortUserInfo = GetUserInfo(email);
             SetLoginStatus(shortUserInfo);

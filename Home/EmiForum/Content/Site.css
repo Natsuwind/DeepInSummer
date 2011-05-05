@@ -1,86 +1,112 @@
 body
 {
-	font-size: 75%;
-	font-family: Verdana, Tahoma, Arial, "Helvetica Neue" , Helvetica, Sans-Serif;
-	color: #232323;
-	background-color: Gray;
+    font-size: 14px;
+    font-family: Tahoma,'Microsoft Yahei','Simsun', Arial, "Helvetica Neue" , Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: Gray;
 }
 ul, li
 {
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
 }
 ul
 {
-	list-style-type: none;
+    list-style-type: none;
 }
 #wp
 {
-	width: 960px;
-	margin: 0 auto;
-	padding: 5px;
-	background-color: #FFF;
+    width: 960px;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: #FFF;
 }
 #header
 {
-	min-height:55px;
+    min-height: 55px;
 }
 
 #post_list
 {
-	padding: 5px;
+    padding: 5px;
 }
 .post_info
 {
-	min-height: 120px;
-	margin-bottom: 10px;
-	padding:5px;
+    min-height: 120px;
+    margin-bottom: 10px;
+    padding: 5px;
 }
 
 #wp, .post_info
 {
-	-moz-border-radius: 5px;
-	-khtml-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	-moz-box-shadow: 2px 2px 5px #333333;
-	-webkit-box-shadow: 2px 2px 5px #333333;
-	box-shadow: 2px 2px 5px #333333;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 2px 2px 5px #333333;
+    -webkit-box-shadow: 2px 2px 5px #333333;
+    box-shadow: 2px 2px 5px #333333;
 }
 
 #Content
 {
-	width:915px;
+    width: 915px;
+}
+#nav 
+{
+    height:31px;
+    -moz-box-shadow: 2px 2px 5px #333333;
+    -webkit-box-shadow: 2px 2px 5px #333333;
+    box-shadow: 2px 2px 5px #333333;
+}
+#nav li
+{
+    float: left;
+    width: 45px;
+    height: 31px;
+    line-height: 31px;
+    text-align: center;
+}
+#nav a
+{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight:bold;
+}
+
+#nav a,a:visited
+{
+    color:Black;
 }
 /* Styles for basic forms
 -----------------------------------------------------------*/
 
 fieldset
 {
-	border: 1px solid #ddd;
-	padding: 0 1.4em 1.4em 1.4em;
-	margin: 0 0 1.5em 0;
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
 }
 
 legend
 {
-	font-size: 1.2em;
-	font-weight: bold;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 textarea
 {
-	min-height: 75px;
+    min-height: 75px;
 }
 
 .editor-label
 {
-	margin: 1em 0 0 0;
+    margin: 1em 0 0 0;
 }
 
 .editor-field
 {
-	margin: 0.5em 0 0 0;
+    margin: 0.5em 0 0 0;
 }
 
 
@@ -88,27 +114,27 @@ textarea
 -----------------------------------------------------------*/
 .field-validation-error
 {
-	color: #ff0000;
+    color: #ff0000;
 }
 
 .field-validation-valid
 {
-	display: none;
+    display: none;
 }
 
 .input-validation-error
 {
-	border: 1px solid #ff0000;
-	background-color: #ffeeee;
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
 }
 
 .validation-summary-errors
 {
-	font-weight: bold;
-	color: #ff0000;
+    font-weight: bold;
+    color: #ff0000;
 }
 
 .validation-summary-valid
 {
-	display: none;
+    display: none;
 }

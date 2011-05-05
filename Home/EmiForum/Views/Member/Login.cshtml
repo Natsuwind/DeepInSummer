@@ -1,10 +1,10 @@
 ﻿@model EmiForum.Models.Users
 
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "用户登录";
 }
 
-<h2>Login</h2>
+<h2>用户登录</h2>
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
@@ -12,10 +12,10 @@
         <legend>登录</legend>
         <div class="editor-label">
             <label for="Email">
-                邮箱</label>
+                邮箱地址</label>
         </div>
         <div class="editor-field">
-            <input type="text" value="" name="Email" id="Email" class="text-box single-line">
+            <input type="email" value="" name="Email" id="Email" class="text-box single-line" autofocus="true" required>
             <span data-valmsg-replace="true" data-valmsg-for="Email" class="field-validation-valid">
             </span>
         </div>
@@ -24,7 +24,7 @@
                 密码</label>
         </div>
         <div class="editor-field">
-            <input type = "password" name="Password" id="Password"  class="text-box single-line"/>
+            <input type = "password" name="Password" id="Password"  class="text-box single-line" required/>
             <span data-valmsg-replace="true" data-valmsg-for="Password" class="field-validation-valid">
             </span>
         </div>
@@ -33,3 +33,5 @@
         </p>
     </fieldset>
 }
+
+@ServerInfo.GetHtml()

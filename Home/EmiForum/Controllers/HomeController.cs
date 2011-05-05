@@ -30,6 +30,7 @@ namespace EmiForum.Controllers
         {
             if (ModelState.IsValid)
             {
+                newPost.Content = newPost.Content.Replace("\r\n", "<br />").Replace("\r", "<br />").Replace("\n", "<br />");
                 newPost.Ip = Request.UserHostAddress;
                 newPost.PostDate = DateTime.Now;
                 newPost.Email = "test@qq.com";
