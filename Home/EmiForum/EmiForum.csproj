@@ -139,16 +139,16 @@
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Member\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Member\Create.cshtml" />
+    <Content Include="Views\Account\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Member\Login.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Member\Logout.cshtml" />
+    <Content Include="Views\Account\LogOff.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\About.cshtml" />

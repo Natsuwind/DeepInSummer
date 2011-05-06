@@ -33,13 +33,13 @@
         </div>
         <div style="clear: both">
             <div id="toolbar">
-                @if (ViewBag.IsLogined != null && ViewBag.IsLogined)
+                @if (Request.IsAuthenticated)
                 {
-                    <text>欢迎 @ViewBag.LoginUserInfo.Username [@Html.ActionLink("退出", "Logout", "Member")]</text>
+                    <text>欢迎 @User.Identity.Name [@Html.ActionLink("退出", "LogOff", "Account")]</text>
                 }
                 else
                 {
-                    <text>点击 @Html.ActionLink("登录", "Login", "Member") 或 @Html.ActionLink("注册帐号", "Create", "Member")</text>
+                    <text>点击 @Html.ActionLink("登录", "LogOn", "Account") 或 @Html.ActionLink("注册帐号", "Create", "Account")</text>
                 }
                 | 公告：网站玩耍中，大家请随意～
             </div>

@@ -11,9 +11,7 @@ namespace EmiForum.Controllers
 {
     public class AccountController : Controller
     {
-        //
-        // GET: /Me/
-
+        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -23,8 +21,7 @@ namespace EmiForum.Controllers
 
         public ActionResult Create()
         {
-            ShortUserInfo isLoginedUserInfo = Users.GetLoginStatus();
-            if (isLoginedUserInfo != null)
+            if (Request.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -34,8 +31,7 @@ namespace EmiForum.Controllers
         [HttpPost]
         public ActionResult Create(ShortUserInfo shortUserInfo)
         {
-            ShortUserInfo isLoginedUserInfo = Users.GetLoginStatus();
-            if (isLoginedUserInfo != null)
+            if (Request.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -90,8 +86,7 @@ namespace EmiForum.Controllers
 
         public ActionResult LogOn()
         {
-            ShortUserInfo isLoginedUserInfo = Users.GetLoginStatus();
-            if (isLoginedUserInfo != null)
+            if (Request.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -101,8 +96,7 @@ namespace EmiForum.Controllers
         [HttpPost]
         public ActionResult LogOn(ShortUserInfo shortUserInfo)
         {
-            ShortUserInfo isLoginedUserInfo = Users.GetLoginStatus();
-            if (isLoginedUserInfo != null)
+            if (Request.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -112,9 +106,8 @@ namespace EmiForum.Controllers
                 ShortUserInfo loginedUserInfo = Users.CheckUserLogin(shortUserInfo.Email, shortUserInfo.Password);
                 if (loginedUserInfo != null)
                 {
-                    FormsAuthentication.SetAuthCookie(loginedUserInfo.Username, true);
-                    Users.SetLoginStatus(loginedUserInfo);
-                    return RedirectToAction("Index", "Home");
+                    //FormsAuthentication.SetAuthCookie(loginedUserInfo.Username, true);
+                    FormsAuthentication.RedirectFromLoginPage(loginedUserInfo.Username, true);
                 }
                 else
                 {
@@ -130,14 +123,9 @@ namespace EmiForum.Controllers
         }
 
         [Authorize]
-        public ActionResult Logout()
+        public ActionResult LogOff()
         {
-            if (!Request.IsAuthenticated)
-            {
-                return RedirectToAction("Login", "Member");
-            }
             FormsAuthentication.SignOut();
-            Users.Logout();
             return RedirectToAction("Index", "Home");
         }
     }
