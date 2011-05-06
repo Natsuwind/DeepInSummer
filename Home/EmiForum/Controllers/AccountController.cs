@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using EmiForum.Models.Entity;
 using EmiForum.Models;
+using System.Web.Security;
 
 namespace EmiForum.Controllers
 {
-    public class MemberController : Controller
+    public class AccountController : Controller
     {
         //
         // GET: /Me/
@@ -87,7 +88,7 @@ namespace EmiForum.Controllers
         }
 
 
-        public ActionResult Login()
+        public ActionResult LogOn()
         {
             ShortUserInfo isLoginedUserInfo = Users.GetLoginStatus();
             if (isLoginedUserInfo != null)
@@ -98,7 +99,7 @@ namespace EmiForum.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(ShortUserInfo shortUserInfo)
+        public ActionResult LogOn(ShortUserInfo shortUserInfo)
         {
             ShortUserInfo isLoginedUserInfo = Users.GetLoginStatus();
             if (isLoginedUserInfo != null)
@@ -111,6 +112,7 @@ namespace EmiForum.Controllers
                 ShortUserInfo loginedUserInfo = Users.CheckUserLogin(shortUserInfo.Email, shortUserInfo.Password);
                 if (loginedUserInfo != null)
                 {
+                    FormsAuthentication.SetAuthCookie(loginedUserInfo.Username, true);
                     Users.SetLoginStatus(loginedUserInfo);
                     return RedirectToAction("Index", "Home");
                 }
@@ -127,8 +129,14 @@ namespace EmiForum.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult Logout()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Member");
+            }
+            FormsAuthentication.SignOut();
             Users.Logout();
             return RedirectToAction("Index", "Home");
         }

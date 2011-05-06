@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Data\Database\MysqlScript.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
