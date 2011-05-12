@@ -1,0 +1,48 @@
+INSERT INTO `homedb`.`members`
+(`uid`,
+`username`,
+`password`,
+`email`,
+`regip`,
+`regdate`,
+`lastloginip`,
+`lastlogindate`,
+`salt`,
+`secques`)
+VALUES
+(
+?uid,?username,?password,?email,?regip,?regdate,?lastloginip,?lastlogindate,?salt,?secques},
+);
+
+
+`members`.`uid`, `members`.`username`, `members`.`password`, `members`.`email`, `members`.`regip`, `members`.`regdate`, `members`.`lastloginip`, `members`.`lastlogindate`, `members`.`salt`, `members`.`secques`
+
+
+
+
+
+uid
+username
+password
+email
+regip
+regdate
+lastloginip
+lastlogindate
+salt
+secques
+
+
+
+
+
+public int    Uid
+public string Username
+public string Password
+public string Email
+public string RegIp
+public DateTi RegDate
+public string LastLoginIp
+public DateTi LastLoginDate
+public string Salt
+public string SecQues

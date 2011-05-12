@@ -1,0 +1,70 @@
+﻿@model EmiForum.Models.Entity.ShortUserInfo
+
+@{
+    ViewBag.Title = "UserInfo";
+}
+
+<h2>UserInfo</h2>
+
+<fieldset>
+    <legend>ShortUserInfo</legend>
+
+    <div class="display-label">Uid</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Uid)
+    </div>
+
+    <div class="display-label">Username</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Username)
+    </div>
+
+    <div class="display-label">Password</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Password)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">RegIp</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RegIp)
+    </div>
+
+    <div class="display-label">RegDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RegDate)
+    </div>
+
+    <div class="display-label">LastLoginIp</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastLoginIp)
+    </div>
+
+    <div class="display-label">LastLoginDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastLoginDate)
+    </div>
+
+    <div class="display-label">Salt</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Salt)
+    </div>
+
+    <div class="display-label">SecQues</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SecQues)
+    </div>
+
+    <div class="display-label">QqOpenId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QqOpenId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
