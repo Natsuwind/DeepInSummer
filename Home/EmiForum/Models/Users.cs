@@ -7,6 +7,7 @@ using System.Data.Common;
 using Natsuhime.Data;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Web.Security;
 
 namespace EmiForum.Models
 {
@@ -24,9 +25,11 @@ namespace EmiForum.Models
 			    DbHelper.MakeInParam("?lastloginip", (DbType)MySqlDbType.String, 30,newUserInfo.LastLoginIp),
 			    DbHelper.MakeInParam("?lastlogindate", (DbType)MySqlDbType.DateTime, 8,newUserInfo.LastLoginDate),
 			    DbHelper.MakeInParam("?salt", (DbType)MySqlDbType.String,6,newUserInfo.Salt),
-			    DbHelper.MakeInParam("?secques", (DbType)MySqlDbType.String, 8,newUserInfo.SecQues)
+			    DbHelper.MakeInParam("?secques", (DbType)MySqlDbType.String, 8,newUserInfo.SecQues),
+			    DbHelper.MakeInParam("?qqopenid", (DbType)MySqlDbType.String, 45,newUserInfo.QqOpenId)
 		    };
-            DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO members (`username`, `password`, `email`, `regip`, `regdate`, `lastloginip`, `lastlogindate`, `salt`, `secques`) VALUES(?username,?password,?email,?regip,?regdate,?lastloginip,?lastlogindate,?salt,?secques)", prams);
+
+            DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO members (`username`, `password`, `email`, `regip`, `regdate`, `lastloginip`, `lastlogindate`, `salt`, `secques`,`qqopenid`) VALUES(?username,?password,?email,?regip,?regdate,?lastloginip,?lastlogindate,?salt,?secques,?qqopenid)", prams);
         }
 
         public static int IsExits(string username, string email)
@@ -104,6 +107,39 @@ namespace EmiForum.Models
             dr.Close();
             return shortUserInfo;
         }
+        public static ShortUserInfo GetUserInfoByUsername(string username)
+        {
+            if (username.Trim() == string.Empty)
+            {
+                return null;
+            }
+
+            DbParameter[] prams = 
+                {
+			    DbHelper.MakeInParam("?username", (DbType)MySqlDbType.String, 15,username)
+                };
+            IDataReader dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM members WHERE username=?username", prams);
+            ShortUserInfo shortUserInfo = BindUserInfo(dr);
+            dr.Close();
+            return shortUserInfo;
+        }
+
+        public static ShortUserInfo GetUserInfoByQqOpenid(string openid)
+        {
+            if (openid == null || openid.Trim() == string.Empty)
+            {
+                return null;
+            }
+
+            DbParameter[] prams = 
+                {
+			    DbHelper.MakeInParam("?qqopenid", (DbType)MySqlDbType.String, 45,openid)
+                };
+            IDataReader dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM members WHERE qqopenid=?qqopenid", prams);
+            ShortUserInfo shortUserInfo = BindUserInfo(dr);
+            dr.Close();
+            return shortUserInfo;
+        }
 
         public static ShortUserInfo CheckUserLogin(string email, string password)
         {
@@ -115,7 +151,7 @@ namespace EmiForum.Models
             DbParameter[] prams = 
                 {
 			    DbHelper.MakeInParam("?email", (DbType)MySqlDbType.String, 32,email),
-			    DbHelper.MakeInParam("?password", (DbType)MySqlDbType.String, 32,password)
+			    DbHelper.MakeInParam("?password", (DbType)MySqlDbType.String, 32,FormsAuthentication.HashPasswordForStoringInConfigFile(password, "MD5"))
                 };
             IDataReader dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM members WHERE email=?email AND password=?password", prams);
             ShortUserInfo shortUserInfo = BindUserInfo(dr);
@@ -139,6 +175,7 @@ namespace EmiForum.Models
                 shortUserInfo.LastLoginDate = Convert.ToDateTime(dr["lastlogindate"]);
                 shortUserInfo.Salt = dr["salt"].ToString();
                 shortUserInfo.SecQues = dr["secques"].ToString();
+                shortUserInfo.QqOpenId = dr["qqopenid"] != DBNull.Value ? dr["qqopenid"].ToString() : "null";
             }
             return shortUserInfo;
         }

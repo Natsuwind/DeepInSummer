@@ -26,5 +26,6 @@ namespace EmiForum.Models.Entity
         public DateTime LastLoginDate { get; set; }
         public string Salt { get; set; }
         public string SecQues { get; set; }
+        public string QqOpenId { get; set; }
     }
 }

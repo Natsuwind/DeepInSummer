@@ -94,5 +94,18 @@ namespace EmiForum.Controllers
                 return RedirectToAction("AdminLogin", "Admin");
             }
         }
+
+
+        public ActionResult UserInfo(int uid)
+        {
+            if (IsLogined())
+            {
+                return View(Users.GetUserInfo(uid));
+            }
+            else
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+        }
     }
 }

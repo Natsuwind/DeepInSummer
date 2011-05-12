@@ -39,7 +39,10 @@
                 }
                 else
                 {
-                    <text>点击 @Html.ActionLink("登录", "LogOn", "Account") 或 @Html.ActionLink("注册帐号", "Create", "Account")</text>
+                    <text>点击 @Html.ActionLink("登录", "LogOn", "Account")/<a href="#" onclick="toQzoneLogin()">QQ登录</a> 或 @Html.ActionLink("注册帐号", "Create", "Account")</text>
+                    <script type="text/javascript">
+                    function toQzoneLogin(){var A=window.open("/Account/LogOnByQQ/","TencentLogin","width=500,height=400,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");} 
+                    </script>
                 }
                 | 公告：网站玩耍中，大家请随意～
             </div>

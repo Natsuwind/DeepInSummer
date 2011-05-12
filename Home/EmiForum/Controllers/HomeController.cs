@@ -42,8 +42,9 @@ namespace EmiForum.Controllers
             if (ModelState.IsValid)
             {
                 newPost.Content = HttpUtility.HtmlEncode(newPost.Content).Replace("\r\n", "<br />").Replace("\r", "<br />").Replace("\n", "<br />");
-                newPost.PosterId = 0;
-                newPost.Poster = Request.IsAuthenticated? User.Identity.Name : newPost.Poster;
+                newPost.Poster = Request.IsAuthenticated ? User.Identity.Name : newPost.Poster;
+                ShortUserInfo posterInfo = Users.GetUserInfoByUsername(newPost.Poster);
+                newPost.PosterId = posterInfo != null ? posterInfo.Uid : 0;
                 newPost.Ip = Request.UserHostAddress;
                 newPost.PostDate = DateTime.Now;
                 newPost.Email = "";

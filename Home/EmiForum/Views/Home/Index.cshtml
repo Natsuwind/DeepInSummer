@@ -16,10 +16,10 @@
             <label for="Poster">
                 昵称</label>
         </div>
-        @if (ViewBag.IsLogined != null && ViewBag.IsLogined)
+        @if (@User.Identity.IsAuthenticated)
         {
             <div class="editor-field">
-                <text>@ViewBag.LoginUserInfo.Username</text>
+                <text>@User.Identity.Name</text>
             </div>
         }
         else
