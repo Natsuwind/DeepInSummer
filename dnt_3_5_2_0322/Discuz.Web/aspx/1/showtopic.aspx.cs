@@ -185,6 +185,8 @@ namespace Discuz.Web
             if (DNTRequest.GetInt("fromfav", 0) > 0)
                 Favorites.UpdateUserFavoriteViewTime(userid, topicid);
             //UserCredits.UpdateUserCredits(userInfo);此方法与后台积分设置中的条目不匹配，故注释
+
+            //footerad += string.Format("<!--forum.Fid:{0},forum.Jammer:{1},GetJammer():{2}-->", forum.Fid, forum.Jammer, Caches.GetJammer());
         }
 
         /// <summary>
@@ -347,10 +349,10 @@ namespace Discuz.Web
                 if (config.Aspxrewrite == 1)
                     pagenumbers = Utils.GetStaticPageNumbers(pageid, pagecount, "showtopic-" + topicid, config.Extname, 8);
                 else
-                   pagenumbers = Utils.GetPageNumbers(pageid, pagecount, string.Format("showtopic.aspx?topicid={0}&forumpage={1}", topicid, forumpageid), 8);
+                    pagenumbers = Utils.GetPageNumbers(pageid, pagecount, string.Format("showtopic.aspx?topicid={0}&forumpage={1}", topicid, forumpageid), 8);
             }
             else
-                pagenumbers = Utils.GetPageNumbers(pageid, pagecount, string.Format("showtopic.aspx?onlyauthor={0}&topicid={1}&forumpage={2}&posterid={3}", onlyauthor, topicid, forumpageid, posterid),8);
+                pagenumbers = Utils.GetPageNumbers(pageid, pagecount, string.Format("showtopic.aspx?onlyauthor={0}&topicid={1}&forumpage={2}&posterid={3}", onlyauthor, topicid, forumpageid, posterid), 8);
 
             if (pageid != pagecount)
                 nextpage = "<a href=\"" + (string.IsNullOrEmpty(onlyauthor) || onlyauthor == "0" ? Urls.ShowTopicAspxRewrite(topicid, pageid + 1) :

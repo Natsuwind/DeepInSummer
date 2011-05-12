@@ -42,7 +42,7 @@ namespace Discuz.Forum
 
         private static RegexOptions options = RegexOptions.IgnoreCase;
 
-        public static Regex[] r = new Regex[4];
+        public static Regex[] r = new Regex[5];
 
         /// <summary>
         /// memcached –≈œ¢≈‰÷√¿‡
@@ -63,6 +63,7 @@ namespace Discuz.Forum
             r[1] = new Regex(@"(\n)", options);
             r[2] = new Regex(@"(\r)", options);
             r[3] = new Regex(@"(<br />)", options);
+            r[4] = new Regex(@"(<br/>)", options);
 
             string vcode = GeneralConfigs.GetConfig().Verifycode;
             if (vcode.Trim() != string.Empty)
@@ -1715,6 +1716,10 @@ namespace Discuz.Forum
                 message = message.Replace(m.Groups[0].ToString(), jammer + "\r");
 
             m = r[3].Match(message);
+            if (m.Success)
+                message = message.Replace(m.Groups[0].ToString(), jammer + "<br />");
+
+            m = r[4].Match(message);
             if (m.Success)
                 message = message.Replace(m.Groups[0].ToString(), jammer + "<br />");
 
