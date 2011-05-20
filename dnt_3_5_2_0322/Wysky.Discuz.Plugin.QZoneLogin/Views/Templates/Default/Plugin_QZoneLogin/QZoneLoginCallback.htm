@@ -1,0 +1,18 @@
+﻿<%inherits Wysky.Discuz.Plugin.QZoneLogin.Views.Main.QZoneLoginCallback%>
+<%template _header%>
+<div class="wrap cl pageinfo">
+	<div id="nav">
+	<%if {usergroupinfo.allowsearch}>0%>
+		<%template _quicksearch%>
+	<%/if%>
+	<a href="{config.forumurl}" class="title">{config.forumtitle}</a> &raquo; <strong>激活 QQ 登录功能</strong>
+	</div>
+</div>
+<%if page_err==0%>
+<div class="wrap uc cl help">    
+</div>
+<%else%>
+	<%template _errmsgbox%>
+<%/if%>
+<%template _copyright%>
+<%template _footer%>

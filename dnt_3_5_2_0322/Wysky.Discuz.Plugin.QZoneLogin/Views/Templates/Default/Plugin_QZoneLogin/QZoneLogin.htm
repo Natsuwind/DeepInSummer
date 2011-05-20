@@ -1,0 +1,207 @@
+﻿<%inherits Wysky.Discuz.Plugin.QZoneLogin.Views.Main.QZoneLogin%>
+<%template _header%>
+<div class="wrap cl pageinfo">
+    <div id="nav">
+        <%if {usergroupinfo.allowsearch}>0%>
+        <%template _quicksearch%>
+        <%/if%>
+        <a href="{config.forumurl}" class="title">{config.forumtitle}</a> &raquo; <strong>QQ
+            登录</strong>
+    </div>
+</div>
+<%if page_err==0%>
+<div class="wrap cl">
+    <div class="blr">
+        <div class="msgbox" style="margin: 4px auto; padding: 0 !important; margin-left: 0;
+            background: none;">
+            <p>
+                您是第一次用QQ登录功能，请填写完整信息用户激活QQ登录</p>
+            <p>
+                <b>{msgbox_text}</b></p>
+        </div>
+        <hr class="solidline" />
+        <h3 class="flb">
+            <em id="returnregmessage"></em>
+        </h3>
+        <div id="succeedmessage" class="c cl" style="display: none">
+        </div>
+        <form id="formlogin" name="formlogin" method="post" action="?callback=1&createuser=1"
+        onsubmit="submitCheck(this);">
+        <div class="c cl">
+            <div style="overflow: hidden; overflow-y: auto" class="lgfm">
+                <input type="hidden" value="2592000" name="cookietime" />
+                <div class="sipt lpsw">
+                    <label for="username">
+                        用户名 ：</label>
+                    <input type="text" id="username" name="username" size="25" maxlength="40" tabindex="2"
+                        value="{username}" class="txt" onkeyup="checkusername(this.value);" />
+                </div>
+                <div class="sipt lpsw">
+                    <label for="email">
+                        Email ：</label>
+                    <input type="text" id="email" name="email" size="25" tabindex="3" class="txt" onkeyup="checkemail(this.value)" />
+                </div>
+            </div>
+            <div class="lgf">
+                <h4>
+                    使用网站帐号登录？ <a href="{rooturl}login.aspx" class="xg2">点击这里使用[普通登录]</a>
+                </h4>
+            </div>
+        </div>
+        <p class="fsb pns cl">
+            <input type="submit" style="width: 0; filter: alpha(opacity=0); -moz-opacity: 0;
+                opacity: 0;" />
+            <button name="login" type="submit" id="login" tabindex="8" class="pn">
+                <span>激活QQ登录帐号</span></button>
+        </p>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    document.getElementById("email").focus();
+    function checkemail(strMail) {
+        var str;
+        if (strMail.length == 0) return false;
+        var objReg = new RegExp("[A-Za-z0-9-_]+@[A-Za-z0-9-_]+[\.][A-Za-z0-9-_]")
+        var IsRightFmt = objReg.test(strMail)
+        var objRegErrChar = new RegExp("[^a-z0-9-._@]", "ig")
+        var IsRightChar = (strMail.search(objRegErrChar) == -1)
+        var IsRightLength = strMail.length <= 60
+        var IsRightPos = (strMail.indexOf("@", 0) != 0 && strMail.indexOf(".", 0) != 0 && strMail.lastIndexOf("@") + 1 != strMail.length && strMail.lastIndexOf(".") + 1 != strMail.length)
+        var IsNoDupChar = (strMail.indexOf("@", 0) == strMail.lastIndexOf("@"))
+        if (!(IsRightFmt && IsRightChar && IsRightLength && IsRightPos && IsNoDupChar)) {
+            str = "E-mail 地址无效，请提供真实Email，以便找回密码和论坛通知所用。";
+        }
+        if (str != '' && str != null && str != undefined) {
+            $('returnregmessage').innerHTML = str;
+            $('returnregmessage').className = 'onerror';
+        }
+        else {
+            $('returnregmessage').className = '';
+            $('returnregmessage').innerHTML = '激活';
+        }
+    }
+    function htmlEncode(source, display, tabs) {
+        function special(source) {
+            var result = '';
+            for (var i = 0; i < source.length; i++) {
+                var c = source.charAt(i);
+                if (c < ' ' || c > '~') {
+                    c = '&#' + c.charCodeAt() + ';';
+                }
+                result += c;
+            }
+            return result;
+        }
+
+        function format(source) {
+            // Use only integer part of tabs, and default to 4
+            tabs = (tabs >= 0) ? Math.floor(tabs) : 4;
+
+            // split along line breaks
+            var lines = source.split(/\r\n|\r|\n/);
+
+            // expand tabs
+            for (var i = 0; i < lines.length; i++) {
+                var line = lines[i];
+                var newLine = '';
+                for (var p = 0; p < line.length; p++) {
+                    var c = line.charAt(p);
+                    if (c === '\t') {
+                        var spaces = tabs - (newLine.length % tabs);
+                        for (var s = 0; s < spaces; s++) {
+                            newLine += ' ';
+                        }
+                    }
+                    else {
+                        newLine += c;
+                    }
+                }
+                // If a line starts or ends with a space, it evaporates in html
+                // unless it's an nbsp.
+                newLine = newLine.replace(/(^ )|( $)/g, '&nbsp;');
+                lines[i] = newLine;
+            }
+
+            // re-join lines
+            var result = lines.join('<br />');
+
+            // break up contiguous blocks of spaces with non-breaking spaces
+            result = result.replace(/  /g, ' &nbsp;');
+
+            // tada!
+            return result;
+        }
+
+        var result = source;
+
+        // ampersands (&)
+        result = result.replace(/\&/g, '&amp;');
+
+        // less-thans (<)
+        result = result.replace(/\</g, '&lt;');
+
+        // greater-thans (>)
+        result = result.replace(/\>/g, '&gt;');
+
+        if (display) {
+            // format for display
+            result = format(result);
+        }
+        else {
+            // Replace quotes if it isn't for display,
+            // since it's probably going in an html attribute.
+            result = result.replace(new RegExp('"', 'g'), '&quot;');
+        }
+
+        // special characters
+        result = special(result);
+
+        // tada!
+        return result;
+    }
+
+    var profile_username_toolong = '您的用户名超过 20 个字符，请输入一个较短的用户名。';
+    var profile_username_tooshort = '您输入的用户名小于3个字符, 请输入一个较长的用户名。';
+    var profile_username_pass = "<img src='/templates/default/images/check_right.gif'/>";
+
+    function checkusername(username) {
+        var unlen = username.replace(/[^\x00-\xff]/g, "**").length;
+
+        if (unlen < 3 || unlen > 20) {
+            $("returnregmessage").innerHTML = (unlen < 3 ? profile_username_tooshort : profile_username_toolong);
+            $('returnregmessage').className = 'onerror';
+            return;
+        }
+        ajaxRead("{rooturl}tools/ajax.aspx?t=checkusername&username=" + escape(username), "showcheckresult(obj,'" + escape(username) + "');");
+    }
+
+    function showcheckresult(obj, username) {
+        var res = obj.getElementsByTagName('result');
+        var result = "";
+        if (res[0] != null && res[0] != undefined) {
+            if (res[0].childNodes.length > 1) {
+                result = res[0].childNodes[1].nodeValue;
+            } else {
+                result = res[0].firstChild.nodeValue;
+            }
+        }
+        if (result == "1") {
+            var tips = "对不起，您输入的用户名 \"" + htmlEncode(unescape(username), true, 4) + "\" 已经被他人使用，或被系统禁用。";
+            $('returnregmessage').innerHTML = tips;
+            $('returnregmessage').className = 'onerror';
+        }
+        else {
+            $('returnregmessage').className = '';
+            $('returnregmessage').innerHTML = '激活';
+        }
+    }
+    function submitCheck(regForm) {
+        return true;
+    }
+</script>
+<%else%>
+<%template _errmsgbox%>
+<%/if%>
+<%template _copyright%>
+<%template _footer%>
