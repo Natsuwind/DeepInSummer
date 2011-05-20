@@ -9,3 +9,7 @@ obj
 bin
 *.user
 *.suo
+
+/dnt_3_5_2_0322/Discuz.Web/cache/scheduleeventfaildlog.config
+/dnt_3_5_2_0322/Discuz.Web/config/upgradeini.config
+/dnt_3_5_2_0322/Discuz.Web/scriptevent_sqlserver.config
