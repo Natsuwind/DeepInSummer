@@ -41,7 +41,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="NVelocity, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -413,10 +412,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Discuz.Addons\Discuz.Addons.csproj">
-      <Project>{74DF8F3A-7704-4336-866D-198A20142DE4}</Project>
-      <Name>Discuz.Addons</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Discuz.Aggregation\Discuz.Aggregation.csproj">
       <Project>{6C7484B3-F4F9-4531-9D26-7D567324AFF8}</Project>
       <Name>Discuz.Aggregation</Name>
