@@ -49,13 +49,9 @@
     <Compile Include="Views\Main\QZoneLogin.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Main\QZoneLoginCallback.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Templates\Default\Plugin_QZoneLogin\QZoneLogin.htm" />
-    <Content Include="Views\Templates\Default\Plugin_QZoneLogin\QZoneLoginCallback.htm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Admin\" />
@@ -113,12 +109,10 @@ xcopy $(TargetPath) $(ProjectDir)Publish\bin\  /Y
 xcopy $(TargetDir)\QzoneSDK.dll $(ProjectDir)Publish\bin\  /Y
 xcopy $(ProjectDir)Publish\bin\*.dll $(SolutionDir)\Discuz.Web\bin\  /Y
 xcopy $(ProjectDir)Views  $(ProjectDir)Publish\ /E /Y
+xcopy $(ProjectDir)Publish\Templates\Default\Plugin_QZoneLogin  $(SolutionDir)\Discuz.Web\templates\default\ /E /Y
 del $(ProjectDir)Publish\*.cs /S /Q
 del $(ProjectDir)Publish\*.resx /S /Q
-rmdir $(ProjectDir)Publish\Plugin\QZoneLoginWeb\ /S /Q
-xcopy $(ProjectDir)Views  $(SolutionDir)\Discuz.Web\ /E /Y
-
-</PostBuildEvent>
+rmdir $(ProjectDir)Publish\Plugin\QZoneLoginWeb\ /S /Q</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
