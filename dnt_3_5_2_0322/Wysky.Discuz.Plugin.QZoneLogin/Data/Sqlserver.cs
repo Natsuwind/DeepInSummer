@@ -4,45 +4,80 @@ using System.Web;
 using System.Data.Common;
 using Discuz.Data;
 using System.Data;
+using Discuz.Config;
 
 namespace Wysky.Discuz.Plugin.QZoneLogin.Data
 {
     public class Sqlserver
     {
-        public static int GetUIDByQqOpenid(string openid)
+        public static int DbGetUIDByQqOpenid(string openid)
         {
             DbParameter[] parms = 
 			{
 				DbHelper.MakeInParam("@qqopenid", (DbType)SqlDbType.Char, 50, openid)
 			};
-            string sql = "SELECT uid FROM wysky_plugin_qzlogin WHERE qqopenid=@qqopenid";
+            string sql = string.Format(
+                "SELECT uid FROM {0}wysky_plugin_qzlogin WHERE qqopenid=@qqopenid",
+                BaseConfigs.GetTablePrefix
+                );
             object uid = DbHelper.ExecuteScalar(CommandType.Text, sql, parms);
             return uid != null ? Convert.ToInt32(uid) : -1;
         }
 
-        public static int CreateQqUserInfo(string openid, int uid)
+        public static string DbGetQqOpenidByUID(int uid)
+        {
+            DbParameter[] parms = 
+			{
+				DbHelper.MakeInParam("@uid", (DbType)SqlDbType.Int, 4, uid)
+			};
+            string sql = string.Format(
+                "SELECT qqopenid FROM {0}wysky_plugin_qzlogin WHERE uid=@uid",
+                BaseConfigs.GetTablePrefix
+                );
+            object openid = DbHelper.ExecuteScalar(CommandType.Text, sql, parms);
+            return openid != null ? openid.ToString().Trim() : "";
+        }
+
+        public static void DbDeleteQqLoginInfo(string openid, int uid)
         {
             DbParameter[] parms = 
 			{
 				DbHelper.MakeInParam("@qqopenid", (DbType)SqlDbType.Char, 50, openid),
 				DbHelper.MakeInParam("@uid", (DbType)SqlDbType.Int, 4, uid)
 			};
-            string sql = "INSERT INTO wysky_plugin_qzlogin(uid,qqopenid) VALUES (@uid,@qqopenid)";
+            string sql = string.Format(
+                "DELETE FROM {0}wysky_plugin_qzlogin WHERE uid=@uid OR qqopenid=@qqopenid",
+                BaseConfigs.GetTablePrefix
+                );
+            DbHelper.ExecuteNonQuery(CommandType.Text, sql, parms);
+        }
+
+        public static int DbCreateQqUserInfo(string openid, int uid)
+        {
+            DbParameter[] parms = 
+			{
+				DbHelper.MakeInParam("@qqopenid", (DbType)SqlDbType.Char, 50, openid),
+				DbHelper.MakeInParam("@uid", (DbType)SqlDbType.Int, 4, uid)
+			};
+            string sql = string.Format(
+                "INSERT INTO {0}wysky_plugin_qzlogin(uid,qqopenid) VALUES (@uid,@qqopenid)", 
+                BaseConfigs.GetTablePrefix
+                );
             return DbHelper.ExecuteNonQuery(CommandType.Text, sql, parms);
         }
 
-        public static int Install()
+        public static int DbInstall()
         {
-            string sql = 
-@"CREATE TABLE [wysky_plugin_qzlogin](
+            string sql = string.Format(
+@"CREATE TABLE [{0}wysky_plugin_qzlogin](
 [uid] [int] NOT NULL,
 [qqopenid] [char](50) NOT NULL, 
-CONSTRAINT [PK_qzlogin_qqopenid] PRIMARY KEY CLUSTERED 
+CONSTRAINT [PK_{0}wysky_plugin_qzlogin_qqopenid] PRIMARY KEY CLUSTERED 
 (
 	[qqopenid] ASC
 ) ON [PRIMARY]
 ) ON [PRIMARY]
-";
+", BaseConfigs.GetTablePrefix);
             return DbHelper.ExecuteNonQuery(CommandType.Text, sql);
         }
     }

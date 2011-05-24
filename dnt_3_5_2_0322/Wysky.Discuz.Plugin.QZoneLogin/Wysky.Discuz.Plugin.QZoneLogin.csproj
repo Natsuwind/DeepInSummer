@@ -39,22 +39,39 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\Config\QZoneLoginConfigFileManager.cs" />
+    <Compile Include="BLL\Config\QZoneLoginConfigInfo.cs" />
+    <Compile Include="BLL\Config\QZoneLoginConfigs.cs" />
     <Compile Include="BLL\Main.cs" />
     <Compile Include="Data\Sqlserver.cs" />
     <Compile Include="Entity\QzoneLoginInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Admin\Plugin\WyskyQZLoginSetting.aspx.cs">
+      <DependentUpon>WyskyQZLoginSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Plugin\WyskyQZLoginSetting.aspx.designer.cs">
+      <DependentUpon>WyskyQZLoginSetting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Main\QZoneLogin.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Templates\Default\Plugin_QZoneLogin\QZoneLogin.htm" />
+    <Content Include="Views\Admin\Plugin\WyskyQZLoginSetting.aspx" />
+    <Content Include="Views\Images\wysky_plugin_qzlogin\qzlogin.png" />
+    <Content Include="Views\Javascript\Plugin\qzlogin.js" />
+    <Content Include="Views\Templates\Default\QZoneLogin.htm" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Admin\" />
+    <Content Include="Views\Templates\Default\_QZoneLoginForm.htm" />
+    <Content Include="Views\Templates\Default\_QZoneLoginInfo.htm" />
+    <Content Include="Views\Templates\Default\_QZoneLoginLink.htm" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Studies\QzoneSDK\src\QzoneSDK\QzoneSDK.csproj">
@@ -81,6 +98,13 @@
       <Project>{A44D0E57-6EF1-4DF0-A73F-A7BA86B6C495}</Project>
       <Name>Discuz.Forum</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Discuz.Web\admin\Discuz.Web.Admin.csproj">
+      <Project>{A3263B57-6E20-4A9F-8D1F-9A020CF95F08}</Project>
+      <Name>Discuz.Web.Admin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Templates\Default\_QZoneLoginHeader.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -104,15 +128,18 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>rmdir $(ProjectDir)Publish\ /S /Q
+    <PostBuildEvent>echo 清空发布目录
+rmdir $(ProjectDir)Publish\ /S /Q
+echo 拷贝dll
 xcopy $(TargetPath) $(ProjectDir)Publish\bin\  /Y
 xcopy $(TargetDir)\QzoneSDK.dll $(ProjectDir)Publish\bin\  /Y
-xcopy $(ProjectDir)Publish\bin\*.dll $(SolutionDir)\Discuz.Web\bin\  /Y
+echo 拷贝页面和资源
 xcopy $(ProjectDir)Views  $(ProjectDir)Publish\ /E /Y
-xcopy $(ProjectDir)Publish\Templates\Default\Plugin_QZoneLogin  $(SolutionDir)\Discuz.Web\templates\default\ /E /Y
+echo 清理发布目录的源码
 del $(ProjectDir)Publish\*.cs /S /Q
 del $(ProjectDir)Publish\*.resx /S /Q
-rmdir $(ProjectDir)Publish\Plugin\QZoneLoginWeb\ /S /Q</PostBuildEvent>
+echo 将发布文件拷贝到Web项目
+xcopy $(ProjectDir)Publish  $(SolutionDir)\Discuz.Web\ /E /Y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

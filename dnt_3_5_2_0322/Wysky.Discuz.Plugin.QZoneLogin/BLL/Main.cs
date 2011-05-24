@@ -11,7 +11,17 @@ namespace Wysky.Discuz.Plugin.QZoneLogin.BLL
     {
         public static int GetUIDByQqOpenid(string openid)
         {
-            return Data.Sqlserver.GetUIDByQqOpenid(openid);
+            return Data.Sqlserver.DbGetUIDByQqOpenid(openid);
+        }
+
+        public static void DeleteQqLoginInfo(string openid, int uid)
+        {
+            Data.Sqlserver.DbDeleteQqLoginInfo(openid, uid);
+        }
+
+        public static string GetQqOpenidByUID(int uid)
+        {
+            return Data.Sqlserver.DbGetQqOpenidByUID(uid);
         }
 
 
@@ -93,12 +103,12 @@ namespace Wysky.Discuz.Plugin.QZoneLogin.BLL
 
         public static int CreateQqUserInfo(string openid, int uid)
         {
-            return Data.Sqlserver.CreateQqUserInfo(openid, uid);
+            return Data.Sqlserver.DbCreateQqUserInfo(openid, uid);
         }
 
         public static int Install()
         {
-            return Data.Sqlserver.Install();
+            return Data.Sqlserver.DbInstall();
         }
     }
 }

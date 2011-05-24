@@ -1,0 +1,6 @@
+﻿    <%csharp%>
+    int isqzloginenable=Wysky.Discuz.Plugin.QZoneLogin.BLL.Config.QZoneLoginConfigs.GetConfig().EnableQQLogin;
+    <%/csharp%>
+    <%if {isqzloginenable}==1%>
+    <script type="text/javascript" src="{jsdir}/Plugin/qzlogin.js"></script>
+    <%/if%>
