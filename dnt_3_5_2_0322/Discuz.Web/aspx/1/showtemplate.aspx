@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by Discuz!NT Template Engine at 2011/3/22 11:14:58.
-		本页面代码由Discuz!NT模板引擎生成于 2011/3/22 11:14:58. 
+		This page was created by Discuz!NT Template Engine at 2011/5/24 17:48:12.
+		本页面代码由Discuz!NT模板引擎生成于 2011/5/24 17:48:12. 
 	*/
 
 	base.OnInit(e);
@@ -106,20 +106,36 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(script.ToString());
 	templateBuilder.Append("\r\n</head>");
 
-	templateBuilder.Append("\r\n<body onkeydown=\"if(event.keyCode==27) return false;\">\r\n<div id=\"append_parent\"></div><div id=\"ajaxwaitid\"></div>\r\n");
+	templateBuilder.Append("\r\n<body onkeydown=\"if(event.keyCode==27) return false;\">\r\n    ");
+
+	    int isqzloginenable=Wysky.Discuz.Plugin.QZoneLogin.BLL.Config.QZoneLoginConfigs.GetConfig().EnableQQLogin;
+	    
+
+	if (isqzloginenable==1)
+	{
+
+	templateBuilder.Append("\r\n    <script type=\"text/javascript\" src=\"");
+	templateBuilder.Append(jsdir.ToString());
+	templateBuilder.Append("/Plugin/qzlogin.js\"></");
+	templateBuilder.Append("script>\r\n    ");
+	}	//end if
+
+
+
+	templateBuilder.Append("\r\n    <div id=\"append_parent\">\r\n    </div>\r\n    <div id=\"ajaxwaitid\">\r\n    </div>\r\n    ");
 	if (headerad!="")
 	{
 
-	templateBuilder.Append("\r\n	<div id=\"ad_headerbanner\">");
+	templateBuilder.Append("\r\n    <div id=\"ad_headerbanner\">\r\n        ");
 	templateBuilder.Append(headerad.ToString());
-	templateBuilder.Append("</div>\r\n");
+	templateBuilder.Append("</div>\r\n    ");
 	}	//end if
 
-	templateBuilder.Append("\r\n<div id=\"hd\">\r\n	<div class=\"wrap\">\r\n		<div class=\"head cl\">\r\n			<h2><a href=\"");
+	templateBuilder.Append("\r\n    <div id=\"hd\">\r\n        <div class=\"wrap\">\r\n            <div class=\"head cl\">\r\n                <h2>\r\n                    <a href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("index.aspx\" title=\"Discuz!NT|BBS|论坛\"><img src=\"");
+	templateBuilder.Append("index.aspx\" title=\"Discuz!NT|BBS|论坛\">\r\n                        <img src=\"");
 	templateBuilder.Append(imagedir.ToString());
-	templateBuilder.Append("/logo.png\" alt=\"Discuz!NT|BBS|论坛\"/></a></h2>\r\n			");
+	templateBuilder.Append("/logo.png\" alt=\"Discuz!NT|BBS|论坛\" /></a></h2>\r\n                ");
 	if (userid==-1)
 	{
 
@@ -127,21 +143,33 @@ override protected void OnInit(EventArgs e)
 	if (pagename!="login.aspx"&&pagename!="register.aspx")
 	{
 
-	templateBuilder.Append("\r\n			<form onsubmit=\"if ($('ls_username').value == '' || $('ls_username').value == '用户名/Email') showWindow('login', '");
+	templateBuilder.Append("\r\n                <form onsubmit=\"if ($('ls_username').value == '' || $('ls_username').value == '用户名/Email') showWindow('login', '");
 	templateBuilder.Append(rooturl.ToString());
-	templateBuilder.Append("login.aspx');hideWindow('register');return\" action=\"");
+	templateBuilder.Append("login.aspx');hideWindow('register');return\"\r\n                action=\"");
 	templateBuilder.Append(rooturl.ToString());
 	templateBuilder.Append("login.aspx?referer=");
 	templateBuilder.Append(pagename.ToString());
-	templateBuilder.Append("\" id=\"lsform\" autocomplete=\"off\" method=\"post\">\r\n				<div class=\"fastlg c1\">\r\n					<div class=\"y pns\">\r\n						<p>\r\n							<label for=\"ls_username\">帐号</label> <input type=\"text\" tabindex=\"901\" value=\"用户名/Email\" id=\"ls_username\" name=\"username\" class=\"txt\" onblur=\"if(this.value == '') this.value = '用户名/Email';\" onfocus=\"if(this.value == '用户名/Email') this.value = '';\"/><a href=\"");
+	templateBuilder.Append("\" id=\"lsform\" autocomplete=\"off\" method=\"post\">\r\n                <div class=\"fastlg c1\">\r\n                    <div class=\"y pns\">\r\n                        <p>\r\n                            <label for=\"ls_username\">\r\n                                帐号</label>\r\n                            <input type=\"text\" tabindex=\"901\" value=\"用户名/Email\" id=\"ls_username\" name=\"username\"\r\n                                class=\"txt\" onblur=\"if(this.value == '') this.value = '用户名/Email';\" onfocus=\"if(this.value == '用户名/Email') this.value = '';\" /><a\r\n                                    href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("register.aspx\" onClick=\"showWindow('register', '");
+	templateBuilder.Append("register.aspx\" onclick=\"showWindow('register', '");
 	templateBuilder.Append(rooturl.ToString());
-	templateBuilder.Append("register.aspx');hideWindow('login');\" style=\"margin-left: 7px;\" class=\"xg2\">注册</a>							\r\n						</p>\r\n						<p>\r\n							<label for=\"ls_password\">密码</label> <input type=\"password\" onfocus=\"lsShowmore();innerVcode();\" tabindex=\"902\" autocomplete=\"off\" id=\"ls_password\" name=\"password\"  class=\"txt\"/>\r\n							&nbsp;<input type=submit style=\"width:0px;filter:alpha(opacity=0);-moz-opacity:0;opacity:0;display:none;\"/><button class=\"pn\" type=\"submit\"><span>登录</span></button>\r\n						</p>\r\n					</div>\r\n				</div>\r\n                <div id=\"ls_more\" style=\"position:absolute;display:none;\">\r\n                <h3 class=\"cl\"><em class=\"y\"><a href=\"###\" class=\"flbc\" title=\"关闭\" onclick=\"closeIsMore();return false;\">关闭</a></em>安全选项</h3>\r\n                ");
+	templateBuilder.Append("register.aspx');hideWindow('login');\"\r\n                                    style=\"margin-left: 7px;\" class=\"xg2\">注册</a>\r\n                        </p>\r\n                        <p>\r\n                            <label for=\"ls_password\">\r\n                                密码</label>\r\n                            <input type=\"password\" onfocus=\"lsShowmore();innerVcode();\" tabindex=\"902\" autocomplete=\"off\"\r\n                                id=\"ls_password\" name=\"password\" class=\"txt\" />\r\n                            &nbsp;<input type=\"submit\" style=\"width: 0px; filter: alpha(opacity=0); -moz-opacity: 0;\r\n                                opacity: 0; display: none;\" />\r\n                            <button class=\"pn\" type=\"submit\">\r\n                                <span>登录</span></button>\r\n                        </p>\r\n                    </div>\r\n                    ");
+
+	if (isqzloginenable==1)
+	{
+
+	templateBuilder.Append("\r\n<div style=\"margin-right: 10px; padding-right: 10px; border-right: 1px solid #CDCDCD;\"\r\n    class=\"fastlg_fm y\">\r\n    <p>\r\n        <a href=\"#\" onclick=\"toQzoneLogin()\">\r\n            <img alt=\"QQ登录\" class=\"vm\" src=\"");
+	templateBuilder.Append(forumpath.ToString());
+	templateBuilder.Append("images/wysky_plugin_qzlogin/qzlogin.png\"></a></p>\r\n    <p style=\"padding-top: 2px;\">\r\n        只需一步，快速开始</p>\r\n</div>\r\n");
+	}	//end if
+
+
+
+	templateBuilder.Append("\r\n                </div>\r\n                <div id=\"ls_more\" style=\"position: absolute; display: none;\">\r\n                    <h3 class=\"cl\">\r\n                        <em class=\"y\"><a href=\"###\" class=\"flbc\" title=\"关闭\" onclick=\"closeIsMore();return false;\">\r\n                            关闭</a></em>安全选项</h3>\r\n                    ");
 	if (isLoginCode)
 	{
 
-	templateBuilder.Append("\r\n                <div id=\"vcode_header\"></div>\r\n                <script type=\"text/javascript\" reload=\"1\">\r\n	                if (typeof vcodeimgid == 'undefined'){\r\n	                    var vcodeimgid = 1;\r\n	                }\r\n	                else\r\n	                    vcodeimgid++;\r\n	                function innerVcode() {\r\n	                    if ($('vcodetext_header1') == null) {\r\n	                        $('vcode_header').innerHTML = '<input name=\"vcodetext\" tabindex=\"903\" size=\"20\" onkeyup=\"changevcode(this.form, this.value);\" class=\"txt\" style=\"width:50px;\" id=\"vcodetext_header' + vcodeimgid + '\" value=\"\" autocomplete=\"off\"/>' +\r\n                                                        '<span><a href=\"###\" onclick=\"vcodeimg' + vcodeimgid + '.src=\\'");
+	templateBuilder.Append("\r\n                    <div id=\"vcode_header\">\r\n                    </div>\r\n                    <script type=\"text/javascript\" reload=\"1\">\r\n                        if (typeof vcodeimgid == 'undefined') {\r\n                            var vcodeimgid = 1;\r\n                        }\r\n                        else\r\n                            vcodeimgid++;\r\n                        function innerVcode() {\r\n                            if ($('vcodetext_header1') == null) {\r\n                                $('vcode_header').innerHTML = '<input name=\"vcodetext\" tabindex=\"903\" size=\"20\" onkeyup=\"changevcode(this.form, this.value);\" class=\"txt\" style=\"width:50px;\" id=\"vcodetext_header' + vcodeimgid + '\" value=\"\" autocomplete=\"off\"/>' +\r\n                                                        '<span><a href=\"###\" onclick=\"vcodeimg' + vcodeimgid + '.src=\\'");
 	templateBuilder.Append(rooturl.ToString());
 	templateBuilder.Append("tools/VerifyImagePage.aspx?id=");
 	templateBuilder.Append(olid.ToString());
@@ -153,32 +181,32 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(rooturl.ToString());
 	templateBuilder.Append("tools/VerifyImagePage.aspx?id=");
 	templateBuilder.Append(olid.ToString());
-	templateBuilder.Append("&time=\\' + Math.random();\"/></div>';\r\n	                        optionVcode();\r\n                            }\r\n                        }\r\n                                            \r\n	                 function changevcode(form, value){\r\n		                if (!$('vcode')){\r\n			                var vcode = document.createElement('input');\r\n			                vcode.id = 'vcode';\r\n			                vcode.name = 'vcode';\r\n			                vcode.type = 'hidden';\r\n			                vcode.value = value;\r\n			                form.appendChild(vcode);\r\n		                }else{\r\n			                $('vcode').value = value;\r\n		                }\r\n	                }\r\n                </");
-	templateBuilder.Append("script>\r\n                <script type=\"text/javascript\">\r\n                    var secclick = new Array();\r\n                    var seccodefocus = 0;\r\n                    var optionVcode = function (id, type) {\r\n                        id = vcodeimgid;\r\n                        if ($('vcode')) {\r\n                            $('vcode').parentNode.removeChild($('vcode'));\r\n                        }\r\n\r\n                        if (!secclick['vcodetext_header' + id]) {\r\n                            if ($('vcodetext_header' + id) != null)\r\n                                $('vcodetext_header' + id).value = '';\r\n                            secclick['vcodetext_header' + id] = 1;\r\n                            if (type)\r\n                                $('vcodetext_header' + id + '_menu').style.top = parseInt($('vcodetext_header' + id + '_menu').style.top) - parseInt($('vcodetext_header' + id + '_menu').style.height) + 'px';\r\n                        }\r\n                        $('vcodetext_header' + id + '_menu').style.display = '';\r\n                        $('vcodetext_header' + id).unselectable = 'off';\r\n                        $('vcodeimg' + id).src = '");
+	templateBuilder.Append("&time=\\' + Math.random();\"/></div>';\r\n                                optionVcode();\r\n                            }\r\n                        }\r\n\r\n                        function changevcode(form, value) {\r\n                            if (!$('vcode')) {\r\n                                var vcode = document.createElement('input');\r\n                                vcode.id = 'vcode';\r\n                                vcode.name = 'vcode';\r\n                                vcode.type = 'hidden';\r\n                                vcode.value = value;\r\n                                form.appendChild(vcode);\r\n                            } else {\r\n                                $('vcode').value = value;\r\n                            }\r\n                        }\r\n                    </");
+	templateBuilder.Append("script>\r\n                    <script type=\"text/javascript\">\r\n                        var secclick = new Array();\r\n                        var seccodefocus = 0;\r\n                        var optionVcode = function (id, type) {\r\n                            id = vcodeimgid;\r\n                            if ($('vcode')) {\r\n                                $('vcode').parentNode.removeChild($('vcode'));\r\n                            }\r\n\r\n                            if (!secclick['vcodetext_header' + id]) {\r\n                                if ($('vcodetext_header' + id) != null)\r\n                                    $('vcodetext_header' + id).value = '';\r\n                                secclick['vcodetext_header' + id] = 1;\r\n                                if (type)\r\n                                    $('vcodetext_header' + id + '_menu').style.top = parseInt($('vcodetext_header' + id + '_menu').style.top) - parseInt($('vcodetext_header' + id + '_menu').style.height) + 'px';\r\n                            }\r\n                            $('vcodetext_header' + id + '_menu').style.display = '';\r\n                            $('vcodetext_header' + id).unselectable = 'off';\r\n                            $('vcodeimg' + id).src = '");
 	templateBuilder.Append(rooturl.ToString());
 	templateBuilder.Append("tools/VerifyImagePage.aspx?id=");
 	templateBuilder.Append(olid.ToString());
-	templateBuilder.Append("&time=' + Math.random();\r\n                    }\r\n                </");
-	templateBuilder.Append("script>\r\n                ");
+	templateBuilder.Append("&time=' + Math.random();\r\n                        }\r\n                    </");
+	templateBuilder.Append("script>\r\n                    ");
 	}
 	else
 	{
 
 	templateBuilder.Append("\r\n                    <script type=\"text/javascript\">\r\n                        function innerVcode() {\r\n                        }\r\n                        function optionVcode() {\r\n                        }\r\n                    </");
-	templateBuilder.Append("script>\r\n                ");
+	templateBuilder.Append("script>\r\n                    ");
 	}	//end if
 
 
 	if (config.Secques==1)
 	{
 
-	templateBuilder.Append("\r\n			    <div id=\"floatlayout_login\" class=\"pbm\">\r\n					<select style=\"width:156px;margin-bottom:8px;\" id=\"question\" name=\"question\" selecti=\"5\" name=\"question\" onchange=\"displayAnswer();\" tabindex=\"904\">\r\n						<option id=\"question\" value=\"0\" selected=\"selected\">安全提问(未设置请忽略)</option>\r\n						<option id=\"question\" value=\"1\">母亲的名字</option>\r\n						<option id=\"question\" value=\"2\">爷爷的名字</option>\r\n						<option id=\"question\" value=\"3\">父亲出生的城市</option>\r\n						<option id=\"question\" value=\"4\">您其中一位老师的名字</option>\r\n						<option id=\"question\" value=\"5\">您个人计算机的型号</option>\r\n						<option id=\"question\" value=\"6\">您最喜欢的餐馆名称</option>\r\n						<option id=\"question\" value=\"7\">驾驶执照的最后四位数字</option>\r\n					</select>\r\n					<input type=\"text\" tabindex=\"905\" class=\"txt\" size=\"20\" autocomplete=\"off\" style=\"width:140px;display:none;\"  id=\"answer\" name=\"answer\"/>\r\n		        </div>\r\n                ");
+	templateBuilder.Append("\r\n                    <div id=\"floatlayout_login\" class=\"pbm\">\r\n                        <select style=\"width: 156px; margin-bottom: 8px;\" id=\"question\" name=\"question\" selecti=\"5\"\r\n                            name=\"question\" onchange=\"displayAnswer();\" tabindex=\"904\">\r\n                            <option id=\"question\" value=\"0\" selected=\"selected\">安全提问(未设置请忽略)</option>\r\n                            <option id=\"question\" value=\"1\">母亲的名字</option>\r\n                            <option id=\"question\" value=\"2\">爷爷的名字</option>\r\n                            <option id=\"question\" value=\"3\">父亲出生的城市</option>\r\n                            <option id=\"question\" value=\"4\">您其中一位老师的名字</option>\r\n                            <option id=\"question\" value=\"5\">您个人计算机的型号</option>\r\n                            <option id=\"question\" value=\"6\">您最喜欢的餐馆名称</option>\r\n                            <option id=\"question\" value=\"7\">驾驶执照的最后四位数字</option>\r\n                        </select>\r\n                        <input type=\"text\" tabindex=\"905\" class=\"txt\" size=\"20\" autocomplete=\"off\" style=\"width: 140px;\r\n                            display: none;\" id=\"answer\" name=\"answer\" />\r\n                    </div>\r\n                    ");
 	}	//end if
 
-	templateBuilder.Append("\r\n                <script type=\"text/javascript\">\r\n                    function closeIsMore() {\r\n                        $('ls_more').style.display = 'none';\r\n                    }\r\n                    function displayAnswer() {\r\n                        $('answer').style.display = '';\r\n						$('answer').focus();\r\n                    }\r\n                </");
-	templateBuilder.Append("script>\r\n				<div class=\"ptm cl\" style=\"border-top:1px dashed #CDCDCD;\">\r\n					<a class=\"y xg2\" href=\"");
+	templateBuilder.Append("\r\n                    <script type=\"text/javascript\">\r\n                        function closeIsMore() {\r\n                            $('ls_more').style.display = 'none';\r\n                        }\r\n                        function displayAnswer() {\r\n                            $('answer').style.display = '';\r\n                            $('answer').focus();\r\n                        }\r\n                    </");
+	templateBuilder.Append("script>\r\n                    <div class=\"ptm cl\" style=\"border-top: 1px dashed #CDCDCD;\">\r\n                        <a class=\"y xg2\" href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("getpassword.aspx\" onclick=\"hideWindow('register');hideWindow('login');showWindow('getpassword', this.href);\">找回密码</a>\r\n					<label class=\"z\" for=\"ls_cookietime\"><input type=\"checkbox\" tabindex=\"906\" value=\"2592000\" id=\"ls_cookietime\" name=\"expires\" checked=\"checked\" tabindex=\"906\"><span title=\"下次访问自动登录\">记住我</span></label>\r\n				</div>\r\n            </div>\r\n			</form>\r\n            ");
+	templateBuilder.Append("getpassword.aspx\" onclick=\"hideWindow('register');hideWindow('login');showWindow('getpassword', this.href);\">\r\n                            找回密码</a>\r\n                        <label class=\"z\" for=\"ls_cookietime\">\r\n                            <input type=\"checkbox\" tabindex=\"906\" value=\"2592000\" id=\"ls_cookietime\" name=\"expires\"\r\n                                checked=\"checked\" tabindex=\"906\"><span title=\"下次访问自动登录\">记住我</span></label>\r\n                    </div>\r\n                </div>\r\n                </form>\r\n                ");
 	}	//end if
 
 
@@ -186,19 +214,66 @@ override protected void OnInit(EventArgs e)
 	else
 	{
 
-	templateBuilder.Append("\r\n			<div id=\"um\">\r\n				<div class=\"avt y\"><a alt=\"用户名称\" target=\"_blank\" href=\"");
+	templateBuilder.Append("\r\n                <div id=\"um\">\r\n                    <div class=\"avt y\">\r\n                        <a alt=\"用户名称\" target=\"_blank\" href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("usercp.aspx\"><img src=\"");
+	templateBuilder.Append("usercp.aspx\">\r\n                            <img src=\"");
 	templateBuilder.Append(useravatar.ToString());
 	templateBuilder.Append("\" onerror=\"this.onerror=null;this.src='");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("images/common/noavatar_small.gif';\" /></a></div>\r\n				<p>\r\n					<strong><a href=\"");
+	templateBuilder.Append("images/common/noavatar_small.gif';\" /></a></div>\r\n                    <p>\r\n                        <strong>\r\n                        ");
+
+	int isqzloginuser=0; if(isqzloginenable == 1) { isqzloginuser = Wysky.Discuz.Plugin.QZoneLogin.BLL.Main.GetQqOpenidByUID(userid)!=string.Empty?1:0;
+	}
+	
+
+	if (isqzloginenable!=1)
+	{
+
+	templateBuilder.Append("\r\n    <a href=\"");
 	templateBuilder.Append(forumpath.ToString());
 	templateBuilder.Append("userinfo.aspx?userid=");
 	templateBuilder.Append(userid.ToString());
 	templateBuilder.Append("\" class=\"vwmy\">");
 	templateBuilder.Append(username.ToString());
-	templateBuilder.Append("</a></strong><span class=\"xg1\">在线</span><span class=\"pipe\">|</span>\r\n                    ");	string linktitle = "";
+	templateBuilder.Append("</a>\r\n");
+	}
+	else
+	{
+
+
+	if (isqzloginuser==1)
+	{
+
+	templateBuilder.Append("\r\n    <a href=\"#\" onclick=\"toQzoneLogin('bind=2')\" title=\"解除绑定 QQ 帐号登录\">\r\n        <img class=\"vm\" src=\"");
+	templateBuilder.Append(forumpath.ToString());
+	templateBuilder.Append("images/wysky_plugin_qzlogin/qzlogindel.png\"></a><a\r\n            href=\"");
+	templateBuilder.Append(forumpath.ToString());
+	templateBuilder.Append("userinfo.aspx?userid=");
+	templateBuilder.Append(userid.ToString());
+	templateBuilder.Append("\" style=\"margin-right: 4px; padding-left: 6px\">");
+	templateBuilder.Append(username.ToString());
+	templateBuilder.Append("</a>\r\n    ");
+	}
+	else
+	{
+
+	templateBuilder.Append("\r\n    <a href=\"#\" onclick=\"toQzoneLogin('bind=1')\" title=\"绑定 QQ 帐号登录\">\r\n        <img class=\"vm\" src=\"");
+	templateBuilder.Append(forumpath.ToString());
+	templateBuilder.Append("images/wysky_plugin_qzlogin/qzloginbind.png\"></a><a\r\n            href=\"");
+	templateBuilder.Append(forumpath.ToString());
+	templateBuilder.Append("userinfo.aspx?userid=");
+	templateBuilder.Append(userid.ToString());
+	templateBuilder.Append("\" style=\"margin-right: 4px; padding-left: 6px\">");
+	templateBuilder.Append(username.ToString());
+	templateBuilder.Append("</a>\r\n    ");
+	}	//end if
+
+
+	}	//end if
+
+
+
+	templateBuilder.Append("\r\n                        </strong><span\r\n                            class=\"xg1\">在线</span><span class=\"pipe\">|</span>\r\n                        ");	string linktitle = "";
 	
 	string showoverflow = "";
 	
@@ -227,11 +302,11 @@ override protected void OnInit(EventArgs e)
 
 	}	//end if
 
-	templateBuilder.Append("\r\n					<a id=\"pm_ntc\" href=\"");
+	templateBuilder.Append("\r\n                        <a id=\"pm_ntc\" href=\"");
 	templateBuilder.Append(forumpath.ToString());
 	templateBuilder.Append("usercpinbox.aspx\" title=\"");
 	templateBuilder.Append(linktitle.ToString());
-	templateBuilder.Append("\">短消息</a>\r\n                    <span class=\"pipe\">|</span>\r\n                    ");	 showoverflow = "";
+	templateBuilder.Append("\">短消息</a> <span\r\n                            class=\"pipe\">|</span>\r\n                        ");	 showoverflow = "";
 	
 
 	if (oluserinfo.Newnotices>0)
@@ -258,15 +333,15 @@ override protected void OnInit(EventArgs e)
 
 	}	//end if
 
-	templateBuilder.Append("\r\n					<a href=\"");
+	templateBuilder.Append("\r\n                        <a href=\"");
 	templateBuilder.Append(forumpath.ToString());
 	templateBuilder.Append("usercpnotice.aspx?filter=all\" title=\"");
 	templateBuilder.Append(linktitle.ToString());
-	templateBuilder.Append("\">\r\n                        通知");
+	templateBuilder.Append("\">通知");
 	if (oluserinfo.Newnotices>0)
 	{
 
-	templateBuilder.Append("\r\n                                (");
+	templateBuilder.Append("\r\n                            (");
 	templateBuilder.Append(oluserinfo.Newnotices.ToString().Trim());
 	if (oluserinfo.Newnotices>=1000)
 	{
@@ -277,9 +352,9 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(")\r\n                            ");
 	}	//end if
 
-	templateBuilder.Append("\r\n                    </a>\r\n                    <span class=\"pipe\">|</span>\r\n					<a id=\"usercenter\" class=\"drop\" onmouseover=\"showMenu(this.id);\" href=\"");
+	templateBuilder.Append("\r\n                        </a><span class=\"pipe\">|</span> <a id=\"usercenter\" class=\"drop\" onmouseover=\"showMenu(this.id);\"\r\n                            href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("usercp.aspx\">用户中心</a>\r\n				");
+	templateBuilder.Append("usercp.aspx\">用户中心</a>\r\n                        ");
 	if (config.Regstatus==2||config.Regstatus==3)
 	{
 
@@ -287,9 +362,9 @@ override protected void OnInit(EventArgs e)
 	if (userid>0)
 	{
 
-	templateBuilder.Append("\r\n					<span class=\"pipe\">|</span><a href=\"");
+	templateBuilder.Append("\r\n                        <span class=\"pipe\">|</span><a href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("invite.aspx\">邀请</a>\r\n					");
+	templateBuilder.Append("invite.aspx\">邀请</a>\r\n                        ");
 	}	//end if
 
 
@@ -299,80 +374,80 @@ override protected void OnInit(EventArgs e)
 	if (useradminid==1)
 	{
 
-	templateBuilder.Append("\r\n					<span class=\"pipe\">|</span><a href=\"");
+	templateBuilder.Append("\r\n                        <span class=\"pipe\">|</span><a href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("admin/index.aspx\" target=\"_blank\">系统设置</a>\r\n					");
+	templateBuilder.Append("admin/index.aspx\" target=\"_blank\">系统设置</a>\r\n                        ");
 	}	//end if
 
-	templateBuilder.Append("\r\n					<span class=\"pipe\">|</span><a href=\"");
+	templateBuilder.Append("\r\n                        <span class=\"pipe\">|</span><a href=\"");
 	templateBuilder.Append(forumpath.ToString());
 	templateBuilder.Append("logout.aspx?userkey=");
 	templateBuilder.Append(userkey.ToString());
-	templateBuilder.Append("\">退出</a>\r\n				</p>\r\n				");
+	templateBuilder.Append("\">退出</a>\r\n                    </p>\r\n                    ");
 	templateBuilder.Append(userinfotips.ToString());
-	templateBuilder.Append("\r\n			</div> \r\n			");
+	templateBuilder.Append("\r\n                </div>\r\n                ");
 	if (oluserinfo.Newpms>0)
 	{
 
-	templateBuilder.Append("\r\n			<div id=\"pm_ntc_menu\" class=\"g_up\">\r\n				<div class=\"mncr\"></div>\r\n				<div class=\"crly\">\r\n					<div style=\"clear:both;font-size:0;\"></div>\r\n					<span class=\"y\"><a onclick=\"javascript:$('pm_ntc_menu').style.display='none';\" href=\"javascript:;\"><img src=\"");
+	templateBuilder.Append("\r\n                <div id=\"pm_ntc_menu\" class=\"g_up\">\r\n                    <div class=\"mncr\">\r\n                    </div>\r\n                    <div class=\"crly\">\r\n                        <div style=\"clear: both; font-size: 0;\">\r\n                        </div>\r\n                        <span class=\"y\"><a onclick=\"javascript:$('pm_ntc_menu').style.display='none';\" href=\"javascript:;\">\r\n                            <img src=\"");
 	templateBuilder.Append(imagedir.ToString());
-	templateBuilder.Append("/delete.gif\" alt=\"关闭\"/></a></span>\r\n					<a href=\"");
+	templateBuilder.Append("/delete.gif\" alt=\"关闭\" /></a></span> <a href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("usercpinbox.aspx\">您有");
+	templateBuilder.Append("usercpinbox.aspx\">\r\n                                您有");
 	if (oluserinfo.Newpms>=1000)
 	{
 
 	templateBuilder.Append("大于");
 	}	//end if
 	templateBuilder.Append(oluserinfo.Newpms.ToString().Trim());
-	templateBuilder.Append("条新消息</a>\r\n				</div>\r\n			</div>\r\n            <script type=\"text/javascript\">setMenuPosition('pm_ntc', 'pm_ntc_menu', '43');</");
-	templateBuilder.Append("script>\r\n            ");
+	templateBuilder.Append("条新消息</a>\r\n                    </div>\r\n                </div>\r\n                <script type=\"text/javascript\">                    setMenuPosition('pm_ntc', 'pm_ntc_menu', '43');</");
+	templateBuilder.Append("script>\r\n                ");
 	}	//end if
 
 
 	}	//end if
 
-	templateBuilder.Append("\r\n		</div>\r\n		<div id=\"menubar\">\r\n		");
+	templateBuilder.Append("\r\n            </div>\r\n            <div id=\"menubar\">\r\n                ");
 	if (userid!=-1)
 	{
 
-	templateBuilder.Append("\r\n			<a onMouseOver=\"showMenu(this.id, false);\" href=\"javascript:void(0);\" id=\"mymenu\">我的中心</a>\r\n            <div class=\"popupmenu_popup headermenu_popup\" id=\"mymenu_menu\" style=\"display: none\">\r\n			<ul class=\"sel_my\">\r\n				<li><a href=\"");
+	templateBuilder.Append("\r\n                <a onmouseover=\"showMenu(this.id, false);\" href=\"javascript:void(0);\" id=\"mymenu\">我的中心</a>\r\n                <div class=\"popupmenu_popup headermenu_popup\" id=\"mymenu_menu\" style=\"display: none\">\r\n                    <ul class=\"sel_my\">\r\n                        <li><a href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("mytopics.aspx\">我的主题</a></li>\r\n				<li><a href=\"");
+	templateBuilder.Append("mytopics.aspx\">我的主题</a></li>\r\n                        <li><a href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("myposts.aspx\">我的帖子</a></li>\r\n				<li><a href=\"");
+	templateBuilder.Append("myposts.aspx\">我的帖子</a></li>\r\n                        <li><a href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("search.aspx?posterid=current&type=digest&searchsubmit=1\">我的精华</a></li>\r\n				<li><a href=\"");
+	templateBuilder.Append("search.aspx?posterid=current&type=digest&searchsubmit=1\">我的精华</a></li>\r\n                        <li><a href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("myattachment.aspx\">我的附件</a></li>\r\n				<li><a href=\"");
+	templateBuilder.Append("myattachment.aspx\">我的附件</a></li>\r\n                        <li><a href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("usercpsubscribe.aspx\">我的收藏</a></li>\r\n			");
+	templateBuilder.Append("usercpsubscribe.aspx\">我的收藏</a></li>\r\n                        ");
 	if (config.Enablespace==1)
 	{
 
-	templateBuilder.Append("\r\n				<li class=\"myspace\"><a href=\"");
+	templateBuilder.Append("\r\n                        <li class=\"myspace\"><a href=\"");
 	templateBuilder.Append(forumpath.ToString());
-	templateBuilder.Append("space/\">我的空间</a></li>\r\n			");
+	templateBuilder.Append("space/\">我的空间</a></li>\r\n                        ");
 	}	//end if
 
 
 	if (config.Enablealbum==1)
 	{
 
-	templateBuilder.Append("\r\n				<li class=\"myalbum\"><a href=\"");
+	templateBuilder.Append("\r\n                        <li class=\"myalbum\"><a href=\"");
 	templateBuilder.Append(forumpath.ToString());
 	templateBuilder.Append("showalbumlist.aspx?uid=");
 	templateBuilder.Append(userid.ToString());
-	templateBuilder.Append("\">我的相册</a></li>\r\n			");
+	templateBuilder.Append("\">我的相册</a></li>\r\n                        ");
 	}	//end if
 
-	templateBuilder.Append("\r\n            </ul>\r\n        ");
+	templateBuilder.Append("\r\n                    </ul>\r\n                    ");
 	if (config.Allowchangewidth==1&&pagename!="website.aspx")
 	{
 
-	templateBuilder.Append("\r\n           <ul class=\"sel_mb\">\r\n				<li><a href=\"javascript:;\" onclick=\"widthauto(this,'");
+	templateBuilder.Append("\r\n                    <ul class=\"sel_mb\">\r\n                        <li><a href=\"javascript:;\" onclick=\"widthauto(this,'");
 	templateBuilder.Append(cssdir.ToString());
-	templateBuilder.Append("')\">");
+	templateBuilder.Append("')\">\r\n                            ");
 	if (isnarrowpage)
 	{
 
@@ -384,26 +459,23 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("切换到窄版");
 	}	//end if
 
-	templateBuilder.Append("</a></li>\r\n 			</ul>\r\n        ");
+	templateBuilder.Append("</a></li>\r\n                    </ul>\r\n                    ");
 	}	//end if
 
-	templateBuilder.Append("\r\n            </div>\r\n		");
+	templateBuilder.Append("\r\n                </div>\r\n                ");
 	}	//end if
 
-	templateBuilder.Append("\r\n			<ul id=\"menu\" class=\"cl\">\r\n				");
+	templateBuilder.Append("\r\n                <ul id=\"menu\" class=\"cl\">\r\n                    ");
 	templateBuilder.Append(mainnavigation.ToString());
-	templateBuilder.Append("\r\n			</ul>\r\n		</div>\r\n	</div>\r\n</div>\r\n");
+	templateBuilder.Append("\r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    ");
 	}
 	else
 	{
 
 
-	Response.Clear();
-	Response.ContentType = "Text/XML";
-	Response.Expires = 0;
-	Response.Cache.SetNoStore();
-	
-	templateBuilder.Append("<?xml version=\"1.0\" encoding=\"utf-8\"?><root><![CDATA[\r\n");
+	    Response.Clear(); Response.ContentType = "Text/XML"; Response.Expires = 0; Response.Cache.SetNoStore();
+	    
+	templateBuilder.Append("\r\n    <?xml version=\"1.0\" encoding=\"utf-8\" ?>\r\n    <root>\r\n<![CDATA[ ");
 	}	//end if
 
 
