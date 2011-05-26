@@ -24,6 +24,10 @@ namespace Wysky.Discuz.Plugin.QZoneLogin.BLL
             return Data.Sqlserver.DbGetQqOpenidByUID(uid);
         }
 
+        public static bool IsNullPasswordUser(int uid)
+        {
+            return Data.Sqlserver.DbIsNullPasswordUser(uid);
+        }
 
         public static UserInfo CreateUser(string tmpUsername, string email)
         {
@@ -96,7 +100,6 @@ namespace Wysky.Discuz.Plugin.QZoneLogin.BLL
             userinfo.Idcard = "";
             userinfo.Mobile = "";
             userinfo.Phone = "";
-            userinfo.Password = Utils.MD5(userinfo.Password);
             userinfo.Uid = Users.CreateUser(userinfo);
             return userinfo;
         }

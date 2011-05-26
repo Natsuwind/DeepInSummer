@@ -37,6 +37,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\RefDLL\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="QzoneSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RefDLL\QzoneSDK.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -74,10 +78,6 @@
     <Content Include="Views\Templates\Default\_QZoneLoginLink.htm" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Studies\QzoneSDK\src\QzoneSDK\QzoneSDK.csproj">
-      <Project>{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}</Project>
-      <Name>QzoneSDK</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Discuz.Common\Discuz.Common.csproj">
       <Project>{6A0EC5BD-742F-431D-A9EC-5C0342B2A76A}</Project>
       <Name>Discuz.Common</Name>

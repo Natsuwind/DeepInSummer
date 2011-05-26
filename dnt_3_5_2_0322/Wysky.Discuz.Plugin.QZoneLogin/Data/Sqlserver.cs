@@ -52,6 +52,20 @@ namespace Wysky.Discuz.Plugin.QZoneLogin.Data
             DbHelper.ExecuteNonQuery(CommandType.Text, sql, parms);
         }
 
+        public static bool DbIsNullPasswordUser(int uid)
+        {
+            DbParameter[] parms = 
+			{
+				DbHelper.MakeInParam("@uid", (DbType)SqlDbType.Int, 4, uid)
+			};
+            string sql = string.Format(
+                "SELECT password FROM {0}users WHERE uid=@uid",
+                BaseConfigs.GetTablePrefix
+                );
+            object password = DbHelper.ExecuteScalar(CommandType.Text, sql, parms);
+            return (password == null || password.ToString().Trim() == string.Empty || password.ToString().Trim() == "qqlogin_by_wysky.org");
+        }
+
         public static int DbCreateQqUserInfo(string openid, int uid)
         {
             DbParameter[] parms = 
@@ -60,7 +74,7 @@ namespace Wysky.Discuz.Plugin.QZoneLogin.Data
 				DbHelper.MakeInParam("@uid", (DbType)SqlDbType.Int, 4, uid)
 			};
             string sql = string.Format(
-                "INSERT INTO {0}wysky_plugin_qzlogin(uid,qqopenid) VALUES (@uid,@qqopenid)", 
+                "INSERT INTO {0}wysky_plugin_qzlogin(uid,qqopenid) VALUES (@uid,@qqopenid)",
                 BaseConfigs.GetTablePrefix
                 );
             return DbHelper.ExecuteNonQuery(CommandType.Text, sql, parms);

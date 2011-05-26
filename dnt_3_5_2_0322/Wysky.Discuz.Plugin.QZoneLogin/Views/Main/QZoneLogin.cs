@@ -16,6 +16,7 @@ namespace Wysky.Discuz.Plugin.QZoneLogin.Views.Main
         //string secret = "b10ce1bfae6641996fc40f6cdb70a188";
         protected internal string email = "";
         protected internal string wysky_page_msg = "";
+        protected internal int showdelbindpasswordform = 0;
         protected internal QZoneLoginConfigInfo qzlConfig = QZoneLoginConfigs.GetConfig();
         protected override void ShowPage()
         {
@@ -42,8 +43,39 @@ namespace Wysky.Discuz.Plugin.QZoneLogin.Views.Main
                     wysky_page_msg = "<script type=\"text/javascript\">alert('请登录后再进行 QQ 绑定！');window.opener.location.href='login.aspx';window.close();</script>";
                     return;
                 }
+
+                if (isBind == 1 && BLL.Main.GetQqOpenidByUID(userid) != string.Empty)
+                {
+                    pagetitle = "你已经绑定过 QQ";
+                    wysky_page_msg = "<script type=\"text/javascript\">alert('你已经绑定过 QQ，如果想要更换绑定，请先取消之前的绑定！');window.close();</script>";
+                    return;
+                }
                 if (isBind == 2)
                 {
+                    if (DNTRequest.GetInt("addpwd", 0) == 1)
+                    {
+                        var newPassword = DNTRequest.GetString("password");
+                        var newPassword2 = DNTRequest.GetString("password2");
+                        pagetitle = "输入内容有误";
+                        if (newPassword == string.Empty)
+                        {
+                            AddErrLine("密码不能为空！");
+                            return;
+                        }
+                        if (newPassword != newPassword2)
+                        {
+                            AddErrLine("两次输入不一致！");
+                            return;
+                        }
+                        UserInfo userinfo = Users.GetUserInfo(userid);
+                        userinfo.Password = newPassword;
+                        Users.ResetPassword(userinfo);
+                    }
+                    if (BLL.Main.IsNullPasswordUser(userid))
+                    {
+                        showdelbindpasswordform = 1;
+                        return;
+                    }
                     //解绑
                     BLL.Main.DeleteQqLoginInfo("", userid);
                     pagetitle = "已经解除绑定";
@@ -126,6 +158,17 @@ namespace Wysky.Discuz.Plugin.QZoneLogin.Views.Main
                     //开始绑定
                     if (DNTRequest.GetInt("bind", 0) == 1)
                     {
+                        int usedUid = BLL.Main.GetUIDByQqOpenid(qzone.OpenID);
+                        if (usedUid > 0)
+                        {
+                            ShortUserInfo usedUserInfo = Users.GetShortUserInfo(usedUid);
+                            pagetitle = "你的 QQ 帐号已经绑定过别的论坛帐号";
+                            wysky_page_msg = string.Format(
+                                "<script type=\"text/javascript\">alert('你的 QQ 帐号已经绑定过别的论坛帐号{0}。如果想要绑定在当前帐号下，请先登录{0}，取消之前的绑定！');window.opener.location.href='login.aspx';window.close();</script>",
+                                usedUserInfo.Username
+                                );
+                            return;
+                        }
                         //清理历史记录
                         BLL.Main.DeleteQqLoginInfo(qzone.OpenID, userid);
                         BLL.Main.CreateQqUserInfo(qzone.OpenID, userid);
