@@ -103,8 +103,9 @@ namespace Wysky.Discuz.Plugin.QZoneLogin.Views.Main
                 pagetitle = "使用QQ帐号登录";
                 var context = new QzoneSDK.Context.QzoneContext(qzlConfig.AppId, qzlConfig.AppKey);
                 var callbackUrl = string.Format(
-                    "http://{0}/QZoneLogin.aspx?callback=1{1}",
+                    "http://{0}/{1}QZoneLogin.aspx?callback=1{2}",
                     DNTRequest.GetCurrentFullHost(),
+                    forumpath.Trim('/') == string.Empty ? "" : forumpath.Trim('/') + "/",
                     callbackUrlParam
                     );
                 var requestToken = context.GetRequestToken(callbackUrl);

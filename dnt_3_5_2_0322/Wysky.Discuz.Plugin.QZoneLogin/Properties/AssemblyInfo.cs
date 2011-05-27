@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("Wysky.Discuz.Plugin.QZoneLogin")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("QQ 登录 For Discuz!NT")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ITCA")]
 [assembly: AssemblyProduct("QQ 登录 For Discuz!NT")]
-[assembly: AssemblyCopyright("Copyright © wysky 2011")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © wysky&kamizu 2011")]
+[assembly: AssemblyTrademark("Copyright © wysky&kamizu 2011")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 会使此程序集中的类型 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //
 // 您可以指定所有这些值，也可以使用“修订号”和“内部版本号”的默认值， 
 // 方法是按如下所示使用“*”:
-[assembly: AssemblyVersion("0.1.523.0")]
-[assembly: AssemblyFileVersion("0.1.523.0")]
+[assembly: AssemblyVersion("0.1.527.0")]
+[assembly: AssemblyFileVersion("0.1.527.0")]
