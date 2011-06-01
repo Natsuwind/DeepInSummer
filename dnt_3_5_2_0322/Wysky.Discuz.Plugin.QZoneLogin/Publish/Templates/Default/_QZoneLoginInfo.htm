@@ -1,0 +1,17 @@
+﻿<%csharp%>
+int isqzloginuser=0; if(isqzloginenable == 1) { isqzloginuser = Wysky.Discuz.Plugin.QZoneLogin.BLL.Main.GetQqOpenidByUID(userid)!=string.Empty?1:0;
+}
+<%/csharp%>
+<%if isqzloginenable!=1%>
+    <a href="{forumpath}userinfo.aspx?userid={userid}" class="vwmy">{username}</a>
+<%else%>
+    <%if isqzloginuser==1%>
+    <a href="#" onclick="toQzoneLogin('bind=2')" title="解除绑定 QQ 帐号登录">
+        <img class="vm" src="{forumpath}images/wysky_plugin_qzlogin/qzlogindel.png"></a><a
+            href="{forumpath}userinfo.aspx?userid={userid}" style="margin-right: 4px; padding-left: 6px">{username}</a>
+    <%else%>
+    <a href="#" onclick="toQzoneLogin('bind=1')" title="绑定 QQ 帐号登录">
+        <img class="vm" src="{forumpath}images/wysky_plugin_qzlogin/qzloginbind.png"></a><a
+            href="{forumpath}userinfo.aspx?userid={userid}" style="margin-right: 4px; padding-left: 6px">{username}</a>
+    <%/if%>
+<%/if%>

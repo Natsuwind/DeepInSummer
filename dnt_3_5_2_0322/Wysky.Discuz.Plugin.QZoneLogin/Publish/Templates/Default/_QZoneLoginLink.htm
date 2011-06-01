@@ -1,0 +1,7 @@
+﻿<%csharp%>
+int isqzloginenable=Wysky.Discuz.Plugin.QZoneLogin.BLL.Config.QZoneLoginConfigs.GetConfig().EnableQQLogin;
+<%/csharp%>
+<%if {isqzloginenable}==1%>
+<a href="#" onclick="toQzoneLogin()">
+    <img src="{forumpath}images/wysky_plugin_qzlogin/qzlogin.png" style="border: medium none;" /></a>
+<%/if%>
