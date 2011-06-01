@@ -242,6 +242,23 @@ namespace Wysky.Discuz.Plugin.QZoneLogin.Views.Main
             }
             BLL.Main.DeleteQqLoginInfo(qqopenid, userInfo.Uid);
             BLL.Main.CreateQqUserInfo(qqopenid, userInfo.Uid);
+            #region 发送欢迎信息
+            if (config.Welcomemsg == 1)
+            {
+                // 收件箱
+                PrivateMessageInfo privatemessageinfo = new PrivateMessageInfo();
+                privatemessageinfo.Message = config.Welcomemsgtxt;
+                privatemessageinfo.Subject = "欢迎您的加入! (请勿回复本信息)";
+                privatemessageinfo.Msgto = userInfo.Username;
+                privatemessageinfo.Msgtoid = userInfo.Uid;
+                privatemessageinfo.Msgfrom = PrivateMessages.SystemUserName;
+                privatemessageinfo.Msgfromid = 0;
+                privatemessageinfo.New = 1;
+                privatemessageinfo.Postdatetime = Utils.GetDateTime();
+                privatemessageinfo.Folder = 0;
+                PrivateMessages.CreatePrivateMessage(privatemessageinfo, 0);
+            }
+            #endregion
 
             Statistics.ReSetStatisticsCache();
             UserCredits.UpdateUserCredits(userInfo.Uid);

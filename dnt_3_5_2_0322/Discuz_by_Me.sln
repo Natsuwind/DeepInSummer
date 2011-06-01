@@ -45,8 +45,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wysky.Discuz.Plugin.UserSig
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wysky.Discuz.Plugin.QZoneLogin", "Wysky.Discuz.Plugin.QZoneLogin\Wysky.Discuz.Plugin.QZoneLogin.csproj", "{ED83F1C3-48FE-4732-8573-C57B93A0F7DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QzoneSDK", "..\..\..\Studies\QzoneSDK\src\QzoneSDK\QzoneSDK.csproj", "{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -441,24 +439,6 @@ Global
 		{ED83F1C3-48FE-4732-8573-C57B93A0F7DF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{ED83F1C3-48FE-4732-8573-C57B93A0F7DF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{ED83F1C3-48FE-4732-8573-C57B93A0F7DF}.Release|Win32.ActiveCfg = Release|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Default|.NET.ActiveCfg = Debug|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Default|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Default|Any CPU.Build.0 = Debug|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Default|Win32.ActiveCfg = Debug|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Release|.NET.ActiveCfg = Release|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{D2B52243-B8C0-4CE9-B781-EB7776C3CE38}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
