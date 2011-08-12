@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by Discuz!NT Template Engine at 2011/5/24 17:48:17.
-		本页面代码由Discuz!NT模板引擎生成于 2011/5/24 17:48:17. 
+		This page was created by Discuz!NT Template Engine at 2011/6/24 16:03:41.
+		本页面代码由Discuz!NT模板引擎生成于 2011/6/24 16:03:41. 
 	*/
 
 	base.OnInit(e);
@@ -1161,7 +1161,12 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(", ");
 	templateBuilder.Append(config.Starthreshold.ToString().Trim());
 	templateBuilder.Append(");\r\n			</");
-	templateBuilder.Append("script>\r\n			</p>\r\n			<ul class=\"otherinfo\">\r\n				");
+	templateBuilder.Append("script>\r\n			</p>\r\n            ");
+	templateBuilder.Append("<p><img src=\"upload/plugin/wyskyusergrouppic/");
+	templateBuilder.Append(post.Groupid.ToString().Trim());
+	templateBuilder.Append(".gif\" /></p>");
+
+	templateBuilder.Append("\r\n			<ul class=\"otherinfo\">\r\n				");
 	if (config.Userstatusby==1)
 	{
 

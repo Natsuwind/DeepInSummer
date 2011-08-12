@@ -47,7 +47,7 @@ namespace Discuz.Common
             }
         }
 
-        public const string ASSEMBLY_VERSION = "3.5.2.7419";
+        public const string ASSEMBLY_VERSION = "3.5.2.7601";
 
         public const string ASSEMBLY_YEAR = "2011";
 

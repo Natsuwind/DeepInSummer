@@ -1676,7 +1676,8 @@ namespace Discuz.Forum
         /// <returns>ÊÇ·ñ°üº¬</returns>
         public static bool IsHidePost(string str)
         {
-            return (str.IndexOf("[hide]") >= 0) && (str.IndexOf("[/hide]") > 0);
+            Regex regex = new Regex(@"\[hide(=\d+)?\]");
+            return (regex.IsMatch(str)) && (str.IndexOf("[/hide]") > 0);
         }
 
         /// <summary>

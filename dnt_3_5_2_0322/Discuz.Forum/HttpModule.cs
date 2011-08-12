@@ -87,7 +87,7 @@ namespace Discuz.Forum
             //context.Server.ClearError();//清除程序异常
         }
 
-      
+
 
         /// <summary>
         /// 实现接口的Dispose方法
@@ -115,179 +115,352 @@ namespace Discuz.Forum
 
             string requestPath = context.Request.Path.ToLower();
 
-            //使用版块
-            if ((config.Iisurlrewrite == 1 || config.Aspxrewrite == 1) && requestPath.EndsWith("/list.aspx") &&
-                requestPath.IndexOf("/archiver/") < 0 && requestPath.IndexOf("/install/") < 0 && requestPath.IndexOf("/upgrade/") < 0 &&
-                requestPath.IndexOf("/admin/") < 0 && requestPath.IndexOf("/aspx/") < 0 && requestPath.IndexOf("/tools/") < 0 &&
-                requestPath.IndexOf("/space/") < 0)
+            //非论坛目录下的请求,非aspx页面和系统指定的目录不在重写范围
+            if (!requestPath.StartsWith(forumPath) || !requestPath.EndsWith(".aspx") || IgnorePathContains(requestPath, forumPath))
+                return;
+
+            //判断是否是版块重写名称的请求
+            if ((config.Iisurlrewrite == 1 || config.Aspxrewrite == 1) && requestPath.EndsWith("/list.aspx"))
             {
                 requestPath = requestPath.StartsWith("/") ? requestPath : "/" + requestPath;
-                // 当前样式id
+                // 当前模板样式id
                 string strTemplateid = config.Templateid.ToString();
                 if (Utils.InArray(Utils.GetCookie(Utils.GetTemplateCookieName()), Templates.GetValidTemplateIDList()))
-                {
                     strTemplateid = Utils.GetCookie(Utils.GetTemplateCookieName());
-                }
 
-                string[] path = requestPath.Replace(BaseConfigs.GetForumPath, "/").Split('/');
+                string[] path = requestPath.Replace(forumPath, "/").Split('/');
 
                 //当使用伪aspx, 如:/版块别名/1(分页)等.
                 if (path.Length > 1 && !Utils.StrIsNullOrEmpty(path[1]))
                 {
-                    int forumid = 0;
-                    foreach (Discuz.Entity.ForumInfo foruminfo in Forums.GetForumList())
+                    int fid = 0;
+                    foreach (Discuz.Entity.ForumInfo forumInfo in Forums.GetForumList())
                     {
-                        if (path[1].ToLower() == foruminfo.Rewritename.ToLower())
+                        if (path[1].ToLower() == forumInfo.Rewritename.ToLower())
                         {
-                            forumid = foruminfo.Fid;
+                            fid = forumInfo.Fid;
                             break;
                         }
                     }
-                    if (forumid > 0)
+                    if (fid > 0)
                     {
-                        string newUrl = "forumid=" + forumid;
-                        if (path.Length > 2 && !Utils.StrIsNullOrEmpty(path[2]) && path[2] != "list.aspx")
-                        {
+                        string newUrl = "forumid=" + fid;
+                        //如果数组长度大于2，且path[2]是个数字，则证明它是合法的索引
+                        if (path.Length > 2 && Utils.IsNumeric(path[2]))
                             newUrl += "&page=" + path[2];
-                        }
 
                         //通过参数设置指定模板
                         if (config.Specifytemplate > 0)
-                        {
                             strTemplateid = SelectTemplate(strTemplateid, "showforum.aspx", newUrl);
-                        }
+                        CreatePage("showforum.aspx", forumPath, TypeConverter.StrToInt(strTemplateid));
+
                         context.RewritePath(forumPath + "aspx/" + strTemplateid + "/showforum.aspx", string.Empty, newUrl + "&selectedtemplateid=" + strTemplateid);
                         return;
                     }
+                    context.RewritePath(requestPath.Replace("list.aspx", string.Empty), string.Empty, string.Empty);
+                    return;
                 }
-                context.Response.Redirect(baseconfig.Forumpath + "tools/error.htm?forumpath=" + BaseConfigs.GetForumPath + "&templatepath=" + Templates.GetTemplateItem(Utils.StrToInt(strTemplateid, 0)).Directory + "&msg=" + Utils.UrlEncode("您请求的版块信息无效!"));
+            }
+
+            //如果去除了forumpath之后请求中没有目录符号“/”
+            if (requestPath.Substring(forumPath.Length).IndexOf("/") == -1)
+            {
+                // 当前样式id
+                string strTemplateid = config.Templateid.ToString();
+                if (Utils.InArray(Utils.GetCookie(Utils.GetTemplateCookieName()), Templates.GetValidTemplateIDList()))
+                    strTemplateid = Utils.GetCookie(Utils.GetTemplateCookieName());
+
+                //如果请求首页
+                if (requestPath.EndsWith("/index.aspx"))
+                {
+                    //确定index.aspx定位至论坛首页还是聚合首页
+                    string target = config.Indexpage == 0 ? "forumindex.aspx" : "website.aspx";
+                    CreatePage(target, forumPath, TypeConverter.StrToInt(strTemplateid));
+                    context.RewritePath(forumPath + "aspx/" + strTemplateid + "/" + target);
+                    return;
+                }
+
+                //当使用伪aspx, 如:showforum-1.aspx等.
+                if (config.Aspxrewrite == 1)
+                {
+                    foreach (SiteUrls.URLRewrite url in SiteUrls.GetSiteUrls().Urls)
+                    {
+                        if (Regex.IsMatch(requestPath, url.Pattern, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase))
+                        {
+                            string newUrl = Regex.Replace(requestPath.Substring(context.Request.Path.LastIndexOf("/")), url.Pattern, url.QueryString, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase);
+                            CreatePage(url.Page.Replace("/", ""), forumPath, TypeConverter.StrToInt(strTemplateid));
+                            //通过参数设置指定模板
+                            if (config.Specifytemplate > 0)
+                                strTemplateid = SelectTemplate(strTemplateid, url.Page, newUrl);
+
+                            string queryString = context.Request.QueryString.ToString();
+                            context.RewritePath(forumPath + "aspx/" + strTemplateid + url.Page, string.Empty, newUrl + "&selectedtemplateid=" + strTemplateid +
+                                (queryString == "" ? "" : "&" + queryString));
+                            return;
+                        }
+                    }
+                }
+
+                CreatePage(requestPath.Substring(context.Request.Path.LastIndexOf("/")).Replace("/", ""),
+                    forumPath, TypeConverter.StrToInt(strTemplateid));
+
+                //通过参数设置指定模板
+                if (config.Specifytemplate > 0)
+                {
+                    strTemplateid = SelectTemplate(strTemplateid, requestPath, context.Request.QueryString.ToString());
+                }
+                context.RewritePath(forumPath + "aspx/" + strTemplateid + requestPath.Substring(context.Request.Path.LastIndexOf("/")), string.Empty, context.Request.QueryString.ToString() + "&selectedtemplateid=" + strTemplateid);
                 return;
             }
 
-            if (requestPath.StartsWith(forumPath))
+            //如果开启了伪静态
+            if (config.Aspxrewrite == 1)
             {
-                if (requestPath.Substring(forumPath.Length).IndexOf("/") == -1)
+                //如果是简洁版页面的请求
+                if (requestPath.StartsWith(forumPath + "archiver/"))
                 {
-                    // 当前样式id
-                    string strTemplateid = config.Templateid.ToString();
-                    if (Utils.InArray(Utils.GetCookie(Utils.GetTemplateCookieName()), Templates.GetValidTemplateIDList()))
+                    string path = requestPath.Substring(forumPath.Length + 8);
+                    foreach (SiteUrls.URLRewrite url in SiteUrls.GetSiteUrls().Urls)
                     {
-                        strTemplateid = Utils.GetCookie(Utils.GetTemplateCookieName());
-                    }
-
-                    if (requestPath.EndsWith("/index.aspx"))
-                    {
-                        if (config.Indexpage == 0)
+                        if (Regex.IsMatch(path, url.Pattern, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase))
                         {
-                            if (config.BrowseCreateTemplate == 1)
-                            {
-                                CreateTemplate(forumPath, Templates.GetTemplateItem(int.Parse(strTemplateid)).Directory, "forumindex.aspx", int.Parse(strTemplateid));
-                            }
-                            context.RewritePath(forumPath + "aspx/" + strTemplateid + "/forumindex.aspx");
-                        }
-                        else
-                        {
-                            if (config.BrowseCreateTemplate == 1)
-                            {
-                                CreateTemplate(forumPath, Templates.GetTemplateItem(int.Parse(strTemplateid)).Directory, "website.aspx", int.Parse(strTemplateid));
-                            }
-                            context.RewritePath(forumPath + "aspx/" + strTemplateid + "/website.aspx");
-                        }
-
-                        return;
-                    }
-
-
-                    //当使用伪aspx, 如:showforum-1.aspx等.
-                    if (config.Aspxrewrite == 1)
-                    {
-                        foreach (SiteUrls.URLRewrite url in SiteUrls.GetSiteUrls().Urls)
-                        {
-                            if (Regex.IsMatch(requestPath, url.Pattern, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase))
-                            {
-                                string newUrl = Regex.Replace(requestPath.Substring(context.Request.Path.LastIndexOf("/")), url.Pattern, url.QueryString, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase);
-                                if (config.BrowseCreateTemplate == 1)
-                                {
-                                    CreateTemplate(forumPath, Templates.GetTemplateItem(int.Parse(strTemplateid)).Directory, url.Page.Replace("/", ""), int.Parse(strTemplateid));
-                                }
-                                //通过参数设置指定模板
-                                if (config.Specifytemplate > 0)
-                                {
-                                    strTemplateid = SelectTemplate(strTemplateid, url.Page, newUrl);
-                                }
-                                context.RewritePath(forumPath + "aspx/" + strTemplateid + url.Page, string.Empty, newUrl + "&selectedtemplateid=" + strTemplateid);
-
-                                return;
-                            }
+                            string newUrl = Regex.Replace(path, url.Pattern, url.QueryString, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase);
+                            context.RewritePath(forumPath + "archiver" + url.Page, string.Empty, newUrl);
+                            return;
                         }
                     }
-
-                    if (config.BrowseCreateTemplate == 1)
-                    {
-                        if (requestPath.IndexOf("showtemplate.aspx") != -1)
-                        {
-                            CreateTemplate(forumPath,
-                                Templates.GetTemplateItem(DNTRequest.GetInt("templateid", 1)).Directory,
-                                config.Indexpage == 0 ? "forumindex.aspx" : "website.aspx",
-                                DNTRequest.GetInt("templateid", 1)); //当跳转模板页时，生成目标文件
-                        }
-                        CreateTemplate(forumPath, Templates.GetTemplateItem(int.Parse(strTemplateid)).Directory, requestPath.Substring(context.Request.Path.LastIndexOf("/")).Replace("/", ""), int.Parse(strTemplateid));
-
-                    }
-
-                    //通过参数设置指定模板
-                    if (config.Specifytemplate > 0)
-                    {
-                        strTemplateid = SelectTemplate(strTemplateid, requestPath, context.Request.QueryString.ToString());
-                    }
-                    context.RewritePath(forumPath + "aspx/" + strTemplateid + requestPath.Substring(context.Request.Path.LastIndexOf("/")), string.Empty, context.Request.QueryString.ToString() + "&selectedtemplateid=" + strTemplateid);
                 }
 
-                else if (requestPath.StartsWith(forumPath + "archiver/"))
+                //如果是请求tools目录的页面请求，如rss-1.aspx
+                if (requestPath.StartsWith(forumPath + "tools/"))
                 {
-                    //当使用伪aspx, 如:showforum-1.aspx等.
-                    if (config.Aspxrewrite == 1)
+                    string path = requestPath.Substring(forumPath.Length + 5);
+                    foreach (SiteUrls.URLRewrite url in SiteUrls.GetSiteUrls().Urls)
                     {
-                        string path = requestPath.Substring(forumPath.Length + 8);
-                        foreach (SiteUrls.URLRewrite url in SiteUrls.GetSiteUrls().Urls)
+                        if (Regex.IsMatch(path, url.Pattern, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase))
                         {
-                            if (Regex.IsMatch(path, url.Pattern, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase))
-                            {
-                                string newUrl = Regex.Replace(path, url.Pattern, url.QueryString, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase);
-
-                                context.RewritePath(forumPath + "archiver" + url.Page, string.Empty, newUrl);
-                                return;
-                            }
-                        }
-
-                    }
-                    return;
-                }
-                else if (requestPath.StartsWith(forumPath + "tools/"))
-                {
-                    //当使用伪aspx, 如:showforum-1.aspx等.
-                    if (config.Aspxrewrite == 1)
-                    {
-                        string path = requestPath.Substring(forumPath.Length + 5);
-                        foreach (SiteUrls.URLRewrite url in SiteUrls.GetSiteUrls().Urls)
-                        {
-                            if (Regex.IsMatch(path, url.Pattern, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase))
-                            {
-                                string newUrl = Regex.Replace(path, url.Pattern, Utils.UrlDecode(url.QueryString), Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase);
-
-                                context.RewritePath(forumPath + "tools" + url.Page, string.Empty, newUrl);
-                                return;
-                            }
+                            string newUrl = Regex.Replace(path, url.Pattern, Utils.UrlDecode(url.QueryString), Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase);
+                            context.RewritePath(forumPath + "tools" + url.Page, string.Empty, newUrl);
+                            return;
                         }
                     }
-                    return;
                 }
-                else if (requestPath.StartsWith(forumPath + "upload/") || requestPath.StartsWith(forumPath + "space/upload/") || requestPath.StartsWith(forumPath + "avatars/upload/"))
-                {
-                    context.RewritePath(forumPath + "index.aspx");
-                    return;
-                }
+            }
 
+            //如果是请求upload目录下的aspx文件
+            if (requestPath.StartsWith(forumPath + "upload/") || requestPath.StartsWith(forumPath + "space/upload/") || requestPath.StartsWith(forumPath + "avatars/upload/"))
+            {
+                context.RewritePath(forumPath + "index.aspx");
+                return;
+            }
+
+            #region comment out
+
+            ////使用版块
+            //if (requestPath.IndexOf("/install/") < 0 && requestPath.IndexOf("/upgrade/") < 0 && (config.Iisurlrewrite == 1 || config.Aspxrewrite == 1) &&
+            //    requestPath.EndsWith("/list.aspx") && requestPath.IndexOf("/archiver/") < 0 && requestPath.IndexOf("/admin/") < 0 && requestPath.IndexOf("/aspx/") < 0 &&
+            //    requestPath.IndexOf("/tools/") < 0 && requestPath.IndexOf("/space/") < 0)
+            //{
+            //    requestPath = requestPath.StartsWith("/") ? requestPath : "/" + requestPath;
+            //    // 当前样式id
+            //    string strTemplateid = config.Templateid.ToString();
+            //    if (Utils.InArray(Utils.GetCookie(Utils.GetTemplateCookieName()), Templates.GetValidTemplateIDList()))
+            //    {
+            //        strTemplateid = Utils.GetCookie(Utils.GetTemplateCookieName());
+            //    }
+
+            //    string[] path = requestPath.Replace(BaseConfigs.GetForumPath, "/").Split('/');
+
+            //    //当使用伪aspx, 如:/版块别名/1(分页)等.
+            //    if (path.Length > 1 && !Utils.StrIsNullOrEmpty(path[1]))
+            //    {
+            //        int forumid = 0;
+            //        foreach (Discuz.Entity.ForumInfo foruminfo in Forums.GetForumList())
+            //        {
+            //            if (path[1].ToLower() == foruminfo.Rewritename.ToLower())
+            //            {
+            //                forumid = foruminfo.Fid;
+            //                break;
+            //            }
+            //        }
+            //        if (forumid > 0)
+            //        {
+            //            string newUrl = "forumid=" + forumid;
+            //            if (path.Length > 2 && !Utils.StrIsNullOrEmpty(path[2]) && path[2] != "list.aspx")
+            //            {
+            //                newUrl += "&page=" + path[2];
+            //            }
+
+            //            //通过参数设置指定模板
+            //            if (config.Specifytemplate > 0)
+            //            {
+            //                strTemplateid = SelectTemplate(strTemplateid, "showforum.aspx", newUrl);
+            //            }
+            //            context.RewritePath(forumPath + "aspx/" + strTemplateid + "/showforum.aspx", string.Empty, newUrl + "&selectedtemplateid=" + strTemplateid);
+            //            return;
+            //        }
+            //    }
+            //    context.Response.Redirect(baseconfig.Forumpath + "tools/error.htm?forumpath=" + BaseConfigs.GetForumPath + "&templatepath=" + Templates.GetTemplateItem(Utils.StrToInt(strTemplateid, 0)).Directory + "&msg=" + Utils.UrlEncode("您请求的版块信息无效!"));
+            //    return;
+            //}
+            //if (requestPath.StartsWith(forumPath))
+            //{
+            //    if (requestPath.Substring(forumPath.Length).IndexOf("/") == -1)
+            //    {
+            //        // 当前样式id
+            //        string strTemplateid = config.Templateid.ToString();
+            //        if (Utils.InArray(Utils.GetCookie(Utils.GetTemplateCookieName()), Templates.GetValidTemplateIDList()))
+            //        {
+            //            strTemplateid = Utils.GetCookie(Utils.GetTemplateCookieName());
+            //        }
+
+            //        if (requestPath.EndsWith("/index.aspx"))
+            //        {
+            //            if (config.Indexpage == 0)
+            //            {
+            //                if (config.BrowseCreateTemplate == 1)
+            //                {
+            //                    CreateTemplate(forumPath, Templates.GetTemplateItem(int.Parse(strTemplateid)).Directory, "forumindex.aspx", int.Parse(strTemplateid));
+            //                }
+            //                context.RewritePath(forumPath + "aspx/" + strTemplateid + "/forumindex.aspx");
+            //            }
+            //            else
+            //            {
+            //                if (config.BrowseCreateTemplate == 1)
+            //                {
+            //                    CreateTemplate(forumPath, Templates.GetTemplateItem(int.Parse(strTemplateid)).Directory, "website.aspx", int.Parse(strTemplateid));
+            //                }
+            //                context.RewritePath(forumPath + "aspx/" + strTemplateid + "/website.aspx");
+            //            }
+
+            //            return;
+            //        }
+
+
+            //        //当使用伪aspx, 如:showforum-1.aspx等.
+            //        if (config.Aspxrewrite == 1)
+            //        {
+            //            foreach (SiteUrls.URLRewrite url in SiteUrls.GetSiteUrls().Urls)
+            //            {
+            //                if (Regex.IsMatch(requestPath, url.Pattern, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase))
+            //                {
+            //                    string newUrl = Regex.Replace(requestPath.Substring(context.Request.Path.LastIndexOf("/")), url.Pattern, url.QueryString, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase);
+            //                    if (config.BrowseCreateTemplate == 1)
+            //                    {
+            //                        CreateTemplate(forumPath, Templates.GetTemplateItem(int.Parse(strTemplateid)).Directory, url.Page.Replace("/", ""), int.Parse(strTemplateid));
+            //                    }
+            //                    //通过参数设置指定模板
+            //                    if (config.Specifytemplate > 0)
+            //                    {
+            //                        strTemplateid = SelectTemplate(strTemplateid, url.Page, newUrl);
+            //                    }
+            //                    string queryString = context.Request.QueryString.ToString();
+            //                    context.RewritePath(forumPath + "aspx/" + strTemplateid + url.Page, string.Empty, newUrl + "&selectedtemplateid=" + strTemplateid + 
+            //                        (queryString == "" ? "" : "&" + queryString));
+
+            //                    return;
+            //                }
+            //            }
+            //        }
+
+            //        if (config.BrowseCreateTemplate == 1)
+            //        {
+            //            if (requestPath.IndexOf("showtemplate.aspx") != -1)
+            //            {
+            //                CreateTemplate(forumPath,
+            //                    Templates.GetTemplateItem(DNTRequest.GetInt("templateid", 1)).Directory,
+            //                    config.Indexpage == 0 ? "forumindex.aspx" : "website.aspx",
+            //                    DNTRequest.GetInt("templateid", 1)); //当跳转模板页时，生成目标文件
+            //            }
+            //            CreateTemplate(forumPath, Templates.GetTemplateItem(int.Parse(strTemplateid)).Directory, requestPath.Substring(context.Request.Path.LastIndexOf("/")).Replace("/", ""), int.Parse(strTemplateid));
+
+            //        }
+
+            //        //通过参数设置指定模板
+            //        if (config.Specifytemplate > 0)
+            //        {
+            //            strTemplateid = SelectTemplate(strTemplateid, requestPath, context.Request.QueryString.ToString());
+            //        }
+            //        context.RewritePath(forumPath + "aspx/" + strTemplateid + requestPath.Substring(context.Request.Path.LastIndexOf("/")), string.Empty, context.Request.QueryString.ToString() + "&selectedtemplateid=" + strTemplateid);
+            //    }
+
+            //    else if (requestPath.StartsWith(forumPath + "archiver/"))
+            //    {
+            //        //当使用伪aspx, 如:showforum-1.aspx等.
+            //        if (config.Aspxrewrite == 1)
+            //        {
+            //            string path = requestPath.Substring(forumPath.Length + 8);
+            //            foreach (SiteUrls.URLRewrite url in SiteUrls.GetSiteUrls().Urls)
+            //            {
+            //                if (Regex.IsMatch(path, url.Pattern, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase))
+            //                {
+            //                    string newUrl = Regex.Replace(path, url.Pattern, url.QueryString, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase);
+
+            //                    context.RewritePath(forumPath + "archiver" + url.Page, string.Empty, newUrl);
+            //                    return;
+            //                }
+            //            }
+
+            //        }
+            //        return;
+            //    }
+            //    else if (requestPath.StartsWith(forumPath + "tools/"))
+            //    {
+            //        //当使用伪aspx, 如:showforum-1.aspx等.
+            //        if (config.Aspxrewrite == 1)
+            //        {
+            //            string path = requestPath.Substring(forumPath.Length + 5);
+            //            foreach (SiteUrls.URLRewrite url in SiteUrls.GetSiteUrls().Urls)
+            //            {
+            //                if (Regex.IsMatch(path, url.Pattern, Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase))
+            //                {
+            //                    string newUrl = Regex.Replace(path, url.Pattern, Utils.UrlDecode(url.QueryString), Utils.GetRegexCompiledOptions() | RegexOptions.IgnoreCase);
+
+            //                    context.RewritePath(forumPath + "tools" + url.Page, string.Empty, newUrl);
+            //                    return;
+            //                }
+            //            }
+            //        }
+            //        return;
+            //    }
+            //    else if (requestPath.StartsWith(forumPath + "upload/") || requestPath.StartsWith(forumPath + "space/upload/") || requestPath.StartsWith(forumPath + "avatars/upload/"))
+            //    {
+            //        context.RewritePath(forumPath + "index.aspx");
+            //        return;
+            //    }
+
+            //}
+
+            #endregion
+        }
+
+        public bool IgnorePathContains(string path, string forumPath)
+        {
+            //httpModules 不接管的目录列表
+            string[] ignorePathList = new string[] { "install/", "upgrade/", "admin/", "aspx/", "space/" };
+            foreach (string ignorePath in ignorePathList)
+            {
+                if (path.IndexOf(forumPath + ignorePath) > -1)
+                    return true;
+            }
+            return false;
+        }
+
+        public void CreatePage(string pageName, string forumPath, int templateId)
+        {
+            GeneralConfigInfo config = GeneralConfigs.GetConfig();
+
+            if (config.BrowseCreateTemplate == 1)
+            {
+                //如果要切换模板，则先生成一个目标模板的首页
+                if (pageName == "showtemplate.aspx")
+                {
+                    CreateTemplate(forumPath,
+                        Templates.GetTemplateItem(DNTRequest.GetInt("templateid", 1)).Directory,
+                        config.Indexpage == 0 ? "forumindex.aspx" : "website.aspx",
+                        DNTRequest.GetInt("templateid", 1));
+                }
+                CreateTemplate(forumPath, Templates.GetTemplateItem(templateId).Directory, pageName, templateId);
             }
         }
 
