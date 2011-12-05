@@ -69,11 +69,11 @@ namespace RelayListenTool
             EventWaitHandle evAccept = new EventWaitHandle(false, EventResetMode.ManualReset);
 
             // IPv4 TCP
-            using (Socket socketListener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
+            using (Socket socketListener = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp))
             {
                 IPEndPoint ep = new IPEndPoint(IPAddress.Any, Port);
                 socketListener.Bind(ep);
-                socketListener.Listen(5);
+                //socketListener.Listen(5);
 
                 WaitHandle[] waits = new WaitHandle[]
 				{
@@ -87,7 +87,18 @@ namespace RelayListenTool
                     evAccept.Reset();
                     AsyncCallback ac = AcceptCallback;
                     Tuple<Socket, EventWaitHandle> state = new Tuple<Socket, EventWaitHandle>(socketListener, evAccept);
-                    socketListener.BeginAccept(ac, state);
+                    //socketListener.BeginAccept(ac, state);
+
+                    UDPPacketBuffer buf = new UDPPacketBuffer();
+                    socketListener.BeginReceiveFrom(
+                        buf.Data, 
+                        0, 
+                        UDPPacketBuffer.BUFFER_SIZE,
+                        SocketFlags.None, 
+                        ref buf.RemoteEndPoint, 
+                        ac, 
+                        state
+                        );
                     nWait = WaitHandle.WaitAny(waits);
                 }
                 while (nWait != 0);
@@ -120,7 +131,7 @@ namespace RelayListenTool
                 //	return;
                 //}
 
-                Socket sktPassive = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                Socket sktPassive = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
                 sktPassive.Connect(m_epDest);
 
                 SocketRelay relay = new SocketRelay(sktActive, sktPassive);
@@ -160,5 +171,35 @@ namespace RelayListenTool
         //private SecurityConfirm m_confirm;
         // 保持对活动连接的引用
         private List<SocketRelay> m_listSR;
+    }
+
+    public class UDPPacketBuffer
+    {
+        // size of the buffer
+        public const int BUFFER_SIZE = 4096;
+
+        // the buffer itself
+        public byte[] Data;
+
+        // length of data to transmit
+        public int DataLength;
+
+        // the (IP)Endpoint of the remote host
+        public EndPoint RemoteEndPoint;
+
+        public UDPPacketBuffer()
+        {
+            this.Data = new byte[BUFFER_SIZE];
+
+            // this will be filled in by the call to udpSocket.BeginReceiveFrom
+            RemoteEndPoint = (EndPoint)new IPEndPoint(IPAddress.Any, 0);
+        }
+
+        public UDPPacketBuffer(byte[] data, EndPoint remoteEndPoint)
+        {
+            this.Data = data;
+            this.DataLength = data.Length;
+            this.RemoteEndPoint = remoteEndPoint;
+        }
     }
 }
