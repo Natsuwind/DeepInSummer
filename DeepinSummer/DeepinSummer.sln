@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepinSummer", "DeepinSummer\DeepinSummer.csproj", "{67268E9E-AA3B-4D9E-956A-158922DA6B79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestForm", "TestForm\TestForm.csproj", "{6A6A5570-37C9-4CB4-ABBD-C9FBFD61435A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpUtilityTool", "HttpUtilityTool\HttpUtilityTool.csproj", "{BC5F457D-5E15-4B22-8D7B-BCA3A8E073CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateCreator", "TemplateCreator\TemplateCreator.csproj", "{46B80474-AC59-4440-8EBF-336464E6C675}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnVerfityImageTool", "UnVerfityImageTool\UnVerfityImageTool.csproj", "{DC93A4B9-06B9-4E3E-99E4-57DEDFC4CE69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jyi", "..\..\Himeliya\trunk\Jyi\Jyi.csproj", "{613F4303-01FF-4242-AE7D-DC7E41C905D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyTool", "ProxyTool\ProxyTool.csproj", "{B68D3B48-E3D8-4F13-888C-08CB5127C275}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67268E9E-AA3B-4D9E-956A-158922DA6B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67268E9E-AA3B-4D9E-956A-158922DA6B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67268E9E-AA3B-4D9E-956A-158922DA6B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67268E9E-AA3B-4D9E-956A-158922DA6B79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A6A5570-37C9-4CB4-ABBD-C9FBFD61435A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A6A5570-37C9-4CB4-ABBD-C9FBFD61435A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A6A5570-37C9-4CB4-ABBD-C9FBFD61435A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A6A5570-37C9-4CB4-ABBD-C9FBFD61435A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC5F457D-5E15-4B22-8D7B-BCA3A8E073CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC5F457D-5E15-4B22-8D7B-BCA3A8E073CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC5F457D-5E15-4B22-8D7B-BCA3A8E073CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC5F457D-5E15-4B22-8D7B-BCA3A8E073CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46B80474-AC59-4440-8EBF-336464E6C675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46B80474-AC59-4440-8EBF-336464E6C675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46B80474-AC59-4440-8EBF-336464E6C675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46B80474-AC59-4440-8EBF-336464E6C675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC93A4B9-06B9-4E3E-99E4-57DEDFC4CE69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC93A4B9-06B9-4E3E-99E4-57DEDFC4CE69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC93A4B9-06B9-4E3E-99E4-57DEDFC4CE69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC93A4B9-06B9-4E3E-99E4-57DEDFC4CE69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{613F4303-01FF-4242-AE7D-DC7E41C905D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{613F4303-01FF-4242-AE7D-DC7E41C905D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{613F4303-01FF-4242-AE7D-DC7E41C905D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{613F4303-01FF-4242-AE7D-DC7E41C905D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B68D3B48-E3D8-4F13-888C-08CB5127C275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B68D3B48-E3D8-4F13-888C-08CB5127C275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B68D3B48-E3D8-4F13-888C-08CB5127C275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B68D3B48-E3D8-4F13-888C-08CB5127C275}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,246 @@
+using System.IO;
+using System.Net;
+using System.Text;
+
+namespace Natsuhime
+{
+    public class Httper
+    {
+        #region 属性
+        private string m_Url;
+        private string m_PostData = "";
+        private int m_Timeout = 100000;
+        private string m_ContentType = "application/x-www-form-urlencoded";
+        private string m_UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)";
+        private string m_Accept = "image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/xaml+xml, application/vnd.ms-xpsdocument, application/x-ms-xbap, application/x-ms-application, */*";
+        private string m_Referer = "";
+        private string m_X_FORWARDED_FOR = "";
+        private string m_Charset = "UTF-8";
+        private WebProxy m_Proxy;
+        private CookieContainer m_Cookie;
+
+        public string Url
+        {
+            get { return m_Url; }
+            set { m_Url = value; }
+        }
+        public string PostData
+        {
+            get { return m_PostData; }
+            set { m_PostData = value; }
+        }
+        public int Timeout
+        {
+            get { return m_Timeout; }
+            set { m_Timeout = value; }
+        }
+        public string ContentType
+        {
+            get { return m_ContentType; }
+            set { m_ContentType = value; }
+        }
+        public string UserAgent
+        {
+            get { return m_UserAgent; }
+            set { m_UserAgent = value; }
+        }
+        public string Accept
+        {
+            get { return m_Accept; }
+            set { m_Accept = value; }
+        }
+        public string Referer
+        {
+            get { return m_Referer; }
+            set { m_Referer = value; }
+        }
+        public string X_FORWARDED_FOR
+        {
+            get { return m_X_FORWARDED_FOR.Trim(); }
+            set { m_X_FORWARDED_FOR = value; }
+        }
+        public string Charset
+        {
+            get { return m_Charset; }
+            set { m_Charset = value; }
+        }
+        public WebProxy Proxy
+        {
+            get { return m_Proxy; }
+            set { m_Proxy = value; }
+        }
+        public CookieContainer Cookie
+        {
+            get { return m_Cookie; }
+            set { m_Cookie = value; }
+        }
+        #endregion
+
+        public string HttpGet()
+        {
+            #region 重构调用Stream返回的方法
+            /*
+            HttpWebRequest objHWR = (HttpWebRequest)HttpWebRequest.Create(Url);
+            objHWR.Timeout = Timeout;
+            //objHWR.ContentType = ContentType;
+            objHWR.UserAgent = UserAgent;
+            objHWR.Accept = Accept;
+            objHWR.Referer = Referer;
+            objHWR.Method = "GET";
+            if (X_FORWARDED_FOR != string.Empty)
+            {
+                objHWR.Headers.Set("X_FORWARDED_FOR", X_FORWARDED_FOR);
+                //objHWR.Headers.Add("X_FORWARDED_FOR", "0.0.0.0"); 
+            }
+
+            if (Proxy != null)
+            {
+                objHWR.Proxy = Proxy;
+            }
+            if (Cookie != null)
+            {
+                objHWR.CookieContainer = Cookie;
+            }
+            HttpWebResponse objResponse = (HttpWebResponse)objHWR.GetResponse();
+            //Stream s = objHWR.GetResponse().GetResponseStream();//.GetResponseStream();
+             */
+            #endregion
+            Stream s = HttpGetStream();
+            StreamReader sr = new StreamReader(s, Encoding.GetEncoding(Charset));
+            string Content = sr.ReadToEnd();
+            //s.Close();
+            sr.Close();
+            s.Close();
+            return Content;
+        }
+        public Stream HttpGetStream()
+        {
+            HttpWebRequest objHWR = (HttpWebRequest)HttpWebRequest.Create(Url);
+            objHWR.Timeout = Timeout;
+            //objHWR.ContentType = ContentType;
+            objHWR.UserAgent = UserAgent;
+            objHWR.Accept = Accept;
+            objHWR.Referer = Referer;
+            objHWR.Method = "GET";
+            if (X_FORWARDED_FOR != string.Empty)
+            {
+                objHWR.Headers.Set("X_FORWARDED_FOR", X_FORWARDED_FOR);
+            }
+
+            if (Proxy != null)
+            {
+                objHWR.Proxy = Proxy;
+            }
+            if (Cookie != null)
+            {
+                objHWR.CookieContainer = Cookie;
+            }
+            HttpWebResponse objResponse = (HttpWebResponse)objHWR.GetResponse();
+            return objHWR.GetResponse().GetResponseStream();
+        }
+
+        /// <summary>
+        /// 暂时不要用这个方法.
+        /// </summary>
+        /// <param name="PostParamName"></param>
+        /// <param name="PostParamValue"></param>
+        public void AddPostParam(string PostParamName, string PostParamValue)
+        {
+            PostData += string.Format("&{0}={1}", PostParamName, System.Web.HttpUtility.UrlEncode(PostParamValue));
+        }
+        /// <summary>
+        /// 取得页面编码
+        /// </summary>
+        /// <returns></returns>
+        public string GetPageLanguageCode()
+        {
+            string pageLanguageCode = HttpGet();
+            return RegexUtility.GetMatch(pageLanguageCode, "charset=(.*)\"");
+        }
+        public string HttpPost()
+        {
+            #region 重构调用Stream返回的方法
+            /*
+            HttpWebRequest objHWR = (HttpWebRequest)HttpWebRequest.Create(Url);
+            objHWR.Timeout = Timeout;
+            objHWR.ContentType = ContentType;
+            objHWR.UserAgent = UserAgent;
+            objHWR.Accept = Accept;
+            objHWR.Referer = Referer;
+            objHWR.Method = "POST";
+            if (X_FORWARDED_FOR != string.Empty)
+            {
+                objHWR.Headers.Set("X_FORWARDED_FOR", X_FORWARDED_FOR);
+            }
+
+            if (Proxy != null)
+            {
+                objHWR.Proxy = Proxy;
+            }
+            if (Cookie != null)
+            {
+                objHWR.CookieContainer = Cookie;
+            }
+
+            byte[] byteData = Encoding.ASCII.GetBytes(PostData);
+            objHWR.ContentLength = byteData.Length;
+            Stream newStream = objHWR.GetRequestStream();
+
+            // Send the data.
+            newStream.Write(byteData, 0, byteData.Length);
+            newStream.Close();
+            
+
+            HttpWebResponse objResponse = (HttpWebResponse)objHWR.GetResponse();
+            StreamReader sr = new StreamReader(objResponse.GetResponseStream(), Encoding.GetEncoding(Charset));
+             */
+            #endregion
+            Stream s = HttpPostStream();
+            StreamReader sr = new StreamReader(s, Encoding.GetEncoding(Charset));
+            string Content = sr.ReadToEnd();
+            sr.Close();
+            s.Close();
+            return Content;
+        }
+
+        /// <summary>
+        /// HttpPost()重载返回流的方法
+        /// </summary>
+        /// <returns></returns>
+        public Stream HttpPostStream()
+        {
+            HttpWebRequest objHWR = (HttpWebRequest)HttpWebRequest.Create(Url);
+            objHWR.Timeout = Timeout;
+            objHWR.ContentType = ContentType;
+            objHWR.UserAgent = UserAgent;
+            objHWR.Accept = Accept;
+            objHWR.Referer = Referer;
+            objHWR.Method = "POST";
+            if (X_FORWARDED_FOR != string.Empty)
+            {
+                objHWR.Headers.Set("X_FORWARDED_FOR", X_FORWARDED_FOR);
+            }
+
+            if (Proxy != null)
+            {
+                objHWR.Proxy = Proxy;
+            }
+            if (Cookie != null)
+            {
+                objHWR.CookieContainer = Cookie;
+            }
+
+            byte[] byteData = Encoding.ASCII.GetBytes(PostData);
+            objHWR.ContentLength = byteData.Length;
+            Stream newStream = objHWR.GetRequestStream();
+
+            // Send the data.
+            newStream.Write(byteData, 0, byteData.Length);
+            newStream.Close();
+
+
+            HttpWebResponse objResponse = (HttpWebResponse)objHWR.GetResponse();
+            return objResponse.GetResponseStream();
+        }
+    }
+}
