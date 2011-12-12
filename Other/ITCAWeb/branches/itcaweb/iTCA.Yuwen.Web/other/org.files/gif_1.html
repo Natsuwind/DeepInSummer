@@ -1,0 +1,144 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="visio.css"/>
+<title>
+组织结构图
+</title>
+<script type="text/javascript" language="javascript">
+function UpdateTooltip(){};
+function OnShapeClick(){};
+</script>
+
+<script src="gif_1.js" type="text/jscript" language="jscript"></script>
+
+<script type="text/jscript" language="jscript">
+	if(parent.isUpLevel)
+	{
+		location.replace(parent.g_FileList[parent.g_CurPageIndex].PriImage);
+	}
+</script>
+
+
+
+<script type="text/jscript" language="jscript">
+
+var pageID = 0;
+
+var isUpLevel = parent.isUpLevel;
+var OnShapeClick = null;
+if (!parent.isMac)
+{
+	OnShapeClick = parent.OnShapeClick;
+}
+
+var OnShapeKey = parent.OnShapeKey;
+var UpdateTooltip = parent.UpdateTooltip;
+var clickMenu = parent.clickMenu;
+var toggleMenuDiv = parent.toggleMenuDiv;
+var toggleMenuLink = parent.toggleMenuLink;
+var GoToPage = parent.GoToPage;
+
+
+if (parent.isUpLevel)
+{
+
+	if (parent.g_FirstPageToLoad != null && parent.g_FirstPageToLoad.length > 0)
+	{
+		if (parent.g_FileList[parent.g_CurPageIndex].PageID != pageID)
+		{
+			var fileEntry = parent.g_FileList[parent.g_CurPageIndex];
+			var fileToLoad = fileToLoad = fileEntry.PriImage;
+			if (fileEntry.SecImage.length > 0)
+			{
+				fileToLoad = fileEntry.SecImage;
+			}
+
+			location.replace(fileToLoad);
+		}
+
+		parent.g_FirstPageToLoad = null;
+	}
+
+
+	var viewMgr = new parent.CViewMgr();
+	parent.viewMgr = viewMgr;
+
+	viewMgr.SupportsDetails = true;
+	viewMgr.SupportsSearch = true;
+
+	viewMgr.put_Location = ViewMgrSetRasterLocation;
+	viewMgr.visBBoxLeft = 2.475315;
+	viewMgr.visBBoxRight = 8.981378;
+	viewMgr.visBBoxBottom = 3.302087;
+	viewMgr.visBBoxTop = 6.973504;
+	viewMgr.highlightDiv = null;
+}
+
+function load ()
+{
+	if(isUpLevel)
+	{
+		arrowdiv.innerHTML = '<img id="arrowgif" alt="显示所选形状的位置" src="arrow.gif"/>';
+
+		var pageIndex = parent.PageIndexFromID (pageID);
+		parent.CurPageUpdate (pageIndex);
+	}
+}
+
+function unload()
+{
+	if(isUpLevel)
+	{
+		viewMgr = null;
+		parent.viewMgr = null;
+	}
+}
+
+window.onload = load;
+window.onunload = unload;
+document.onclick = clickMenu;
+
+</script>
+</head>
+
+<body class="pageView" bgcolor="#FFFFFF">
+
+<div id=arrowdiv style="position:absolute;top:0;left:0;visibility:hidden;z-index:5">
+</div>
+
+<div id="menu1" onclick="clickMenu()" class="hlMenu">
+</div>
+
+<DIV id=RasterDiv>
+
+
+<center>
+  <IMG id="ConvertedImage" SRC="gif_1.gif" ALT="页-1" name=RasterImage BORDER="0" USEMAP="#visImageMap">
+</center>
+
+<MAP NAME="visImageMap">
+  <AREA shape="POLYGON" tabindex="1" ALT="iTCA人员 素质培训部" origTitle="iTCA人员 素质培训部" TITLE="iTCA人员 素质培训部"  target="_top" COORDS=" 557,284 626,284 626,239 557,239 557,284" onmouseover="UpdateTooltip(this,0,71)" onfocus="UpdateTooltip(this,0,71)" onclick="return OnShapeClick(0,71);" onkeyup="OnShapeKey(0,71);">
+  <AREA shape="POLYGON" tabindex="1" ALT="人力 资源部" origTitle="人力 资源部" TITLE="人力 资源部"  target="_top" COORDS=" 478,284 546,284 546,239 478,239 478,284" onmouseover="UpdateTooltip(this,0,66)" onfocus="UpdateTooltip(this,0,66)" onclick="return OnShapeClick(0,66);" onkeyup="OnShapeKey(0,66);">
+  <AREA shape="POLYGON" tabindex="1" ALT="宣传部" origTitle="宣传部" TITLE="宣传部"  target="_top" COORDS=" 398,284 466,284 466,239 398,239 398,284" onmouseover="UpdateTooltip(this,0,61)" onfocus="UpdateTooltip(this,0,61)" onclick="return OnShapeClick(0,61);" onkeyup="OnShapeKey(0,61);">
+  <AREA shape="POLYGON" tabindex="1" ALT="外联部" origTitle="外联部" TITLE="外联部"  target="_top" COORDS=" 319,284 387,284 387,239 319,239 319,284" onmouseover="UpdateTooltip(this,0,56)" onfocus="UpdateTooltip(this,0,56)" onclick="return OnShapeClick(0,56);" onkeyup="OnShapeKey(0,56);">
+  <AREA shape="POLYGON" tabindex="1" ALT="劳动改造 小组" origTitle="劳动改造 小组" TITLE="劳动改造 小组"  target="_top" COORDS=" 0,353 69,353 69,307 0,307 0,353" onmouseover="UpdateTooltip(this,0,51)" onfocus="UpdateTooltip(this,0,51)" onclick="return OnShapeClick(0,51);" onkeyup="OnShapeKey(0,51);">
+  <AREA shape="POLYGON" tabindex="1" ALT="办公室 管理" origTitle="办公室 管理" TITLE="办公室 管理"  target="_top" COORDS=" 0,284 69,284 69,239 0,239 0,284" onmouseover="UpdateTooltip(this,0,46)" onfocus="UpdateTooltip(this,0,46)" onclick="return OnShapeClick(0,46);" onkeyup="OnShapeKey(0,46);">
+  <AREA shape="POLYGON" tabindex="1" ALT="财会 出纳" origTitle="财会 出纳" TITLE="财会 出纳"  target="_top" COORDS=" 80,284 148,284 148,239 80,239 80,284" onmouseover="UpdateTooltip(this,0,41)" onfocus="UpdateTooltip(this,0,41)" onclick="return OnShapeClick(0,41);" onkeyup="OnShapeKey(0,41);">
+  <AREA shape="POLYGON" tabindex="1" ALT="技术研发 小组" origTitle="技术研发 小组" TITLE="技术研发 小组"  target="_top" COORDS=" 239,284 307,284 307,239 239,239 239,284" onmouseover="UpdateTooltip(this,0,36)" onfocus="UpdateTooltip(this,0,36)" onclick="return OnShapeClick(0,36);" onkeyup="OnShapeKey(0,36);">
+  <AREA shape="POLYGON" tabindex="1" ALT="网络维护 小组" origTitle="网络维护 小组" TITLE="网络维护 小组"  target="_top" COORDS=" 160,284 228,284 228,239 160,239 160,284" onmouseover="UpdateTooltip(this,0,31)" onfocus="UpdateTooltip(this,0,31)" onclick="return OnShapeClick(0,31);" onkeyup="OnShapeKey(0,31);">
+  <AREA shape="POLYGON" tabindex="1" ALT="iTCA人力资源 与人才培养中心" origTitle="iTCA人力资源 与人才培养中心" TITLE="iTCA人力资源 与人才培养中心"  target="_top" COORDS=" 499,205 603,205 603,148 499,148 499,205" onmouseover="UpdateTooltip(this,0,26)" onfocus="UpdateTooltip(this,0,26)" onclick="return OnShapeClick(0,26);" onkeyup="OnShapeKey(0,26);">
+  <AREA shape="POLYGON" tabindex="1" ALT="iTCA新闻与对外 联络处" origTitle="iTCA新闻与对外 联络处" TITLE="iTCA新闻与对外 联络处"  target="_top" COORDS=" 340,205 444,205 444,148 340,148 340,205" onmouseover="UpdateTooltip(this,0,21)" onfocus="UpdateTooltip(this,0,21)" onclick="return OnShapeClick(0,21);" onkeyup="OnShapeKey(0,21);">
+  <AREA shape="POLYGON" tabindex="1" ALT="iTCA技术支持与  研发中心" origTitle="iTCA技术支持与  研发中心" TITLE="iTCA技术支持与  研发中心"  target="_top" COORDS=" 182,205 286,205 286,148 182,148 182,205" onmouseover="UpdateTooltip(this,0,16)" onfocus="UpdateTooltip(this,0,16)" onclick="return OnShapeClick(0,16);" onkeyup="OnShapeKey(0,16);">
+  <AREA shape="POLYGON" tabindex="1" ALT="iTCA行政管理 与财务处" origTitle="iTCA行政管理 与财务处" TITLE="iTCA行政管理 与财务处"  target="_top" COORDS=" 22,205 125,205 125,148 22,148 22,205" onmouseover="UpdateTooltip(this,0,11)" onfocus="UpdateTooltip(this,0,11)" onclick="return OnShapeClick(0,11);" onkeyup="OnShapeKey(0,11);">
+  <AREA shape="POLYGON" tabindex="1" ALT="技术 顾问" origTitle="技术 顾问" TITLE="技术 顾问"  target="_top" COORDS=" 421,114 523,114 523,69 421,69 421,114" onmouseover="UpdateTooltip(this,0,6)" onfocus="UpdateTooltip(this,0,6)" onclick="return OnShapeClick(0,6);" onkeyup="OnShapeKey(0,6);">
+  <AREA shape="POLYGON" tabindex="1" ALT="iTCA核心 领导层" origTitle="iTCA核心 领导层" TITLE="iTCA核心 领导层"  target="_top" COORDS=" 242,66 373,66 373,3 242,3 242,66" onmouseover="UpdateTooltip(this,0,1)" onfocus="UpdateTooltip(this,0,1)" onclick="return OnShapeClick(0,1);" onkeyup="OnShapeKey(0,1);">
+</MAP>
+
+
+
+</DIV>
+
+</body>
+</html>
+

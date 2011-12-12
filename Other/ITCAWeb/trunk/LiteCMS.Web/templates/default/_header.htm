@@ -1,0 +1,32 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link rel="stylesheet" type="text/css" href="templates/{config.templatefolder}/main.css" />
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<%if pagetitle==""%>
+    <title>{config.websitename} - {config.seotitle} - Powered by LiteCMS</title>
+<%else%>
+    <title>{pagetitle} - {config.websitename} - {config.seotitle} - Powered by LiteCMS</title>
+<%/if%>
+    <script src="javascript/common.js" type="text/javascript" language="javascript"></script>
+    <script src="javascript/common_002.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+    <div id="header">
+        <div id="header_content">
+            <div class="user_info">
+                <form action="login.aspx" method="post">
+                    <label>用户名:</label> <input name="loginid" class="input_tx" size="18" type="text">
+                    <label>密码:</label> <input name="password" class="input_tx" size="18" type="password">
+                    <input id="cookietime" value="315360000" name="cookietime" class="input_remember" type="checkbox">
+                    <label class="label_remember" for="cookietime">记住我</label>
+                    <input class="input_sub" value="登录" type="submit">
+                </form>
+                <div class="login_ext">
+                    <a href="http://x.discuz.net/do.php?action=register">注册新用户</a>| <a href="http://x.discuz.net/do.php?action=lostpasswd">找回密码</a>
+                </div>
+            </div>
+            <h2><a href="#"><img src="templates/{config.templatefolder}/images/logo.gif" alt="LiteCMS官方站"></a></h2>
+            <div class="ad_header"><a href="#" target="_blank"><img src="templates/{config.templatefolder}/images/ss7ad.gif" alt="SupeSite7有奖捉虫，提前获得测试版" width="800" height="65"></a></div>
+        </div>
+    </div>

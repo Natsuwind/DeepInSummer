@@ -1,0 +1,233 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:scan="clr-namespace:com.shopsavvy.scankit"
+    mc:Ignorable="d"
+    >
+    <Style TargetType="scan:BarcodeScanner">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="scan:BarcodeScanner">
+                    <Grid x:Name="LayoutRoot" Width="480" Height="800" >
+                		<VisualStateManager.VisualStateGroups>
+                			<VisualStateGroup x:Name="CodeType">
+                				<VisualState x:Name="QRCode">
+                					<Storyboard>
+                						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PART_1DBarcode">
+                							<DiscreteObjectKeyFrame KeyTime="0">
+                								<DiscreteObjectKeyFrame.Value>
+                									<Visibility>Collapsed</Visibility>
+                								</DiscreteObjectKeyFrame.Value>
+                							</DiscreteObjectKeyFrame>
+                						</ObjectAnimationUsingKeyFrames>
+                						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PART_QRCode">
+                							<DiscreteObjectKeyFrame KeyTime="0">
+                								<DiscreteObjectKeyFrame.Value>
+                									<Visibility>Visible</Visibility>
+                								</DiscreteObjectKeyFrame.Value>
+                							</DiscreteObjectKeyFrame>
+                						</ObjectAnimationUsingKeyFrames>
+                						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PART_2DCode">
+                							<DiscreteObjectKeyFrame KeyTime="0">
+                								<DiscreteObjectKeyFrame.Value>
+                									<Visibility>Collapsed</Visibility>
+                								</DiscreteObjectKeyFrame.Value>
+                							</DiscreteObjectKeyFrame>
+                						</ObjectAnimationUsingKeyFrames>
+                					</Storyboard>
+                				</VisualState>
+                				<VisualState x:Name="OneDCode">
+                					<Storyboard>
+                						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PART_QRCode">
+                							<DiscreteObjectKeyFrame KeyTime="0">
+                								<DiscreteObjectKeyFrame.Value>
+                									<Visibility>Collapsed</Visibility>
+                								</DiscreteObjectKeyFrame.Value>
+                							</DiscreteObjectKeyFrame>
+                						</ObjectAnimationUsingKeyFrames>
+                						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PART_2DCode">
+                							<DiscreteObjectKeyFrame KeyTime="0">
+                								<DiscreteObjectKeyFrame.Value>
+                									<Visibility>Collapsed</Visibility>
+                								</DiscreteObjectKeyFrame.Value>
+                							</DiscreteObjectKeyFrame>
+                						</ObjectAnimationUsingKeyFrames>
+                						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PART_1DBarcode">
+                							<DiscreteObjectKeyFrame KeyTime="0">
+                								<DiscreteObjectKeyFrame.Value>
+                									<Visibility>Visible</Visibility>
+                								</DiscreteObjectKeyFrame.Value>
+                							</DiscreteObjectKeyFrame>
+                						</ObjectAnimationUsingKeyFrames>
+                					</Storyboard>
+                				</VisualState>
+                				<VisualState x:Name="TwoDCode">
+                					<Storyboard>
+                						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PART_2DCode">
+                							<DiscreteObjectKeyFrame KeyTime="0">
+                								<DiscreteObjectKeyFrame.Value>
+                									<Visibility>Visible</Visibility>
+                								</DiscreteObjectKeyFrame.Value>
+                							</DiscreteObjectKeyFrame>
+                						</ObjectAnimationUsingKeyFrames>
+                						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PART_QRCode">
+                							<DiscreteObjectKeyFrame KeyTime="0">
+                								<DiscreteObjectKeyFrame.Value>
+                									<Visibility>Collapsed</Visibility>
+                								</DiscreteObjectKeyFrame.Value>
+                							</DiscreteObjectKeyFrame>
+                						</ObjectAnimationUsingKeyFrames>
+                						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PART_1DBarcode">
+                							<DiscreteObjectKeyFrame KeyTime="0">
+                								<DiscreteObjectKeyFrame.Value>
+                									<Visibility>Collapsed</Visibility>
+                								</DiscreteObjectKeyFrame.Value>
+                							</DiscreteObjectKeyFrame>
+                						</ObjectAnimationUsingKeyFrames>
+                					</Storyboard>
+                				</VisualState>
+                			</VisualStateGroup>
+                		</VisualStateManager.VisualStateGroups>
+                		<Rectangle x:Name="PART_CamRect" Grid.Row="1"
+                			RenderTransformOrigin="0.5,0.5" 
+                			UseLayoutRounding="False" 
+                			d:LayoutRounding="Auto" Margin="10,130,12,0">
+                			<Rectangle.Fill>
+                				<VideoBrush x:Name="PART_VideoBrush"  >
+                					<VideoBrush.RelativeTransform>
+                						<CompositeTransform x:Name="PART_VideoTransform"
+                							CenterX=".5"
+                							CenterY=".5" />
+                					</VideoBrush.RelativeTransform>
+                				</VideoBrush>
+                			</Rectangle.Fill>
+                		</Rectangle>
+
+                		<Grid x:Name="PART_1DBarcode" Visibility="Collapsed">
+                			<Grid.ColumnDefinitions>
+                				<ColumnDefinition Width="0.15*"/>
+                				<ColumnDefinition Width="0.70*"/>
+                				<ColumnDefinition Width="0.15*"/>
+                			</Grid.ColumnDefinitions>
+                			<Grid.RowDefinitions>
+                				<RowDefinition Height="0.35*"/>
+                				<RowDefinition Height="0.3*"/>
+                				<RowDefinition Height="0.35*"/>
+                			</Grid.RowDefinitions>
+                			<Grid x:Name="scannerLine_Copy" Height="14" RenderTransformOrigin="0.5,0.5" Margin="0" d:LayoutOverrides="Width" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                				<Grid.RowDefinitions>
+                					<RowDefinition Height="4"/>
+                					<RowDefinition Height="2"/>
+                					<RowDefinition Height="4"/>
+                				</Grid.RowDefinitions>
+                				<Border BorderBrush="Black" BorderThickness="0" d:LayoutOverrides="Width">
+                					<Border.Background>
+                						<RadialGradientBrush RadiusY="0.844" Center="0.5,0.978" GradientOrigin="0.5,0.978" RadiusX="0.815">
+                							<GradientStop Color="#99FF0000" Offset="0"/>
+                							<GradientStop Color="#00EA0000" Offset="1"/>
+                						</RadialGradientBrush>
+                					</Border.Background>
+                				</Border>
+                				<Border BorderBrush="Black" BorderThickness="0" Background="#FFE40000" d:LayoutOverrides="Width" Grid.Row="1"/>
+                				<Border BorderBrush="Black" BorderThickness="0" d:LayoutOverrides="Width" Grid.Row="2">
+                					<Border.Background>
+                						<RadialGradientBrush RadiusY="0.844" Center="0.5,0.056" GradientOrigin="0.5,0.056" RadiusX="0.815">
+                							<GradientStop Color="#99FF0000" Offset="0"/>
+                							<GradientStop Color="#00EA0000" Offset="1"/>
+                						</RadialGradientBrush>
+                					</Border.Background>
+                				</Border>
+                			</Grid>
+                			<Border Margin="0" Grid.RowSpan="3" Background="#93000000"/>
+                			<Border Margin="0" Grid.RowSpan="3" Background="#93000000" Grid.Column="2"/>
+                			<Border Margin="0" Background="#93000000" Grid.Column="1" Grid.Row="2"/>
+                			<Border Margin="0" Background="#93000000" Grid.Column="1"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Right" Stroke="Black" Width="4" StrokeThickness="0" Height="26" Grid.Row="1" VerticalAlignment="Top"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Right" Stroke="Black" Width="4" StrokeThickness="0" Height="26" Grid.Row="1" VerticalAlignment="Bottom"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Left" Stroke="Black" Width="4" StrokeThickness="0" Height="26" Grid.Row="1" VerticalAlignment="Top" Grid.Column="2"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Left" Stroke="Black" Width="4" StrokeThickness="0" Height="26" Grid.Row="1" VerticalAlignment="Bottom" Grid.Column="2"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Left" Stroke="Black" Width="30" StrokeThickness="0" Height="4" Grid.Row="2" VerticalAlignment="Top" Grid.Column="1" Margin="-4,0,0,0"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Right" Stroke="Black" Width="30" StrokeThickness="0" Height="4" Grid.Row="2" VerticalAlignment="Top" Grid.Column="1" Margin="0,0,-4,0"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Left" Stroke="Black" Width="30" StrokeThickness="0" Height="4" VerticalAlignment="Bottom" Grid.Column="1" Margin="-4,0,0,0"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Right" Stroke="Black" Width="30" StrokeThickness="0" Height="4" VerticalAlignment="Bottom" Grid.Column="1" Margin="0,0,-4,0"/>
+                			<TextBlock x:Name="HoldStillText" Margin="0,0,0,48" TextWrapping="Wrap" Text="Hold still..." VerticalAlignment="Bottom" d:LayoutOverrides="Width" Grid.Column="1" HorizontalAlignment="Center" FontFamily="Segoe WP Black" FontSize="24" Foreground="White"/>
+                			<Border x:Name="BarcodeScanned" BorderBrush="White" 
+                				BorderThickness="16" Margin="0" Width="200" Height="200" 
+                				Grid.Row="1" Grid.Column="1" CornerRadius="100" 
+                				CacheMode="BitmapCache"
+                				RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                				<Border.RenderTransform>
+                					<CompositeTransform/>
+                				</Border.RenderTransform>
+                				<Path Data="M59.166355,99.499672 L90.916664,130.66667 L140.49966,69.49968" Margin="35.167,45.5,35.5,45.333" Stretch="Fill" Stroke="White" StrokeThickness="16" UseLayoutRounding="False" StrokeLineJoin="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                			</Border>
+                		</Grid>
+
+                		<Grid x:Name="PART_QRCode" Visibility="Collapsed">
+                			<Grid.ColumnDefinitions>
+                				<ColumnDefinition Width="0.5*"/>
+                				<ColumnDefinition Width="230"/>
+                				<ColumnDefinition Width="0.5*"/>
+                			</Grid.ColumnDefinitions>
+                			<Grid.RowDefinitions>
+                				<RowDefinition Height="0.5*"/>
+                				<RowDefinition Height="230"/>
+                				<RowDefinition Height="0.5*"/>
+                			</Grid.RowDefinitions>
+                			<Border Margin="0" Grid.RowSpan="3" Background="#93000000"/>
+                			<Border Margin="0" Grid.RowSpan="3" Background="#93000000" Grid.Column="2"/>
+                			<Border Margin="0" Background="#93000000" Grid.Column="1" Grid.Row="2"/>
+                			<Border Margin="0" Background="#93000000" Grid.Column="1"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Right" Stroke="Black" Width="4" StrokeThickness="0" Height="26" Grid.Row="1" VerticalAlignment="Top"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Right" Stroke="Black" Width="4" StrokeThickness="0" Height="26" Grid.Row="1" VerticalAlignment="Bottom"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Left" Stroke="Black" Width="4" StrokeThickness="0" Height="26" Grid.Row="1" VerticalAlignment="Top" Grid.Column="2"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Left" Stroke="Black" Width="4" StrokeThickness="0" Height="26" Grid.Row="1" VerticalAlignment="Bottom" Grid.Column="2"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Left" Stroke="Black" Width="30" StrokeThickness="0" Height="4" Grid.Row="2" VerticalAlignment="Top" Grid.Column="1" Margin="-4,0,0,0"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Right" Stroke="Black" Width="30" StrokeThickness="0" Height="4" Grid.Row="2" VerticalAlignment="Top" Grid.Column="1" Margin="0,0,-4,0"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Left" Stroke="Black" Width="30" StrokeThickness="0" Height="4" VerticalAlignment="Bottom" Grid.Column="1" Margin="-4,0,0,0"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Right" Stroke="Black" Width="30" StrokeThickness="0" Height="4" VerticalAlignment="Bottom" Grid.Column="1" Margin="0,0,-4,0"/>
+                			<Rectangle HorizontalAlignment="Left" Grid.Row="1" Stroke="#FFEC0000" StrokeThickness="4" Width="50" Margin="6,6,0,0" Grid.Column="1" Height="50" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+                			<Rectangle HorizontalAlignment="Right" Grid.Row="1" Stroke="#FFEC0000" StrokeThickness="4" Width="50" Margin="0,6,6,0" Grid.Column="1" Height="50" VerticalAlignment="Top"/>
+                			<TextBlock x:Name="HoldStillQRText" Margin="0,0,0,48" TextWrapping="Wrap" Text="Hold still..." VerticalAlignment="Bottom" d:LayoutOverrides="Width" Grid.Column="1" HorizontalAlignment="Center" FontFamily="Segoe WP Black" FontSize="24" Foreground="White"/>
+                			<Rectangle HorizontalAlignment="Left" Grid.Row="1" Stroke="#FFEC0000" StrokeThickness="4" Width="50" Margin="6,6,0,6" Grid.Column="1" Height="50" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5"/>
+                		</Grid>
+
+                		<Grid x:Name="PART_2DCode">
+                			<Grid.ColumnDefinitions>
+                				<ColumnDefinition Width="0.5*"/>
+                				<ColumnDefinition Width="230"/>
+                				<ColumnDefinition Width="0.5*"/>
+                			</Grid.ColumnDefinitions>
+                			<Grid.RowDefinitions>
+                				<RowDefinition Height="0.5*"/>
+                				<RowDefinition Height="230"/>
+                				<RowDefinition Height="0.5*"/>
+                			</Grid.RowDefinitions>
+                			<Border Margin="0" Grid.RowSpan="3" Background="#93000000"/>
+                			<Border Margin="0" Grid.RowSpan="3" Background="#93000000" Grid.Column="2"/>
+                			<Border Margin="0" Background="#93000000" Grid.Column="1" Grid.Row="2"/>
+                			<Border Margin="0" Background="#93000000" Grid.Column="1"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Right" Stroke="Black" Width="4" StrokeThickness="0" Height="26" Grid.Row="1" VerticalAlignment="Top"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Right" Stroke="Black" Width="4" StrokeThickness="0" Height="26" Grid.Row="1" VerticalAlignment="Bottom"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Left" Stroke="Black" Width="4" StrokeThickness="0" Height="26" Grid.Row="1" VerticalAlignment="Top" Grid.Column="2"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Left" Stroke="Black" Width="4" StrokeThickness="0" Height="26" Grid.Row="1" VerticalAlignment="Bottom" Grid.Column="2"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Left" Stroke="Black" Width="30" StrokeThickness="0" Height="4" Grid.Row="2" VerticalAlignment="Top" Grid.Column="1" Margin="-4,0,0,0"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Right" Stroke="Black" Width="30" StrokeThickness="0" Height="4" Grid.Row="2" VerticalAlignment="Top" Grid.Column="1" Margin="0,0,-4,0"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Left" Stroke="Black" Width="30" StrokeThickness="0" Height="4" VerticalAlignment="Bottom" Grid.Column="1" Margin="-4,0,0,0"/>
+                			<Rectangle Fill="White" HorizontalAlignment="Right" Stroke="Black" Width="30" StrokeThickness="0" Height="4" VerticalAlignment="Bottom" Grid.Column="1" Margin="0,0,-4,0"/>
+                			<TextBlock x:Name="HoldStill2DText" Margin="0,0,0,48" TextWrapping="Wrap" Text="Hold still..." VerticalAlignment="Bottom" d:LayoutOverrides="Width" Grid.Column="1" HorizontalAlignment="Center" FontFamily="Segoe WP Black" FontSize="24" Foreground="White"/>
+                		</Grid>
+
+                	</Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- 
+    
+    
+    -->
+    
+</ResourceDictionary>

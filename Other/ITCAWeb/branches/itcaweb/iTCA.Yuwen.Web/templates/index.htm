@@ -1,0 +1,99 @@
+﻿<%namespace iTCA.Yuwen.Data%>
+<%namespace iTCA.Yuwen.Entity%>
+<%inherits iTCA.Yuwen.Web.index%>
+<%template _header%>
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr height="113">
+        <td background="images/index/default01.jpg" style="height: 113px">
+        </td>
+        <td background="images/index/default02.jpg" style="height: 113px">
+        </td>
+    </tr>
+    <tr>
+        <td width="71%">
+            <table width="568" height="261" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td style="height: 40px; width: 116px; background: url(images/index/def_left01.jpg) no-repeat;
+                        background-color: #F7F7F7">
+                    </td>
+                    <td style="height: 40px; width: 452px; background: url(images/index/def_mid01.jpg) no-repeat;">
+                    </td>
+                </tr>
+                <tr>
+                    <td id="as" width="116" height="75" bgcolor="f7f7f7" background="images/index/def_left03.jpg">
+                        <a href="other/" title="协会简介" target="_blank">重庆工学院计算机<br />
+                            协会成立于 1998<br />
+                            年，经过数次变革<br />
+                            之后形成了现在的<br />
+                            iTCA……&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<br />
+                        </a>
+                    </td>
+                    <td background="images/index/def_mid02.jpg" width="452" height="75" align="left">
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <%loop (ArticleInfo) anninfo annlist%>
+                            <tr>
+                                <td>
+                                    <div class="i_title">
+                                        [{anninfo.columnname}]&nbsp;<a href="showarticle-{anninfo.articleid}.aspx">{anninfo.title}</a></div>
+                                </td>
+                                <td>
+                                    <div class="i_date" style="float: right">
+                                        {anninfo.postdate}</div>
+                                    </li>
+                                </td>
+                            </tr>
+                            <%/loop%>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 25px; width: 116px; background: url(images/index/def_left02.jpg) no-repeat;
+                        background-color: #F7F7F7">
+                    </td>
+                    <td style="height: 25px; width: 116px; background: url(images/index/def_mid03.jpg) no-repeat;">
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="f7f7f7" width="116" height="121" background="images/index/def_left04.jpg">
+                        <div id="standard">
+                            <marquee scrollamount="2" width="100" height="88" scrolldelay="100" direction="up"
+                                onmouseover="this.stop()" onmouseout="this.start()">
+			            <a href="http://www.cqit.edu.cn/" target="_blank">重庆工学院</a><br />
+			            <a href="http://cs.cqit.edu.cn/" target="_blank">计算机学院</a><br />
+			            <a href="http://nicweb.cqit.edu.cn/" target="_blank">网络信息中心</a><br />
+			            <a href="http://jsjzx.cqit.edu.cn/" target="_blank">计算机中心</a><br />
+			            <a href="http://www.intel.com/cn" target="_blank">Intel(中国)</a><br />
+			     </marquee>
+                        </div>
+                    </td>
+                    <td background="images/index/def_mid04.jpg" width="452" height="121" align="left">
+                        <div class="mainbodyfrm">
+                            <table height="88%" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <%loop (ArticleInfo) newsinfo newslist%>
+                                <tr>
+                                    <td>
+                                        <div class="i_title">
+                                            [{newsinfo.columnname}]&nbsp;<a href="showarticle-{newsinfo.articleid}.aspx">{newsinfo.title}</a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="i_date" style="float: right">
+                                            {newsinfo.postdate}</div>
+                                    </td>
+                                </tr>
+                                <%/loop%>
+                            </table>
+                        </div>
+                        <br />
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td background="images/index/def_right.jpg" height="261" width="233">
+        </td>
+    </tr>
+</table>
+<%template _indexfooter%>
+<!--{querycount}<br />
+{querydetail}<br />
+{processtime}秒<br />-->

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7B2D9DD1-231C-476B-9FBE-F6A9D3FC3AFD}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>com.shopsavvy.scankit</RootNamespace>
+    <AssemblyName>com.shopsavvy.scankit</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Silverlight_ZXing_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows" />
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="com.google.zxing.client.result\AbstractDoCoMoResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\AddressBookAUResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\AddressBookDoCoMoResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\BizcardResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\BookmarkDoCoMoResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\CalendarParsedResult.cs" />
+    <Compile Include="com.google.zxing.client.result\EmailAddressParsedResult.cs" />
+    <Compile Include="com.google.zxing.client.result\EmailAddressResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\EmailDoCoMoResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\GeoParsedResult.cs" />
+    <Compile Include="com.google.zxing.client.result\GeoResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\ISBNParsedResult.cs" />
+    <Compile Include="com.google.zxing.client.result\ISBNResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\ParsedResult.cs" />
+    <Compile Include="com.google.zxing.client.result\ParsedResultType.cs" />
+    <Compile Include="com.google.zxing.client.result\ProductParsedResult.cs" />
+    <Compile Include="com.google.zxing.client.result\ProductResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\ResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\SMSMMSResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\SMSParsedResult.cs" />
+    <Compile Include="com.google.zxing.client.result\TelParsedResult.cs" />
+    <Compile Include="com.google.zxing.client.result\TelResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\TextParsedResult.cs" />
+    <Compile Include="com.google.zxing.client.result\URIParsedResult.cs" />
+    <Compile Include="com.google.zxing.client.result\URIResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\URLTOResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\VCardResultParser.cs" />
+    <Compile Include="com.google.zxing.client.result\VEventResultParser.cs" />
+    <Compile Include="com.shopsavvy.mango.Model.QRModels\AddressBookParsedResult.cs" />
+    <Compile Include="com.shopsavvy.scankit.Helpers\CodeType.cs" />
+    <Compile Include="com.shopsavvy.scankit\BarcodeScanner.cs" />
+    <Compile Include="com.shopsavvy.scankit\CameraInitializedEventArgs.cs" />
+    <Compile Include="com.shopsavvy.scankit\ScanSuccessfulEventArgs.cs" />
+    <Compile Include="com.shopsavvy.scankit\ScanTypeChangedEventArgs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="themes\generic.xaml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>

@@ -1,0 +1,48 @@
+﻿	<!--右栏开始-->
+	<div id="right-side">
+		<div class="div-header">站内搜索</div>
+		<div id="search"><form action="search.aspx" method="get">标题搜索&nbsp;:&nbsp;<input type="text" id="searchkey" name="searchkey" />&nbsp;&nbsp;<input type="submit" value="搜索" /></form></div>	
+		
+		<div id="hot-article" class="right-list">
+		<%if {config.urlrewrite}==1%>
+			<div class="div-header"><a href="showcolumn-hot{config.urlrewriteextname}">热门新闻</a></div>
+	    <%else%>
+			<div class="div-header"><a href="showcolumn.aspx?type=hot">热门新闻</a></div>
+		<%/if%>
+			<ul>
+			<%loop (ArticleInfo) hotarticleinfo hotarticlelist%>
+			    <%if {config.urlrewrite}==1%>
+				<li><h2><a href="showarticle-{hotarticleinfo.articleid}{config.urlrewriteextname}">{hotarticleinfo.title}</a></h2></li>
+				<%else%>
+				<li><h2><a href="showarticle.aspx?id={hotarticleinfo.articleid}">{hotarticleinfo.title}</a></h2></li>
+				<%/if%>
+		    <%/loop%>
+			</ul>
+		</div>
+		
+		<div id="latest-comment" class="right-list">
+			<div class="div-header">最新评论</div>
+			<ul>
+			<%loop (CommentInfo) latestcommentinfo latestcommentlist%>
+				<li>
+					<span class="content">{latestcommentinfo.content}</span>
+					<div class="comment-info"><span class="comment-author">{latestcommentinfo.username} </span>对 <span class="from-article">"<a href="<%if {config.urlrewrite}==1%>showarticle-{latestcommentinfo.articleid}{config.urlrewriteextname}<%else%>showarticle.aspx?id={latestcommentinfo.articleid}<%/if%>">{latestcommentinfo.articletitle}</a>"</span> 的评论</div>
+				</li>
+			<%/loop%>
+			</ul>
+		</div>
+		
+		<div id="hot-comment" class="right-list">
+			<div class="div-header">热门评论</div>
+			<ul>
+			<%loop (CommentInfo) mostgradecommentinfo mostgradecommentlist%>
+				<li>
+					<span class="content">{mostgradecommentinfo.content}</span>
+					<div class="comment-info"><span class="comment-author">{mostgradecommentinfo.username} </span>对 <span class="from-article"><a href="<%if {config.urlrewrite}==1%>showarticle-{mostgradecommentinfo.articleid}{config.urlrewriteextname}<%else%>showarticle.aspx?id={mostgradecommentinfo.articleid}<%/if%>">{mostgradecommentinfo.articletitle}</a></span> 的评论</div>
+				</li>
+			<%/loop%>
+			</ul>
+		</div>
+		
+	</div>
+	<!--右栏结束-->	

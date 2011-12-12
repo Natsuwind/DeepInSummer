@@ -1,0 +1,90 @@
+﻿<%namespace iTCA.Yuwen.Data%>
+<%namespace iTCA.Yuwen.Entity%>
+<%inherits iTCA.Yuwen.Web.news%>
+<%template _header%>
+<div id="pagebody" style="clear: both">
+    <br />
+    <br />
+    <!--main-->
+    <div id="maincenter" style="clear: both">
+        <center>
+            <table width="617" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td style="height: 20px; width: 308px; background: url(images/cms/total01.jpg) no-repeat;">
+                    </td>
+                    <td style="width: 309px; background: url(images/cms/total02.jpg) no-repeat;">
+                    </td>
+                </tr>
+                <tr>
+                    <td width="308" height="180" valign="top">
+                        <table width="100%">
+                            <%loop (ArticleInfo) campusnewinfo campusnewslist%>
+                            <tr>
+                                <td id="title" align="left">
+                                    <a href="showarticle-{campusnewinfo.articleid}.aspx">{campusnewinfo.title}</a>
+                                </td>
+                            </tr>
+                            <%/loop%>
+                        </table>
+                    </td>
+                    <td width="309" height="180" valign="top">
+                        <table width="100%">
+                            <%loop (ArticleInfo) canewinfo canewslist%>
+                            <tr>
+                                <td id="Td1" align="left">
+                                    <a href="showarticle-{canewinfo.articleid}.aspx">{canewinfo.title}</a>
+                                </td>
+                            </tr>
+                            <%/loop%>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="308" height="22" background="images/cms/total03.jpg">
+                        <a href="showcolumn-3-1.aspx">
+                            <img src="images/cms/more01.jpg" border="0" align="right" /></a>
+                    </td>
+                    <td width="309" height="22" background="images/cms/total04.jpg">
+                        <a href="showcolumn-2-1.aspx">
+                            <img src="images/cms/more02.jpg" border="0" align="right" /></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 20px; width: 308px; background: url(images/cms/total05.jpg) no-repeat;">
+                    </td>
+                    <td width="309">
+                    </td>
+                </tr>
+                <tr>
+                    <td width="308" height="176" valign="top">
+                        <table width="100%">
+                            <%loop (ArticleInfo) industrynewinfo industrynewslist%>
+                            <tr>
+                                <td id="Td2" align="left">
+                                    <a href="showarticle-{industrynewinfo.articleid}.aspx">{industrynewinfo.title}</a>
+                                </td>
+                            </tr>
+                            <%/loop%>
+                        </table>
+                    </td>
+                    <td width="309" height="176" background="images/cms/total06.jpg">
+                    </td>
+                </tr>
+                <tr>
+                    <td width="308" height="25" background="images/cms/total07.jpg">
+                        <a href="showcolumn-4-1.aspx">
+                            <img src="images/cms/more03.jpg" border="0" align="right" /></a>
+                    </td>
+                    <td width="309" height="25" bgcolor="#FFFFFF">
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <br />
+        <br />
+    </div>
+</div>
+<%template _footer%>
+<!--{querycount}<br />
+{querydetail}<br />
+{processtime}秒<br />-->

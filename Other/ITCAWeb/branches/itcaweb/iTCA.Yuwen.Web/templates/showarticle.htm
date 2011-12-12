@@ -1,0 +1,21 @@
+﻿<%namespace iTCA.Yuwen.Data%>
+<%namespace iTCA.Yuwen.Entity%>
+<%inherits iTCA.Yuwen.Web.showarticle%>
+<%template _header%>
+<div id="pagebody">
+    <div id="content" style="background-image: url(images/showback.jpg)">
+        <div class="title">
+            <strong style="font-size: 16px">{articleinfo.title}</strong>
+        </div>
+        <div class="information" style="float: right; padding-right: 40px">
+            发布人:{articleinfo.username} &nbsp; 发布时间: {articleinfo.postdate}
+        </div>
+        <br />
+        <div class="content" style="text-align: left; padding: 10px 40px">
+            {articleinfo.content}</div>
+    </div>
+</div>
+<%template _footer%>
+<!--{querycount}<br />
+{querydetail}<br />
+{processtime}秒<br />-->

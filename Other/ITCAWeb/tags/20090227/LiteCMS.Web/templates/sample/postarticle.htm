@@ -1,0 +1,138 @@
+﻿<%namespace LiteCMS.Data%>
+<%namespace LiteCMS.Entity%>
+<%inherits LiteCMS.Web.postarticle%>
+
+<%template _header%>
+	<!--内容开始-->
+	<%template _rightside%>
+	
+	<!--左栏开始-->
+	<div id="left-side">
+		<!--文章开始-->
+		<div class="div-header">投递文章</div>
+		<!-- tinyMCE -->
+
+        <script language="javascript" type="text/javascript" src="editor/tiny_mce.js"></script>
+
+        <script language="javascript" type="text/javascript">
+            // Notice: The simple theme does not use all options some of them are limited to the advanced theme
+            tinyMCE.init({
+            mode : "textareas",theme : "advanced",language : "zh",
+            theme_advanced_toolbar_location : "top",theme_advanced_toolbar_align : "left"
+            });
+         </script>
+        <!-- /tinyMCE -->
+        
+        
+        <div>
+        <form method="post" action="">
+        
+        <table style="width:100%;">
+                <tr>
+                    <td style="width: 96px">
+                        <select name="columnid" id="columns" style="width:96px;">
+                        <%loop (ColumnInfo) columninfo columnlist%>
+	                        <option value="{columninfo.columnid}">{columninfo.columnname}</option>
+	                    <%/loop%>
+                        </select>
+                    </td>
+                    <td>
+                        <input name="title" type="text" style="width:100%;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <textarea name="summary" rows="2" cols="20" id="summary" style="height:70px;width:100%;"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <textarea name="content" rows="2" cols="20" id="content" style="height:366px;width:100%;"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td>上传文件:</td>
+
+                    <td>                       
+                        <input type="file" name="upfile" id="upfile" />
+                        <button class="button" id="buttonUpload" onclick="return ajaxFileUpload();">上传文件</button>                          
+                        <script src="javascript/jquery-1.2.6.js" type="text/javascript" language="javascript"></script>
+                        <script src="javascript/ajaxfileupload.js" type="text/javascript"></script>
+                        <script type="text/javascript">
+                            function ajaxFileUpload()
+                            {
+                                //starting setting some animation when the ajax starts and completes
+                                $("#loading")
+                                .ajaxStart(function(){
+                                    $(this).show();
+                                })
+                                .ajaxComplete(function(){
+                                    $(this).hide();
+                                });
+                               
+                                /*
+                                    prepareing ajax file upload
+                                    url: the url of script file handling the uploaded files
+                                                fileElementId: the file type of input element id and it will be the index of  $_FILES Array()
+                                    dataType: it support json, xml
+                                    secureuri:use secure protocol
+                                    success: call back function when the ajax complete
+                                    error: callback function when the ajax failed
+                                   
+                                        */
+                                $.ajaxFileUpload
+                                (
+                                    {
+                                        url:'uploadfile.aspx',
+                                        secureuri:false,
+                                        fileElementId:'upfile',
+                                        dataType: 'json',
+                                        success: function (data, status)
+                                        {
+                                            if(typeof(data.Filepath) != 'undefined')
+                                            {
+                                                alert('上传成功!');                                                
+                                                tinyMCE.getInstanceById('content').getBody().innerHTML += '<img src="' + data.Filepath + '" alt="" />';
+                                            }
+//                                            if(typeof(data.error) != 'undefined')
+//                                            {
+//                                                if(data.error != '')
+//                                                {
+//                                                    alert(data.error);
+//                                                }else
+//                                                {
+//                                                    alert(data.msg);
+//                                                }
+//                                            }
+
+                                        },
+                                        error: function (data, status, e)
+                                        {
+                                            alert('上传失败,请检查扩展名是否被允许.');
+                                        }
+                                    }
+                                )
+                               
+                                return false;
+
+                            }  
+                        </script>
+                    </td>
+                </tr>
+
+                <tr>                    
+                    <td align="center" colspan="2">
+                        <input type="submit" value="提交" />&nbsp;&nbsp;&nbsp;<input type="submit" name="btnCancel" value="取消" id="btnCancel" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+        </div>
+		<!--文章结束-->
+	</div>
+	<!--左栏结束-->
+
+	<!--内容结束-->
+
+<%template _footer%>

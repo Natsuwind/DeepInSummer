@@ -1,0 +1,525 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BB8BC9A4-BB37-42DF-9B5C-DC0C9E5E35D9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>iTCA.Yuwen.Web</RootNamespace>
+    <AssemblyName>iTCA.Yuwen.Web</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="App_Code, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ann.aspx.cs">
+      <DependentUpon>ann.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestBook\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestBook\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestBook\posttopic.aspx.cs">
+      <DependentUpon>posttopic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestBook\posttopic.aspx.designer.cs">
+      <DependentUpon>posttopic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="include\itca.Master.cs">
+      <DependentUpon>itca.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="include\itca.Master.designer.cs">
+      <DependentUpon>itca.Master</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="news.aspx.cs">
+      <DependentUpon>news.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="other\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="other\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="other\Links.aspx.cs">
+      <DependentUpon>Links.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="other\Links.aspx.designer.cs">
+      <DependentUpon>Links.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="showarticle.aspx.cs">
+      <DependentUpon>showarticle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="showcolumn.aspx.cs">
+      <DependentUpon>showcolumn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ann.aspx" />
+    <Content Include="App_Data\db.mdb">
+    </Content>
+    <Content Include="App_Data\information.txt" />
+    <Content Include="book\agree.aspx" />
+    <Content Include="book\chgpwd.aspx" />
+    <Content Include="book\find.aspx" />
+    <Content Include="book\frame.css" />
+    <Content Include="book\header.html" />
+    <Content Include="book\index.aspx" />
+    <Content Include="book\itca.css" />
+    <Content Include="book\left.html" />
+    <Content Include="book\Login.aspx" />
+    <Content Include="book\Loginout.aspx" />
+    <Content Include="book\post.aspx" />
+    <Content Include="book\read.aspx" />
+    <Content Include="book\reg.aspx" />
+    <Content Include="book\right.html" />
+    <Content Include="book\UCenter.aspx" />
+    <Content Include="book\Ucpm.aspx" />
+    <Content Include="book\user.aspx" />
+    <Content Include="book\UTitle.aspx" />
+    <Content Include="code.aspx" />
+    <Content Include="config\sql.txt" />
+    <Content Include="config\sqlite.txt" />
+    <Content Include="db.txt" />
+    <Content Include="editor\langs\zh.js" />
+    <Content Include="editor\plugins\advhr\css\advhr.css" />
+    <Content Include="editor\plugins\advhr\editor_plugin.js" />
+    <Content Include="editor\plugins\advhr\js\rule.js" />
+    <Content Include="editor\plugins\advhr\langs\en_dlg.js" />
+    <Content Include="editor\plugins\advhr\langs\zh_dlg.js" />
+    <Content Include="editor\plugins\advhr\rule.htm" />
+    <Content Include="editor\plugins\advimage\css\advimage.css" />
+    <Content Include="editor\plugins\advimage\editor_plugin.js" />
+    <Content Include="editor\plugins\advimage\image.htm" />
+    <Content Include="editor\plugins\advimage\img\sample.gif" />
+    <Content Include="editor\plugins\advimage\js\image.js" />
+    <Content Include="editor\plugins\advimage\langs\en_dlg.js" />
+    <Content Include="editor\plugins\advimage\langs\zh_dlg.js" />
+    <Content Include="editor\plugins\advlink\css\advlink.css" />
+    <Content Include="editor\plugins\advlink\editor_plugin.js" />
+    <Content Include="editor\plugins\advlink\js\advlink.js" />
+    <Content Include="editor\plugins\advlink\langs\en_dlg.js" />
+    <Content Include="editor\plugins\advlink\langs\zh_dlg.js" />
+    <Content Include="editor\plugins\advlink\link.htm" />
+    <Content Include="editor\plugins\autosave\editor_plugin.js" />
+    <Content Include="editor\plugins\bbcode\editor_plugin.js" />
+    <Content Include="editor\plugins\compat2x\editor_plugin.js" />
+    <Content Include="editor\plugins\contextmenu\editor_plugin.js" />
+    <Content Include="editor\plugins\directionality\editor_plugin.js" />
+    <Content Include="editor\plugins\emotions\editor_plugin.js" />
+    <Content Include="editor\plugins\emotions\emotions.htm" />
+    <Content Include="editor\plugins\emotions\img\smiley-cool.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-cry.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-embarassed.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-foot-in-mouth.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-frown.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-innocent.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-kiss.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-laughing.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-money-mouth.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-sealed.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-smile.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-surprised.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-tongue-out.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-undecided.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-wink.gif" />
+    <Content Include="editor\plugins\emotions\img\smiley-yell.gif" />
+    <Content Include="editor\plugins\emotions\js\emotions.js" />
+    <Content Include="editor\plugins\emotions\langs\en_dlg.js" />
+    <Content Include="editor\plugins\emotions\langs\zh_dlg.js" />
+    <Content Include="editor\plugins\example\dialog.htm" />
+    <Content Include="editor\plugins\example\editor_plugin.js" />
+    <Content Include="editor\plugins\example\img\example.gif" />
+    <Content Include="editor\plugins\example\js\dialog.js" />
+    <Content Include="editor\plugins\example\langs\en.js" />
+    <Content Include="editor\plugins\example\langs\en_dlg.js" />
+    <Content Include="editor\plugins\fullpage\css\fullpage.css" />
+    <Content Include="editor\plugins\fullpage\editor_plugin.js" />
+    <Content Include="editor\plugins\fullpage\fullpage.htm" />
+    <Content Include="editor\plugins\fullpage\js\fullpage.js" />
+    <Content Include="editor\plugins\fullpage\langs\en_dlg.js" />
+    <Content Include="editor\plugins\fullpage\langs\zh_dlg.js" />
+    <Content Include="editor\plugins\fullscreen\editor_plugin.js" />
+    <Content Include="editor\plugins\fullscreen\fullscreen.htm" />
+    <Content Include="editor\plugins\iespell\editor_plugin.js" />
+    <Content Include="editor\plugins\inlinepopups\editor_plugin.js" />
+    <Content Include="editor\plugins\inlinepopups\skins\clearlooks2\img\alert.gif" />
+    <Content Include="editor\plugins\inlinepopups\skins\clearlooks2\img\button.gif" />
+    <Content Include="editor\plugins\inlinepopups\skins\clearlooks2\img\buttons.gif" />
+    <Content Include="editor\plugins\inlinepopups\skins\clearlooks2\img\confirm.gif" />
+    <Content Include="editor\plugins\inlinepopups\skins\clearlooks2\img\corners.gif" />
+    <Content Include="editor\plugins\inlinepopups\skins\clearlooks2\img\horizontal.gif" />
+    <Content Include="editor\plugins\inlinepopups\skins\clearlooks2\img\vertical.gif" />
+    <Content Include="editor\plugins\inlinepopups\skins\clearlooks2\window.css" />
+    <Content Include="editor\plugins\inlinepopups\template.htm" />
+    <Content Include="editor\plugins\insertdatetime\editor_plugin.js" />
+    <Content Include="editor\plugins\layer\editor_plugin.js" />
+    <Content Include="editor\plugins\media\css\content.css" />
+    <Content Include="editor\plugins\media\css\media.css" />
+    <Content Include="editor\plugins\media\editor_plugin.js" />
+    <Content Include="editor\plugins\media\img\flash.gif" />
+    <Content Include="editor\plugins\media\img\flv_player.swf" />
+    <Content Include="editor\plugins\media\img\quicktime.gif" />
+    <Content Include="editor\plugins\media\img\realmedia.gif" />
+    <Content Include="editor\plugins\media\img\shockwave.gif" />
+    <Content Include="editor\plugins\media\img\trans.gif" />
+    <Content Include="editor\plugins\media\img\windowsmedia.gif" />
+    <Content Include="editor\plugins\media\js\embed.js" />
+    <Content Include="editor\plugins\media\js\media.js" />
+    <Content Include="editor\plugins\media\langs\en_dlg.js" />
+    <Content Include="editor\plugins\media\langs\zh_dlg.js" />
+    <Content Include="editor\plugins\media\media.htm" />
+    <Content Include="editor\plugins\nonbreaking\editor_plugin.js" />
+    <Content Include="editor\plugins\noneditable\editor_plugin.js" />
+    <Content Include="editor\plugins\pagebreak\css\content.css" />
+    <Content Include="editor\plugins\pagebreak\editor_plugin.js" />
+    <Content Include="editor\plugins\pagebreak\img\pagebreak.gif" />
+    <Content Include="editor\plugins\pagebreak\img\trans.gif" />
+    <Content Include="editor\plugins\paste\blank.htm" />
+    <Content Include="editor\plugins\paste\css\blank.css" />
+    <Content Include="editor\plugins\paste\css\pasteword.css" />
+    <Content Include="editor\plugins\paste\editor_plugin.js" />
+    <Content Include="editor\plugins\paste\js\pastetext.js" />
+    <Content Include="editor\plugins\paste\js\pasteword.js" />
+    <Content Include="editor\plugins\paste\langs\en_dlg.js" />
+    <Content Include="editor\plugins\paste\langs\zh_dlg.js" />
+    <Content Include="editor\plugins\paste\pastetext.htm" />
+    <Content Include="editor\plugins\paste\pasteword.htm" />
+    <Content Include="editor\plugins\preview\editor_plugin.js" />
+    <Content Include="editor\plugins\preview\example.html" />
+    <Content Include="editor\plugins\preview\jscripts\embed.js" />
+    <Content Include="editor\plugins\print\editor_plugin.js" />
+    <Content Include="editor\plugins\safari\blank.htm" />
+    <Content Include="editor\plugins\safari\editor_plugin.js" />
+    <Content Include="editor\plugins\save\editor_plugin.js" />
+    <Content Include="editor\plugins\searchreplace\css\searchreplace.css" />
+    <Content Include="editor\plugins\searchreplace\editor_plugin.js" />
+    <Content Include="editor\plugins\searchreplace\js\searchreplace.js" />
+    <Content Include="editor\plugins\searchreplace\langs\en_dlg.js" />
+    <Content Include="editor\plugins\searchreplace\langs\zh_dlg.js" />
+    <Content Include="editor\plugins\searchreplace\searchreplace.htm" />
+    <Content Include="editor\plugins\spellchecker\css\content.css" />
+    <Content Include="editor\plugins\spellchecker\editor_plugin.js" />
+    <Content Include="editor\plugins\spellchecker\img\wline.gif" />
+    <Content Include="editor\plugins\style\css\props.css" />
+    <Content Include="editor\plugins\style\editor_plugin.js" />
+    <Content Include="editor\plugins\style\js\props.js" />
+    <Content Include="editor\plugins\style\langs\en_dlg.js" />
+    <Content Include="editor\plugins\style\langs\zh_dlg.js" />
+    <Content Include="editor\plugins\style\props.htm" />
+    <Content Include="editor\plugins\table\cell.htm" />
+    <Content Include="editor\plugins\table\css\cell.css" />
+    <Content Include="editor\plugins\table\css\row.css" />
+    <Content Include="editor\plugins\table\css\table.css" />
+    <Content Include="editor\plugins\table\editor_plugin.js" />
+    <Content Include="editor\plugins\table\js\cell.js" />
+    <Content Include="editor\plugins\table\js\merge_cells.js" />
+    <Content Include="editor\plugins\table\js\row.js" />
+    <Content Include="editor\plugins\table\js\table.js" />
+    <Content Include="editor\plugins\table\langs\en_dlg.js" />
+    <Content Include="editor\plugins\table\langs\zh_dlg.js" />
+    <Content Include="editor\plugins\table\merge_cells.htm" />
+    <Content Include="editor\plugins\table\row.htm" />
+    <Content Include="editor\plugins\table\table.htm" />
+    <Content Include="editor\plugins\template\blank.htm" />
+    <Content Include="editor\plugins\template\css\template.css" />
+    <Content Include="editor\plugins\template\editor_plugin.js" />
+    <Content Include="editor\plugins\template\js\template.js" />
+    <Content Include="editor\plugins\template\langs\en_dlg.js" />
+    <Content Include="editor\plugins\template\langs\zh_dlg.js" />
+    <Content Include="editor\plugins\template\template.htm" />
+    <Content Include="editor\plugins\visualchars\editor_plugin.js" />
+    <Content Include="editor\plugins\xhtmlxtras\abbr.htm" />
+    <Content Include="editor\plugins\xhtmlxtras\acronym.htm" />
+    <Content Include="editor\plugins\xhtmlxtras\attributes.htm" />
+    <Content Include="editor\plugins\xhtmlxtras\cite.htm" />
+    <Content Include="editor\plugins\xhtmlxtras\css\attributes.css" />
+    <Content Include="editor\plugins\xhtmlxtras\css\popup.css" />
+    <Content Include="editor\plugins\xhtmlxtras\del.htm" />
+    <Content Include="editor\plugins\xhtmlxtras\editor_plugin.js" />
+    <Content Include="editor\plugins\xhtmlxtras\ins.htm" />
+    <Content Include="editor\plugins\xhtmlxtras\js\abbr.js" />
+    <Content Include="editor\plugins\xhtmlxtras\js\acronym.js" />
+    <Content Include="editor\plugins\xhtmlxtras\js\attributes.js" />
+    <Content Include="editor\plugins\xhtmlxtras\js\cite.js" />
+    <Content Include="editor\plugins\xhtmlxtras\js\del.js" />
+    <Content Include="editor\plugins\xhtmlxtras\js\element_common.js" />
+    <Content Include="editor\plugins\xhtmlxtras\js\ins.js" />
+    <Content Include="editor\plugins\xhtmlxtras\langs\en_dlg.js" />
+    <Content Include="editor\plugins\xhtmlxtras\langs\zh_dlg.js" />
+    <Content Include="editor\themes\advanced\about.htm" />
+    <Content Include="editor\themes\advanced\anchor.htm" />
+    <Content Include="editor\themes\advanced\charmap.htm" />
+    <Content Include="editor\themes\advanced\color_picker.htm" />
+    <Content Include="editor\themes\advanced\editor_template.js" />
+    <Content Include="editor\themes\advanced\image.htm" />
+    <Content Include="editor\themes\advanced\img\colorpicker.jpg" />
+    <Content Include="editor\themes\advanced\img\icons.gif" />
+    <Content Include="editor\themes\advanced\js\about.js" />
+    <Content Include="editor\themes\advanced\js\anchor.js" />
+    <Content Include="editor\themes\advanced\js\charmap.js" />
+    <Content Include="editor\themes\advanced\js\color_picker.js" />
+    <Content Include="editor\themes\advanced\js\image.js" />
+    <Content Include="editor\themes\advanced\js\link.js" />
+    <Content Include="editor\themes\advanced\js\source_editor.js" />
+    <Content Include="editor\themes\advanced\langs\en.js" />
+    <Content Include="editor\themes\advanced\langs\en_dlg.js" />
+    <Content Include="editor\themes\advanced\langs\zh.js" />
+    <Content Include="editor\themes\advanced\langs\zh_dlg.js" />
+    <Content Include="editor\themes\advanced\link.htm" />
+    <Content Include="editor\themes\advanced\skins\default\content.css" />
+    <Content Include="editor\themes\advanced\skins\default\dialog.css" />
+    <Content Include="editor\themes\advanced\skins\default\img\buttons.png" />
+    <Content Include="editor\themes\advanced\skins\default\img\items.gif" />
+    <Content Include="editor\themes\advanced\skins\default\img\menu_arrow.gif" />
+    <Content Include="editor\themes\advanced\skins\default\img\menu_check.gif" />
+    <Content Include="editor\themes\advanced\skins\default\img\progress.gif" />
+    <Content Include="editor\themes\advanced\skins\default\img\tabs.gif" />
+    <Content Include="editor\themes\advanced\skins\default\ui.css" />
+    <Content Include="editor\themes\advanced\skins\o2k7\content.css" />
+    <Content Include="editor\themes\advanced\skins\o2k7\dialog.css" />
+    <Content Include="editor\themes\advanced\skins\o2k7\img\button_bg.png" />
+    <Content Include="editor\themes\advanced\skins\o2k7\img\button_bg_black.png" />
+    <Content Include="editor\themes\advanced\skins\o2k7\img\button_bg_silver.png" />
+    <Content Include="editor\themes\advanced\skins\o2k7\ui.css" />
+    <Content Include="editor\themes\advanced\skins\o2k7\ui_black.css" />
+    <Content Include="editor\themes\advanced\skins\o2k7\ui_silver.css" />
+    <Content Include="editor\themes\advanced\source_editor.htm" />
+    <Content Include="editor\themes\simple\editor_template.js" />
+    <Content Include="editor\themes\simple\img\icons.gif" />
+    <Content Include="editor\themes\simple\langs\en.js" />
+    <Content Include="editor\themes\simple\langs\zh.js" />
+    <Content Include="editor\themes\simple\skins\default\content.css" />
+    <Content Include="editor\themes\simple\skins\default\ui.css" />
+    <Content Include="editor\themes\simple\skins\o2k7\content.css" />
+    <Content Include="editor\themes\simple\skins\o2k7\img\button_bg.png" />
+    <Content Include="editor\themes\simple\skins\o2k7\ui.css" />
+    <Content Include="editor\tiny_mce.js" />
+    <Content Include="editor\tiny_mce_popup.js" />
+    <Content Include="editor\utils\editable_selects.js" />
+    <Content Include="editor\utils\form_utils.js" />
+    <Content Include="editor\utils\mctabs.js" />
+    <Content Include="editor\utils\validate.js" />
+    <Content Include="images\act\index1.gif" />
+    <Content Include="images\act\left.gif" />
+    <Content Include="images\act\liuchengtu.gif" />
+    <Content Include="images\act\tel.gif" />
+    <Content Include="images\banner.gif" />
+    <Content Include="images\cms\cms01.jpg" />
+    <Content Include="images\cms\cms02.jpg" />
+    <Content Include="images\cms\cms03.jpg" />
+    <Content Include="images\cms\cms04.jpg" />
+    <Content Include="images\cms\more01.jpg" />
+    <Content Include="images\cms\more02.jpg" />
+    <Content Include="images\cms\more03.jpg" />
+    <Content Include="images\cms\side07.jpg" />
+    <Content Include="images\cms\total01.jpg" />
+    <Content Include="images\cms\total02.jpg" />
+    <Content Include="images\cms\total03.jpg" />
+    <Content Include="images\cms\total04.jpg" />
+    <Content Include="images\cms\total05.jpg" />
+    <Content Include="images\cms\total06.jpg" />
+    <Content Include="images\cms\total07.jpg" />
+    <Content Include="images\face\1.GIF" />
+    <Content Include="images\face\2.gif" />
+    <Content Include="images\face\3.gif" />
+    <Content Include="images\face\4.GIF" />
+    <Content Include="images\face\5.gif" />
+    <Content Include="images\face\men.ico" />
+    <Content Include="images\face\women.ico" />
+    <Content Include="images\footer.gif" />
+    <Content Include="images\index\banner1.gif" />
+    <Content Include="images\index\default01.jpg" />
+    <Content Include="images\index\default02.jpg" />
+    <Content Include="images\index\def_back01.jpg" />
+    <Content Include="images\index\def_back02.jpg" />
+    <Content Include="images\index\def_foot01.jpg" />
+    <Content Include="images\index\def_foot02.jpg" />
+    <Content Include="images\index\def_left01.jpg" />
+    <Content Include="images\index\def_left02.jpg" />
+    <Content Include="images\index\def_left03.jpg" />
+    <Content Include="images\index\def_left04.jpg" />
+    <Content Include="images\index\def_mid01.jpg" />
+    <Content Include="images\index\def_mid02.jpg" />
+    <Content Include="images\index\def_mid03.jpg" />
+    <Content Include="images\index\def_mid04.jpg" />
+    <Content Include="images\index\def_right.jpg" />
+    <Content Include="images\index\def_right01.jpg" />
+    <Content Include="images\index\def_right02.jpg" />
+    <Content Include="images\index\def_right04.jpg" />
+    <Content Include="images\logo.gif" />
+    <Content Include="images\other\about.gif" />
+    <Content Include="images\other\itca_ban.jpg" />
+    <Content Include="images\other\left.jpg" />
+    <Content Include="images\other\links.gif" />
+    <Content Include="images\other\showback.jpg" />
+    <Content Include="images\other\showback1.jpg" />
+    <Content Include="images\other\showback2.jpg" />
+    <Content Include="images\other\tel.gif" />
+    <Content Include="images\validator.jpg" />
+    <Content Include="include\footer.html" />
+    <Content Include="include\footer_fr.html" />
+    <Content Include="include\header.html" />
+    <Content Include="include\header_fr_book.html" />
+    <Content Include="include\header_fr_oth.html" />
+    <Content Include="index.aspx" />
+    <Content Include="news.aspx" />
+    <Content Include="other\Connection.html" />
+    <Content Include="other\cul.html" />
+    <Content Include="other\events.html" />
+    <Content Include="other\index.aspx" />
+    <Content Include="other\intr.html" />
+    <Content Include="other\Links.aspx" />
+    <Content Include="other\org.files\arrow.gif" />
+    <Content Include="other\org.files\data.xml" />
+    <Content Include="other\org.files\filelist.xml" />
+    <Content Include="other\org.files\find.js" />
+    <Content Include="other\org.files\frameset.js" />
+    <Content Include="other\org.files\fullpage.gif" />
+    <Content Include="other\org.files\gif_1.gif" />
+    <Content Include="other\org.files\gif_1.html" />
+    <Content Include="other\org.files\gif_1.js" />
+    <Content Include="other\org.files\go.gif" />
+    <Content Include="other\org.files\keys.js" />
+    <Content Include="other\org.files\maximize.gif" />
+    <Content Include="other\org.files\minimize.gif" />
+    <Content Include="other\org.files\minus.gif" />
+    <Content Include="other\org.files\panminus.gif" />
+    <Content Include="other\org.files\panplus.gif" />
+    <Content Include="other\org.files\plus.gif" />
+    <Content Include="other\org.files\tick-foc.gif" />
+    <Content Include="other\org.files\tick-off.gif" />
+    <Content Include="other\org.files\tick-on.gif" />
+    <Content Include="other\org.files\toc.gif" />
+    <Content Include="other\org.files\toc2.gif" />
+    <Content Include="other\org.files\toolbar.html" />
+    <Content Include="other\org.files\visio.css" />
+    <Content Include="other\org.files\vml_1.html" />
+    <Content Include="other\org.files\vml_1.js" />
+    <Content Include="other\org.files\widgets.html" />
+    <Content Include="other\org.files\zoom.html" />
+    <Content Include="other\org.html" />
+    <Content Include="other\orgshow.html" />
+    <Content Include="showarticle.aspx" />
+    <Content Include="showcolumn.aspx" />
+    <Content Include="templates\ann.htm" />
+    <Content Include="templates\css\itca.css" />
+    <Content Include="templates\index.htm" />
+    <Content Include="templates\news.htm" />
+    <Content Include="templates\showarticle.htm" />
+    <Content Include="templates\showcolumn.htm" />
+    <Content Include="templates\simple\ann.htm" />
+    <Content Include="templates\simple\index.htm" />
+    <Content Include="templates\simple\news.htm" />
+    <Content Include="templates\simple\showarticle.htm" />
+    <Content Include="templates\simple\showcolumn.htm" />
+    <Content Include="templates\_footer.htm" />
+    <Content Include="templates\_header.htm" />
+    <Content Include="templates\_indexfooter.htm" />
+    <Content Include="upload\2008\06\25\339585628106.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config\db.config" />
+    <Content Include="config\urls.config" />
+    <Content Include="config\复件 %282%29 db.config" />
+    <Content Include="config\复件 db.config" />
+    <None Include="images\act\CVS\Entries" />
+    <None Include="images\act\CVS\Entries.Extra" />
+    <None Include="images\act\CVS\Entries.Extra.Old" />
+    <None Include="images\act\CVS\Entries.Old" />
+    <None Include="images\act\CVS\Repository" />
+    <None Include="images\act\CVS\Root" />
+    <Content Include="GuestBook\index.aspx" />
+    <Content Include="GuestBook\posttopic.aspx" />
+    <Content Include="include\itca.Master" />
+    <None Include="other\org.files\vml_1.emz" />
+    <Content Include="templates\GuestBook\posttopic.htm" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\iTCA.Yuwen.Core\iTCA.Yuwen.Core.csproj">
+      <Project>{1C1A6FB6-3170-4BAB-B500-325E811410E6}</Project>
+      <Name>iTCA.Yuwen.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iTCA.Ywen.Entity\iTCA.Yuwen.Entity.csproj">
+      <Project>{1CCDB94E-09C9-42A3-A6D9-AA81C47BBD1B}</Project>
+      <Name>iTCA.Yuwen.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuwen.Tools.Data\Yuwen.Tools.Data.csproj">
+      <Project>{5B2EE769-84C8-4F9A-8A35-5375C4A77BC3}</Project>
+      <Name>Yuwen.Tools.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1038</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://www.dev7.com/itca</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

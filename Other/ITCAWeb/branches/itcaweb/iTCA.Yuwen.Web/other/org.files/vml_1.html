@@ -1,0 +1,203 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" 
+ xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5"/>
+<link rel="stylesheet" type="text/css" href="visio.css"/>
+<title>组织结构图</title>
+<style type="text/css">
+	 v\:* { behavior: url(#default#VML); }
+</style>
+
+<script src="vml_1.js" type="text/jscript" language="jscript"></script>
+
+<script type="text/jscript" language="jscript">
+
+	var pageID = 0;
+	var viewMgr = null;
+
+	if (parent.g_FirstPageToLoad != null && parent.g_FirstPageToLoad.length > 0)
+	{
+		if (parent.g_FileList[parent.g_CurPageIndex].PageID != pageID)
+		{
+			location.replace(parent.g_FileList[parent.g_CurPageIndex].PriImage);
+		}
+
+		parent.g_FirstPageToLoad = null;
+	}
+
+	function getPNZ()
+	{
+		var rawHTML = VMLDiv.innerHTML;
+		var strReturn = ""
+		
+		strReturn = rawHTML.slice( rawHTML.indexOf( '<v:group' ), rawHTML.indexOf( "</v:shape>" ) );
+		strReturn += "</v:shape></v:group>\n";
+				
+		return strReturn;
+	}
+	
+	function load()
+	{
+		viewMgr = new parent.CViewMgr("ConvertedImage", "arrowDiv");
+
+		viewMgr.put_Location = ViewMgrSetVMLLocation;
+
+
+		viewMgr.visBBoxLeft = 2.475315;
+		viewMgr.visBBoxRight = 8.981378;
+		viewMgr.visBBoxBottom = 3.302087;
+		viewMgr.visBBoxTop = 6.973504;
+
+		viewMgr.Zoom = VMLZoomChange;
+		viewMgr.setView= VMLSetView;
+
+		viewMgr.SupportsDetails = true;
+		viewMgr.SupportsSearch = true;
+
+		parent.viewMgr = viewMgr;
+
+		fit();
+	}
+
+	function unload()
+	{
+		viewMgr = null;
+		parent.viewMgr = null;
+	}
+
+	function fit()
+	{
+		if(parent.frmToolbar)
+		{
+			if (parent.g_WidgetsLoaded)
+			{
+				var zoom100 = parent.frmToolbar.document.all('a100');
+				if (zoom100)
+				{
+					parent.viewMgr.PostZoomProcessing = PostZoomProcessing;
+					zoom100.click();
+				}
+				else
+				{
+					parent.viewMgr.PostZoomProcessing = PostZoomProcessing;
+					viewMgr.Zoom(100);
+				}
+			}
+			else
+			{
+				window.setTimeout("fit()", 500);
+			}
+		}	
+		else
+		{
+			parent.viewMgr.PostZoomProcessing = PostZoomProcessing;
+			viewMgr.Zoom(100);
+		}
+	}
+
+	function PostZoomProcessing (newZoomLevel)
+	{
+		parent.viewMgr.PostZoomProcessing = null;
+		var pageIndex = parent.PageIndexFromID (pageID);
+		parent.viewMgr.getPNZ = getPNZ;
+		parent.CurPageUpdate (pageIndex);
+	}
+
+
+	
+	var isUpLevel = parent.isUpLevel;
+	var OnShapeClick = parent.OnShapeClick;
+	var OnShapeKey = parent.OnShapeKey;
+	var UpdateTooltip = parent.UpdateTooltip;
+	var clickMenu = parent.clickMenu;
+	var toggleMenuDiv = parent.toggleMenuDiv;
+	var toggleMenuLink = parent.toggleMenuLink;
+	var GoToPage = parent.GoToPage;
+
+	window.onload = load;
+	window.onunload = unload;
+	document.onclick = clickMenu;
+
+
+
+
+</script>
+
+</head>
+
+<body style="MARGIN:10px" onresize="VMLOnResize();" onscroll="VMLOnScroll();">
+
+<div id="arrowdiv" style="position:absolute;top:0;left:0;visibility:hidden;z-index:5">
+<img id="arrowgif" alt="显示所选形状的位置" src="arrow.gif"/>
+</div>
+
+<div id="menu1" onclick="clickMenu()" class="hlMenu">
+</div>
+
+
+
+
+<div id="VMLDiv" >
+
+
+<v:group  id="ConvertedImage" style="width:7.088339in;height:4.000000in;position:absolute;visibility=hidden;" coordSize="3544,2000" coordOrigin="-1000,-1000" >
+
+<v:shapetype 
+  id="VISSHAPE"
+  target="_parent"
+  coordsize="3544,2000"
+  coordorigin="-1000,-1000"
+  stroked="f"
+  strokecolor="red"
+  filled="t"
+>
+<v:fill opacity="0.0"/>
+</v:shapetype>
+
+
+<v:shape style="top:-1000.0;left:-1000.0;width:3544.2;height:2000.0;position:absolute" coordSize="3544,2000" coordOrigin="-1000,-1000" >
+<v:imagedata src="vml_1.emz"/>
+</v:shape>
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="iTCA核心 领导层" origTitle="iTCA核心 领导层"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m 369,-620 l 1111,-620 l 1111,-975 l 369,-975 l 369,-620xe" onmouseover="UpdateTooltip(this,0,1)" onclick="OnShapeClick(0,1)" onfocus="UpdateTooltip(this,0,1);" onkeyup="OnShapeKey(0,1)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="技术 顾问" origTitle="技术 顾问"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m 1380,-351 l 1957,-351 l 1957,-606 l 1380,-606 l 1380,-351xe" onmouseover="UpdateTooltip(this,0,6)" onclick="OnShapeClick(0,6)" onfocus="UpdateTooltip(this,0,6);" onkeyup="OnShapeKey(0,6)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="iTCA行政管理 与财务处" origTitle="iTCA行政管理 与财务处"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m -870,159 l -284,159 l -284,-159 l -870,-159 l -870,159xe" onmouseover="UpdateTooltip(this,0,11)" onclick="OnShapeClick(0,11)" onfocus="UpdateTooltip(this,0,11);" onkeyup="OnShapeKey(0,11)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="iTCA技术支持与  研发中心" origTitle="iTCA技术支持与  研发中心"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m 36,159 l 621,159 l 621,-159 l 36,-159 l 36,159xe" onmouseover="UpdateTooltip(this,0,16)" onclick="OnShapeClick(0,16)" onfocus="UpdateTooltip(this,0,16);" onkeyup="OnShapeKey(0,16)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="iTCA新闻与对外 联络处" origTitle="iTCA新闻与对外 联络处"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m 923,159 l 1508,159 l 1508,-159 l 923,-159 l 923,159xe" onmouseover="UpdateTooltip(this,0,21)" onclick="OnShapeClick(0,21)" onfocus="UpdateTooltip(this,0,21);" onkeyup="OnShapeKey(0,21)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="iTCA人力资源 与人才培养中心" origTitle="iTCA人力资源 与人才培养中心"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m 1819,159 l 2405,159 l 2405,-159 l 1819,-159 l 1819,159xe" onmouseover="UpdateTooltip(this,0,26)" onclick="OnShapeClick(0,26)" onfocus="UpdateTooltip(this,0,26);" onkeyup="OnShapeKey(0,26)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="网络维护 小组" origTitle="网络维护 小组"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m -92,606 l 292,606 l 292,351 l -92,351 l -92,606xe" onmouseover="UpdateTooltip(this,0,31)" onclick="OnShapeClick(0,31)" onfocus="UpdateTooltip(this,0,31);" onkeyup="OnShapeKey(0,31)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="技术研发 小组" origTitle="技术研发 小组"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m 356,606 l 740,606 l 740,351 l 356,351 l 356,606xe" onmouseover="UpdateTooltip(this,0,36)" onclick="OnShapeClick(0,36)" onfocus="UpdateTooltip(this,0,36);" onkeyup="OnShapeKey(0,36)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="财会 出纳" origTitle="财会 出纳"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m -541,606 l -156,606 l -156,351 l -541,351 l -541,606xe" onmouseover="UpdateTooltip(this,0,41)" onclick="OnShapeClick(0,41)" onfocus="UpdateTooltip(this,0,41);" onkeyup="OnShapeKey(0,41)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="办公室 管理" origTitle="办公室 管理"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m -989,606 l -605,606 l -605,351 l -989,351 l -989,606xe" onmouseover="UpdateTooltip(this,0,46)" onclick="OnShapeClick(0,46)" onfocus="UpdateTooltip(this,0,46);" onkeyup="OnShapeKey(0,46)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="劳动改造 小组" origTitle="劳动改造 小组"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m -989,989 l -605,989 l -605,734 l -989,734 l -989,989xe" onmouseover="UpdateTooltip(this,0,51)" onclick="OnShapeClick(0,51)" onfocus="UpdateTooltip(this,0,51);" onkeyup="OnShapeKey(0,51)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="外联部" origTitle="外联部"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m 804,606 l 1188,606 l 1188,351 l 804,351 l 804,606xe" onmouseover="UpdateTooltip(this,0,56)" onclick="OnShapeClick(0,56)" onfocus="UpdateTooltip(this,0,56);" onkeyup="OnShapeKey(0,56)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="宣传部" origTitle="宣传部"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m 1252,606 l 1637,606 l 1637,351 l 1252,351 l 1252,606xe" onmouseover="UpdateTooltip(this,0,61)" onclick="OnShapeClick(0,61)" onfocus="UpdateTooltip(this,0,61);" onkeyup="OnShapeKey(0,61)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="人力 资源部" origTitle="人力 资源部"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m 1701,606 l 2085,606 l 2085,351 l 1701,351 l 1701,606xe" onmouseover="UpdateTooltip(this,0,66)" onclick="OnShapeClick(0,66)" onfocus="UpdateTooltip(this,0,66);" onkeyup="OnShapeKey(0,66)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="iTCA人员 素质培训部" origTitle="iTCA人员 素质培训部"  style="top:-1000;left:-1000;width:3544;height:2000;position:absolute" path=" m 2149,606 l 2533,606 l 2533,351 l 2149,351 l 2149,606xe" onmouseover="UpdateTooltip(this,0,71)" onclick="OnShapeClick(0,71)" onfocus="UpdateTooltip(this,0,71);" onkeyup="OnShapeKey(0,71)"/> 
+
+</v:group>
+
+
+
+</div>
+
+
+
+</body>
+</html>
+

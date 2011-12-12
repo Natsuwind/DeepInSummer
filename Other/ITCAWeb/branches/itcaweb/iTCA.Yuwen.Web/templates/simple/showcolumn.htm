@@ -1,0 +1,19 @@
+﻿<%namespace iTCA.Yuwen.Data%>
+<%namespace iTCA.Yuwen.Core%>
+<%inherits iTCA.Yuwen.Web.showcolumn%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+</head>
+<body>
+    <ul>
+        <%loop (ArticleInfo) newinfo newslist%>
+            <li>[{newinfo.columnname}]{newinfo.title}&nbsp;&nbsp;&nbsp;{newinfo.username}&nbsp;&nbsp;{newinfo.postdate}</li>
+        <%/loop%>
+    </ul>
+{querycount}<br />
+{querydetail}<br />
+{processtime}秒<br />
+</body>
+</html>

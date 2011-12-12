@@ -1,0 +1,44 @@
+<publishData>
+  <publishTarget publishUrl="D:\Documents\DotNet\CvsPlace\itca\pulish\admin\">
+    <file relUrl="bin/iTCA.Yuwen.Entity.pdb" publishTime="2008-6-26 13:29:53" />
+    <file relUrl="AUcpm.aspx" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="dbcontrol.aspx" publishTime="2008-6-28 15:45:47" />
+    <file relUrl="ftb.inserttable.aspx" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="postarticle.aspx" publishTime="2008-6-25 18:20:56" />
+    <file relUrl="bin/System.Data.SQLite.dll" publishTime="2008-5-28 0:20:40" />
+    <file relUrl="ATitle.css" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="Main.css" publishTime="2008-6-25 17:01:39" />
+    <file relUrl="articlelist.aspx" publishTime="2008-6-25 16:40:51" />
+    <file relUrl="bin/iTCA.Yuwen.Entity.dll" publishTime="2008-6-26 13:29:53" />
+    <file relUrl="ftb.imagegallery.aspx" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="BDel.aspx" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="template.aspx" publishTime="2008-6-23 11:32:37" />
+    <file relUrl="bin/Yuwen.Tools.Data.dll" publishTime="2008-6-28 1:23:55" />
+    <file relUrl="bin/Yuwen.Tools.Template.dll" publishTime="2008-6-26 13:30:00" />
+    <file relUrl="deleteadmin.aspx" publishTime="2008-6-24 10:20:39" />
+    <file relUrl="bin/iTCA.Yuwen.Core.pdb" publishTime="2008-6-28 15:45:53" />
+    <file relUrl="bin/Yuwen.Tools.Template.pdb" publishTime="2008-6-26 13:30:00" />
+    <file relUrl="BReply.aspx" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="AEditadmin.aspx" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="AdminLogin.aspx" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="bin/iTCA.Yuwen.Data.dll" publishTime="2008-6-28 1:23:56" />
+    <file relUrl="ftb.colorpicker.aspx" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="ALoginout.aspx" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="ABlist.aspx" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="bin/Yuwen.Tools.TinyCache.dll" publishTime="2008-6-26 13:29:59" />
+    <file relUrl="bin/iTCA.Yuwen.Web.Admin.dll" publishTime="2008-6-28 15:58:09" />
+    <file relUrl="bin/System.Data.SQLite.xml" publishTime="2008-5-28 0:15:58" />
+    <file relUrl="bin/Yuwen.Tools.TinyCache.pdb" publishTime="2008-6-26 13:29:59" />
+    <file relUrl="bin/iTCA.Yuwen.Data.pdb" publishTime="2008-6-28 1:23:56" />
+    <file relUrl="ALinks.aspx" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="bin/iTCA.Yuwen.Core.dll" publishTime="2008-6-28 15:45:54" />
+    <file relUrl="Login.aspx" publishTime="2008-6-26 13:29:00" />
+    <file relUrl="bin/Yuwen.Tools.Data.pdb" publishTime="2008-6-28 1:23:55" />
+    <file relUrl="bin/iTCA.Yuwen.Web.Admin.pdb" publishTime="2008-6-28 15:58:09" />
+    <file relUrl="columnlist.aspx" publishTime="2008-6-25 14:51:55" />
+    <file relUrl="Aleft.html" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="AOthEdit.aspx" publishTime="2008-6-27 19:34:00" />
+    <file relUrl="default.aspx" publishTime="2008-6-27 20:28:46" />
+    <file relUrl="AUlist.aspx" publishTime="2008-6-27 19:34:00" />
+  </publishTarget>
+</publishData>

@@ -1,0 +1,63 @@
+﻿<%namespace LiteCMS.Data%>
+<%namespace LiteCMS.Entity%>
+<%namespace System.Collections.Generic%>
+<%inherits LiteCMS.Web.index%>
+
+<%template _header%>
+	<!--内容开始-->
+	<%template _rightside%>
+	
+	<!--左栏开始-->
+	<div id="left-side">
+		<!--新闻列表开始-->
+		<!--推荐文章开始-->
+		<div class="div-header">首页最新推送文章</div>
+		<!--分页开始-->
+		<div id="pager">页码:{pagecounthtml}</div>
+		<!--分页结束-->
+		<ul>
+		    <%loop (ArticleInfo) info mainarticlelist%>
+			    <li class="article-list">			    
+				    <h2 class="title"><a href="<%if {config.urlrewrite}==1%>showarticle-{info.articleid}{config.urlrewriteextname}<%else%>showarticle.aspx?id={info.articleid}<%/if%>">{info.title}</a></h2>
+				    <span class="description">{info.summary}</span>
+				    <div class="post-info"><span class="author">{info.username}</span>投递 @ 发布于<span class="post-date">{info.postdate}</span><span>评论({info.commentcount})</span></div>
+			    </li>
+			<%/loop%>
+		</ul>		
+		<!--分页开始-->
+		<div id="pager">页码:{pagecounthtml}</div>
+		<!--分页结束-->
+		<!--推荐文章结束-->
+		
+		<!--栏目列表开始-->		
+	    <!--所有栏目循环开始-->
+	    <%loop (KeyValuePair<ColumnInfo,List<ArticleInfo>>) allarticlelist allcolumnarticlelistd%>
+		    <div class="div-header"><a href="<%if {config.urlrewrite}==1%>showcolumn-{allarticlelist.key.Columnid}{config.urlrewriteextname}<%else%>showcolumn.aspx?cid={allarticlelist.key.Columnid}<%/if%>">{allarticlelist.key.Columnname}</div>
+		    <ul>
+    		<%loop (ArticleInfo) allarticleinfo allarticlelist.Value%>    		    
+			    <%if {config.urlrewrite}==1%>
+			    <li class="article-list"><h2><a href="showarticle-{allarticleinfo.articleid}{config.urlrewriteextname}">{allarticleinfo.title}</a></h2></li>
+			    <%else%>
+			    <li class="article-list"><h2><a href="showarticle.aspx?id={allarticleinfo.articleid}">{allarticleinfo.title}</a></h2></li>
+			    <%/if%>
+			<%/loop%>
+		    </ul>
+	    <%/loop%>
+	    <!--所有栏目循环结束-->		
+		<!--栏目列表结束-->
+		
+		<!--插件文章列表开始
+		<div class="div-header">论坛新帖</div>
+		<ul>
+			<li class="article-list"><h2><a href="#">鲍尔默感恩节答谢名单 盖茨杨致远榜上有名</a></h2></li>
+			<li class="article-list"><h2><a href="#">英国卫报：疯狂的树屋</a></h2></li>
+			<li class="article-list"><h2><a href="#">阿里巴巴“援冬”产品取得开门红</a></h2></li>
+		</ul>
+		插件文章列表开始-->	
+			
+		<!--新闻列表结束-->
+	</div>
+	<!--左栏结束-->
+	<!--内容结束-->
+
+<%template _footer%>

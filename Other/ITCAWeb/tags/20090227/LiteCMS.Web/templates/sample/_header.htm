@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<link rel="stylesheet" type="text/css" href="templates/{config.templatefolder}/main.css" />
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<%if pagetitle==""%>
+<title>{config.websitename} - {config.seotitle} - Powered by LiteCMS</title>
+<%else%>
+<title>{pagetitle} - {config.websitename} - {config.seotitle} - Powered by LiteCMS</title>
+<%/if%>
+</head>
+<body>
+<div id="wrap">
+	<!--头部开始-->
+	<div id="header">
+		<div id="main-menu">
+			<ul>
+				<li><a href="index.aspx">首页</a></li>
+				<li><a href="showcolumn.aspx">新闻</a></li>
+				<li><a href="postarticle.aspx">投递</a></li>
+            <!--<li><a href="#">博客</a></li>
+				<li><a href="bbs/">论坛</a></li>-->
+		    <%if {userid}>0%>
+				<li><a href="usercontrolpanel.aspx">用户中心[{username}]</a></li>
+			    <%if {adminid>0}%>
+				<li><a href="admincp.aspx" target="_blank">系统设置</a></li>
+				<%/if%>
+				<li><a href="loginout.aspx">注销</a></li>
+			<%else%>
+				<li><a href="login.aspx">登录</a></li>
+				<li><a href="register.aspx">注册</a></li>			
+			<%/if%>
+			</ul>
+		</div>
+	</div>
+	<!--头部结束-->

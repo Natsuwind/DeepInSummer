@@ -1,0 +1,39 @@
+﻿<%namespace LiteCMS.Data%>
+<%namespace LiteCMS.Entity%>
+<%inherits LiteCMS.Web.showmessage%>
+
+<%template _header%>
+	<!--内容开始-->
+	<%template _rightside%>
+	
+	<!--左栏开始-->
+	<div id="left-side">
+		<div class="div-header">系统提示</div>
+		<div style="border-style: dotted; border-width: 1px; margin: 100px auto 200px; width: 60%;">
+		    <div class="div-header" style="height:20px;">{messageheader}</div>
+		    <div style="padding: 10px;">{messagebody}</div>
+		    <div style="padding-left: 10px;">{messagefooter}</div>		
+		    <div style="padding: 10px;"><%if {isautoredirect}%><span id="autoredirect"></span><%/if%><a href="{redirecturl}">如果浏览器没有自动转向, 请点击这里.</a></div>
+		</div>
+	</div>
+	<!--左栏结束-->
+
+	<!--内容结束-->
+	<%if {isautoredirect}%>
+    <script language='javascript' type='text/javascript'>
+    var secs = 3; //倒计时的秒数
+    var URL = '{redirecturl}';
+    for(var i=secs;i>=0;i--)
+    {
+     window.setTimeout('doUpdate(' + i + ')', (secs-i) * 1000);
+    }
+
+    function doUpdate(num)
+    {
+     document.getElementById('autoredirect').innerHTML = '浏览器将在'+num+'秒后自动转向.' ;
+     if(num == 0) { window.location=URL;  }
+    }
+    </script> 
+   <%/if%>
+
+<%template _footer%>

@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisioDocument>
+	<DocumentProperties>
+		<Title></Title>
+		<HyperlinkBase href=""></HyperlinkBase>
+	</DocumentProperties>
+	<Pages>
+		<Page ID="0" Name="页-1" NameU="Page-1">
+			<Layer IX="0">
+				<Name>隐藏</Name>
+				<NameUniv>Hidden</NameUniv>
+				<Visible>0</Visible>
+			</Layer>
+			<Shapes>
+				<Shape ID="1" UniqueID="{FBFC0D21-C558-48E8-BC19-256D48D38CC9}" Name="总经理" NameU="Executive" Master="0">
+					<Text>iTCA核心
+领导层</Text>
+					<XForm>
+						<PinX Unit="MM">5.669291339000000</PinX>
+						<PinY Unit="MM">6.614173228000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">iTCA核心</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR">领导层</Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="6" UniqueID="{649EA7A6-1D89-4010-B851-0C5C602DB946}" Name="助理" NameU="Assistant" Master="6">
+					<Text>技术
+顾问</Text>
+					<XForm>
+						<PinX Unit="MM">7.381889764000000</PinX>
+						<PinY Unit="MM">6.023622047000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">技术</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR">顾问</Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="11" UniqueID="{F61FEAC6-F181-429D-8933-30628E7BE1E3}" Name="职位" NameU="Position" Master="3">
+					<Text>iTCA行政管理
+与财务处</Text>
+					<XForm>
+						<PinX Unit="MM">3.239595051000000</PinX>
+						<PinY Unit="MM">5.137795276000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">iTCA行政管理</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR">与财务处</Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="16" UniqueID="{08BBE236-22DF-44E4-B383-99FA97D05CD7}" Name="职位.16" NameU="Position.16" Master="3">
+					<Text>iTCA技术支持与
+ 研发中心</Text>
+					<XForm>
+						<PinX Unit="MM">4.910011249000000</PinX>
+						<PinY Unit="MM">5.137795276000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">iTCA技术支持与</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR"> 研发中心</Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="21" UniqueID="{162BB910-832E-4813-9CE0-1F16C77DA800}" Name="职位.21" NameU="Position.21" Master="3">
+					<Text>iTCA新闻与对外
+联络处</Text>
+					<XForm>
+						<PinX Unit="MM">6.546681665000000</PinX>
+						<PinY Unit="MM">5.137795276000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">iTCA新闻与对外</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR">联络处</Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="26" UniqueID="{83B91046-D821-4AC3-B5AA-BB56506E8841}" Name="职位.26" NameU="Position.26" Master="3">
+					<Text>iTCA人力资源
+与人才培养中心</Text>
+					<XForm>
+						<PinX Unit="MM">8.200224971999999</PinX>
+						<PinY Unit="MM">5.137795276000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">iTCA人力资源</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR">与人才培养中心</Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="31" UniqueID="{6CE87AEA-6E0E-4DCA-8683-FEB4257292D2}" Name="职位.31" NameU="Position.31" Master="3">
+					<Text>网络维护
+小组 </Text>
+					<XForm>
+						<PinX Unit="MM">4.488188977000000</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">网络维护</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR">小组 </Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="36" UniqueID="{39E6FD75-9599-486F-A060-BC58620CD09F}" Name="职位.36" NameU="Position.36" Master="3">
+					<Text>技术研发
+小组</Text>
+					<XForm>
+						<PinX Unit="MM">5.314960630000000</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">技术研发</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR">小组</Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="41" UniqueID="{ADF040E0-74F1-4821-8B17-EAE8E9F61699}" Name="职位.41" NameU="Position.41" Master="3">
+					<Text>财会
+出纳</Text>
+					<XForm>
+						<PinX Unit="MM">3.661417322999999</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">财会</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR">出纳</Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="46" UniqueID="{B5729C0E-1C58-413C-B53C-3A712A84E30A}" Name="职位.46" NameU="Position.46" Master="3">
+					<Text>办公室
+管理</Text>
+					<XForm>
+						<PinX Unit="MM">2.834645669000000</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">办公室</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR">管理</Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="51" UniqueID="{8BC0A28F-0B5E-408B-9791-5997B4236FAA}" Name="职位.51" NameU="Position.51" Master="3">
+					<Text>劳动改造
+小组</Text>
+					<XForm>
+						<PinX Unit="MM">2.834645669000000</PinX>
+						<PinY Unit="MM">3.543307087000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">劳动改造</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR">小组</Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="56" UniqueID="{CA5150EF-A13A-4D85-A528-1EDA350DF328}" Name="职位.56" NameU="Position.56" Master="3">
+					<Text>外联部
+ </Text>
+					<XForm>
+						<PinX Unit="MM">6.141732283000000</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">外联部</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value></Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="61" UniqueID="{5001B11A-730C-4C8F-93B7-714C83BA9CA6}" Name="职位.61" NameU="Position.61" Master="3">
+					<Text>宣传部
+ </Text>
+					<XForm>
+						<PinX Unit="MM">6.968503937000000</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">宣传部</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value></Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="66" UniqueID="{65C178DB-404F-4A10-A44D-B496A12458E1}" Name="职位.66" NameU="Position.66" Master="3">
+					<Text>人力
+资源部</Text>
+					<XForm>
+						<PinX Unit="MM">7.795275591000000</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">人力</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR">资源部</Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="71" UniqueID="{CB0499BF-6D91-42D7-9973-9E03A488F9D5}" Name="职位.71" NameU="Position.71" Master="3">
+					<Text>iTCA人员
+素质培训部</Text>
+					<XForm>
+						<PinX Unit="MM">8.622047244000001</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<Prop ID="1" Name="Department" NameU="Department">
+						<Value Unit="STR">部门</Value>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="2" Name="Telephone" NameU="Telephone">
+						<Value Unit="STR">电话</Value>
+						<Label>电话</Label>
+					</Prop>
+					<Prop ID="3" Name="Name" NameU="Name">
+						<Value Unit="STR">iTCA人员</Value>
+						<Label>姓名</Label>
+					</Prop>
+					<Prop ID="4" Name="Title" NameU="Title">
+						<Value Unit="STR">素质培训部</Value>
+						<Label>职务</Label>
+					</Prop>
+					<Prop ID="5" Name="Email" NameU="Email">
+						<Value Unit="STR">电子邮件</Value>
+						<Label>电子邮件</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="76" UniqueID="{4FAE6B13-1111-4591-A652-E6FA1AE3CA2F}" Name="动态连接线" NameU="Dynamic connector" Master="13">
+					<XForm>
+						<PinX Unit="MM">6.107986502000000</PinX>
+						<PinY Unit="MM">5.846456693112264</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="77" UniqueID="{94D6FB7D-B6AA-40B4-B09C-4260D4892D45}" Name="动态连接线.77" NameU="Dynamic connector.77" Master="13">
+					<XForm>
+						<PinX Unit="MM">5.289651294000000</PinX>
+						<PinY Unit="MM">5.846456693112264</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="78" UniqueID="{340088BA-21B0-4B97-9CB0-719403A56582}" Name="动态连接线.78" NameU="Dynamic connector.78" Master="13">
+					<XForm>
+						<PinX Unit="MM">4.454443195000000</PinX>
+						<PinY Unit="MM">5.846456693112264</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="79" UniqueID="{DEC9DA7A-2C80-4C4F-97BA-80704B1ECEAA}" Name="动态连接线.79" NameU="Dynamic connector.79" Master="13">
+					<XForm>
+						<PinX Unit="MM">6.259842520086680</PinX>
+						<PinY Unit="MM">6.023622047121947</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="80" UniqueID="{0B5C108D-1518-44E6-A752-98216E159F10}" Name="动态连接线.80" NameU="Dynamic connector.80" Master="13">
+					<XForm>
+						<PinX Unit="MM">6.934758155499999</PinX>
+						<PinY Unit="MM">5.846456693112264</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="81" UniqueID="{26598B6E-2112-4B5D-B293-33C9EF8AC2CF}" Name="动态连接线.81" NameU="Dynamic connector.81" Master="13">
+					<XForm>
+						<PinX Unit="MM">3.450506186999999</PinX>
+						<PinY Unit="MM">4.665354330777499</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="82" UniqueID="{56E84B89-E1C5-4D44-9DD4-9F2172174413}" Name="动态连接线.82" NameU="Dynamic connector.82" Master="13">
+					<XForm>
+						<PinX Unit="MM">5.112485939500000</PinX>
+						<PinY Unit="MM">4.665354330777499</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="83" UniqueID="{3662DDEC-DEBA-4191-8BC7-FB8592C027AB}" Name="动态连接线.83" NameU="Dynamic connector.83" Master="13">
+					<XForm>
+						<PinX Unit="MM">6.757592801000000</PinX>
+						<PinY Unit="MM">4.665354330777499</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="84" UniqueID="{017EE1E3-0E35-456B-BE89-29BDF3798D40}" Name="动态连接线.84" NameU="Dynamic connector.84" Master="13">
+					<XForm>
+						<PinX Unit="MM">8.411136108000001</PinX>
+						<PinY Unit="MM">4.665354330777499</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="85" UniqueID="{3323C68D-CC3D-49AE-BB67-C707F5B96F99}" Name="动态连接线.85" NameU="Dynamic connector.85" Master="13">
+					<XForm>
+						<PinX Unit="MM">7.997750281500000</PinX>
+						<PinY Unit="MM">4.665354330777499</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="86" UniqueID="{6678127B-2821-4A24-9937-747F71704BE5}" Name="动态连接线.86" NameU="Dynamic connector.86" Master="13">
+					<XForm>
+						<PinX Unit="MM">6.344206974000000</PinX>
+						<PinY Unit="MM">4.665354330777499</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="87" UniqueID="{6E72061C-49AB-48EC-A841-6E37530FFA89}" Name="动态连接线.87" NameU="Dynamic connector.87" Master="13">
+					<XForm>
+						<PinX Unit="MM">4.699100113000000</PinX>
+						<PinY Unit="MM">4.665354330777499</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="88" UniqueID="{973EB12A-11BC-4570-840F-014920F22145}" Name="动态连接线.88" NameU="Dynamic connector.88" Master="13">
+					<XForm>
+						<PinX Unit="MM">3.037120359999999</PinX>
+						<PinY Unit="MM">4.665354330777499</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="89" UniqueID="{F352BEEE-8A0F-47FA-9523-84292BCF3948}" Name="动态连接线.89" NameU="Dynamic connector.89" Master="13">
+					<XForm>
+						<PinX Unit="MM">2.834645669000000</PinX>
+						<PinY Unit="MM">3.897637795500000</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="90" UniqueID="{E2B43CC1-5A55-48FF-9EA2-0BDAAF59BEA2}" Name="虚线报告" NameU="Dotted-line report" Master="14">
+					<XForm>
+						<PinX Unit="MM">4.074803150000000</PinX>
+						<PinY Unit="MM">5.137795276000000</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="91" UniqueID="{18FC5B50-C3E9-477C-9317-DEBF83595973}" Name="虚线报告.91" NameU="Dotted-line report.91" Master="14">
+					<XForm>
+						<PinX Unit="MM">5.728346457000001</PinX>
+						<PinY Unit="MM">5.137795276000000</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="92" UniqueID="{A3F6DA02-483A-4E1E-A631-3157D6C253E7}" Name="虚线报告.92" NameU="Dotted-line report.92" Master="14">
+					<XForm>
+						<PinX Unit="MM">7.373453318499999</PinX>
+						<PinY Unit="MM">5.137795276000000</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="93" UniqueID="{74E1E2E2-50CE-4ABC-8067-46D14E9A7B0D}" Name="虚线报告.93" NameU="Dotted-line report.93" Master="14">
+					<XForm>
+						<PinX Unit="MM">3.248031496078726</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="94" UniqueID="{74A66FF6-5958-49CE-97DF-A86B8AEB8980}" Name="虚线报告.94" NameU="Dotted-line report.94" Master="14">
+					<XForm>
+						<PinX Unit="MM">4.074803150050218</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="95" UniqueID="{BFE20918-C006-4AFF-8290-19F4BB4FCAB9}" Name="虚线报告.95" NameU="Dotted-line report.95" Master="14">
+					<XForm>
+						<PinX Unit="MM">4.901574803364181</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="96" UniqueID="{2A280E39-9191-4014-BBF2-322854948982}" Name="虚线报告.96" NameU="Dotted-line report.96" Master="14">
+					<XForm>
+						<PinX Unit="MM">5.728346456485173</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="97" UniqueID="{76275EEF-1721-4518-ADB4-BAF33B31B68A}" Name="虚线报告.97" NameU="Dotted-line report.97" Master="14">
+					<XForm>
+						<PinX Unit="MM">6.555118109993186</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="98" UniqueID="{D356D803-C93E-46DA-BC38-5ABE3BDA4EE1}" Name="虚线报告.98" NameU="Dotted-line report.98" Master="14">
+					<XForm>
+						<PinX Unit="MM">7.381889764082136</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="99" UniqueID="{14C0F816-D8EA-4D03-9081-DADF8E02661D}" Name="虚线报告.99" NameU="Dotted-line report.99" Master="14">
+					<XForm>
+						<PinX Unit="MM">8.208661417396225</PinX>
+						<PinY Unit="MM">4.251968504000000</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="100" UniqueID="{D9AA9DBF-B4D5-4D4C-B137-2AB9503D0E46}" Name="虚线报告.100" NameU="Dotted-line report.100" Master="14">
+					<XForm>
+						<PinX Unit="MM">3.425196850321857</PinX>
+						<PinY Unit="MM">3.779527559279527</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="101" UniqueID="{A78E04E3-5834-4BEB-953D-5075D6CDC06B}" Name="虚线报告.101" NameU="Dotted-line report.101" Master="14">
+					<XForm>
+						<PinX Unit="MM">3.838582677321858</PinX>
+						<PinY Unit="MM">3.779527559279527</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="102" UniqueID="{84DE22E6-A667-4EDB-91A4-39CF8357BB80}" Name="虚线报告.102" NameU="Dotted-line report.102" Master="14">
+					<XForm>
+						<PinX Unit="MM">4.251968503821858</PinX>
+						<PinY Unit="MM">3.779527559279527</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="103" UniqueID="{58862E49-93BC-474D-83DF-86D0DFA4AAC3}" Name="虚线报告.103" NameU="Dotted-line report.103" Master="14">
+					<XForm>
+						<PinX Unit="MM">4.665354330321858</PinX>
+						<PinY Unit="MM">3.779527559279527</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="104" UniqueID="{4901567B-6130-46E2-8CB3-A3FD34037847}" Name="虚线报告.104" NameU="Dotted-line report.104" Master="14">
+					<XForm>
+						<PinX Unit="MM">5.078740157321858</PinX>
+						<PinY Unit="MM">3.779527559279527</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="105" UniqueID="{72DE8CA2-DB50-4EBE-ABA9-BEEC85506702}" Name="虚线报告.105" NameU="Dotted-line report.105" Master="14">
+					<XForm>
+						<PinX Unit="MM">5.492125984321858</PinX>
+						<PinY Unit="MM">3.779527559279527</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="106" UniqueID="{25531EEE-8E9A-44AE-99BA-E3A3AC8EBB39}" Name="虚线报告.106" NameU="Dotted-line report.106" Master="14">
+					<XForm>
+						<PinX Unit="MM">5.905511810821858</PinX>
+						<PinY Unit="MM">3.779527559279527</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="107" UniqueID="{0CC6E5FB-C36F-47FD-A6DC-9C87F51382BF}" Name="虚线报告.107" NameU="Dotted-line report.107" Master="14">
+					<XForm>
+						<PinX Unit="MM">6.879921260161417</PinX>
+						<PinY Unit="MM">6.437007873720473</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="108" UniqueID="{DB2C61F9-7220-4EF4-AFB6-2936EE5CF572}" Name="虚线报告.108" NameU="Dotted-line report.108" Master="14">
+					<XForm>
+						<PinX Unit="MM">5.314960630338582</PinX>
+						<PinY Unit="MM">6.259842519511713</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="116" UniqueID="{31A0AD8B-2FC7-4F1D-9B2C-E4D5BCF50C2D}" Name="动态连接线.116" NameU="Dynamic connector.116" Master="13">
+					<Text>从属关系</Text>
+					<XForm>
+						<PinX Unit="MM">3.779527559011704</PinX>
+						<PinY Unit="MM">6.614173228285263</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="109" UniqueID="{B1068B2E-922D-4639-B8F8-BD0938F9688C}" Name="虚线报告.109" NameU="Dotted-line report.109" Master="14">
+					<Text>协作、监督
+与流动关系</Text>
+					<XForm>
+						<PinX Unit="MM">3.779527559054992</PinX>
+						<PinY Unit="MM">6.141732283464362</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+			</Shapes>
+		</Page>
+	</Pages>
+</VisioDocument>

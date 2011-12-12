@@ -1,0 +1,46 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <link href="../templates/css/itca.css" rel="stylesheet" type="text/css" />
+    <title>欢迎来到iTCA重庆工学院计算机协会</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="container">
+     <div id = "header">
+	     <div id="menu">
+		 <ul>
+			<li><a id="index" href="../">首 页</a></li>
+			<li class="menudiv"></li>
+
+			<li><a id="ann" href="../showcolumn-1-1.aspx">公 告</a></li>
+			<li class="menudiv"></li>
+
+			<li><a id="news" href="../news.aspx">新 闻</a></li>
+			<li class="menudiv"></li>
+			
+			<li><a id="act" href="../showcolumn-5-1.aspx">活 动</a></li>
+			<li class="menudiv"></li>
+
+			<li><a id="book" href="../book/Index.aspx">留 言 板</a></li>
+			<li class="menudiv"></li>
+
+			<li><a id="other" href="../other/Index.aspx">其他相关</a></li>
+		 </ul>
+		 </div>         
+     </div>
+     <div id="banner" style="clear:both;"></div>
+       <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+      </div>
+      
+      
+      <div id = "footer">&copy;iTCA 重庆工学院计算机协会</div>
+    </div>
+    </form>
+</body>
+</html>

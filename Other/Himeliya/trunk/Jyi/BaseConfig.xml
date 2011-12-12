@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AutoPostConfig>
+  <PostProject>
+    <Item Name="常来推荐注册(1)">
+      <Count>1</Count>
+      <Charset>gb2312</Charset>
+      <UseProxy>0</UseProxy>
+      <UseCookie>1</UseCookie>
+      <ClearCookieEverytime>0</ClearCookieEverytime>
+      <WaitTime>1</WaitTime>
+      <VCode>0</VCode>
+      <VCodeUrl>http://web.thec.cn/sysweb/VfyImage.aspx</VCodeUrl>
+      <UnCode Active="true" ParmsName="vcode">
+        <Item Code="9">011101000110001100011001101101000011000101110</Item>
+      </UnCode>
+      <Parms>
+        <Item Type=" 我同意 ">btnAgree</Item>
+        <Item Type="dDwxMzgxNjYyOTEzOzs+X3QE1091n9xxiBKqb2xCYetCNqM=">__VIEWSTATE</Item>
+      </Parms>
+      <PreUrl>
+        <Item Type="GET" GetParmName="" Regex="">http://web.thec.cn/sysweb/RegTrans.aspx?CodeProvider=natsuwind</Item>
+      </PreUrl>
+      <MainUrl Type="POST">http://web.thec.cn/sysweb/Agreement.aspx</MainUrl>
+      <Referer>
+      </Referer>
+      <SuccessText>注册表单</SuccessText>
+    </Item>
+    <Item Name="常来推荐注册">
+      <Count>1</Count>
+      <Charset>gb2312</Charset>
+      <UseProxy>1</UseProxy>
+      <UseCookie>1</UseCookie>
+      <ClearCookieEverytime>0</ClearCookieEverytime>
+      <WaitTime>1</WaitTime>
+      <VCode>1</VCode>
+      <VCodeUrl>http://web.thec.cn/sysweb/VfyImage.aspx</VCodeUrl>
+      <UnCode Active="true" ParmsName="vcode">
+        <Item Code="0">011101000110001100011000110001100011000101110</Item>
+        <Item Code="1">001011101001001001001001001</Item>
+        <Item Code="2">011101000100001000010001000010001000100011111</Item>
+        <Item Code="3">011101000100001000010011000001000011000101110</Item>
+        <Item Code="4">000100011000110010100101010010111110001000010</Item>
+        <Item Code="5">011110100010000111101000100001000011000101110</Item>
+        <Item Code="6">011101000110000101101100110001100011000101110</Item>
+        <Item Code="7">111110001000010001000010000100010000100001000</Item>
+        <Item Code="8">011101000110001100010111010001100011000101110</Item>
+        <Item Code="9">011101000110001100011001101101000011000101110</Item>
+      </UnCode>
+      <Parms>
+        <Item Type="Rand">txtUserID</Item>
+        <Item Type="123123">txtPassword</Item>
+        <Item Type="123123">txtPwdConfirm</Item>
+        <Item Type="RandEmail">txtEmail</Item>
+        <Item Type="Rand">txtPwdAsk</Item>
+        <Item Type="Rand">txtPwdAnswer</Item>
+        <Item Type="VCode">txtVfyCode</Item>
+        <Item Type="我同意">btnAgree</Item>
+      </Parms>
+      <PreUrl>
+        <Item Type="GET" GetParmName="" Regex="">http://web.thec.cn/sysweb/RegTrans.aspx?CodeProvider=natsuwind</Item>
+        <Item Tyep="GET" GetParmName="__VIEWSTATE" Regex="name=&quot;__VIEWSTATE&quot; value=&quot;(.*)&quot; /&gt;">http://web.thec.cn/sysweb/User_Register.aspx</Item>
+      </PreUrl>
+      <MainUrl Type="POST">http://web.thec.cn/sysweb/User_Register.aspx</MainUrl>
+      <Referer>
+      </Referer>
+      <SuccessText>注册成功</SuccessText>
+    </Item>
+    <Item Name="ip">
+      <Count>1</Count>
+      <Charset>gb2312</Charset>
+      <UseProxy>1</UseProxy>
+      <UseCookie>0</UseCookie>
+      <ClearCookieEverytime>0</ClearCookieEverytime>
+      <VCodeUrl>
+      </VCodeUrl>
+      <WaitTime>0</WaitTime>
+      <UnCode Active="true" ParmsName="vcode">
+        <Item Code="0">
+        </Item>
+      </UnCode>
+      <Parms>
+        <Item Type="Rand">name</Item>
+      </Parms>
+      <PreUrl>
+        <Item GetParmName="" Regex="">
+        </Item>
+      </PreUrl>
+      <MainUrl Type="GET">http://www.ip138.com/ips.asp</MainUrl>
+      <Referer>
+      </Referer>
+      <SuccessText>注册成功</SuccessText>
+    </Item>
+    <Item Name="post">
+      <Count>1</Count>
+      <Charset>utf-8</Charset>
+      <UseProxy>0</UseProxy>
+      <UseCookie>1</UseCookie>
+      <ClearCookieEverytime>0</ClearCookieEverytime>
+      <WaitTime>1</WaitTime>
+      <VCodeUrl>
+      </VCodeUrl>
+      <UnCode Active="true" ParmsName="vcode">
+        <Item Code="0">
+        </Item>
+      </UnCode>
+      <Parms>
+        <Item Type="6">forumid</Item>
+        <Item Type="Rand">title</Item>
+        <Item Type="Rand">message</Item>
+      </Parms>
+      <PreUrl>
+        <Item>
+        </Item>
+      </PreUrl>
+      <MainUrl Type="POST">http://localhost/dnt_2_n2/posttopic.aspx</MainUrl>
+      <Referer>http://localhost/</Referer>
+      <SuccessText>成功</SuccessText>
+    </Item>
+    <Item Name="Login">
+      <Count>1</Count>1
+      <Charset>utf-8</Charset>
+      <UseProxy>0</UseProxy>
+      <UseCookie>1</UseCookie>
+      <ClearCookieEverytime>0</ClearCookieEverytime>
+      <WaitTime>1</WaitTime><VCodeUrl>
+      </VCodeUrl>
+      <UnCode Active="0" ParmsName="vcode">
+      <Item Code="0"></Item>
+      </UnCode>
+      <Parms>
+      <Item Type="wysky">username</Item>
+      <Item Type="123123">password</Item>
+      <Item Type="0">expires</Item>
+      </Parms>
+      <PreUrl>
+      <Item></Item>
+      </PreUrl>
+      <MainUrl Type="POST">http://localhost/dnt_2_n2/login.aspx</MainUrl><Referer>http://localhost/</Referer><SuccessText>登录成功</SuccessText></Item>
+    <Item Name="postdnt">
+      <Count>1</Count>
+      <Charset>utf-8</Charset>
+      <UseProxy>0</UseProxy>
+      <UseCookie>1</UseCookie>
+      <ClearCookieEverytime>0</ClearCookieEverytime>
+      <WaitTime>10000</WaitTime>
+      <VCodeUrl>
+      </VCodeUrl>
+      <UnCode Active="true" ParmsName="vcode">
+        <Item Code="0">
+        </Item>
+      </UnCode>
+      <Parms>
+        <Item Type="2">forumid</Item>
+        <Item Type="Rand">title</Item>
+        <Item Type="Rand">message</Item>
+        <Item Type="seesakura">tempusername</Item>
+        <Item Type="123123">temppassword</Item>
+      </Parms>
+      <PreUrl>
+        <Item>
+        </Item>
+      </PreUrl>
+      <MainUrl Type="POST">http://nt.discuz.net/posttopic.aspx</MainUrl>
+      <Referer>http://nt.discuz.net/</Referer>
+      <SuccessText>成功</SuccessText>
+    </Item>
+    <Item Name="replydnt">
+      <Count>1</Count>
+      <Charset>utf-8</Charset>
+      <UseProxy>0</UseProxy>
+      <UseCookie>1</UseCookie>
+      <ClearCookieEverytime>0</ClearCookieEverytime>
+      <WaitTime>10000</WaitTime>
+      <VCodeUrl>
+      </VCodeUrl>
+      <UnCode Active="true" ParmsName="vcode">
+        <Item Code="0">
+        </Item>
+      </UnCode>
+      <Parms>
+        <Item Type="43714">topicid</Item>
+        <Item Type="Rand">title</Item>
+        <Item Type="Rand">message</Item>
+        <Item Type="seesakura">tempusername</Item>
+        <Item Type="123123">temppassword</Item>
+      </Parms>
+      <PreUrl>
+        <Item>
+        </Item>
+      </PreUrl>
+      <MainUrl Type="POST">http://nt.discuz.net/postreply.aspx</MainUrl>
+      <Referer>http://nt.discuz.net/</Referer>
+      <SuccessText>成功</SuccessText>
+    </Item>
+    <Item Name="dzreg">
+      <Count>1</Count>
+      <Charset>utf-8</Charset>
+      <UseProxy>0</UseProxy>
+      <UseCookie>0</UseCookie>
+      <ClearCookieEverytime>0</ClearCookieEverytime>
+      <WaitTime>0</WaitTime>
+      <VCodeUrl>
+      </VCodeUrl>
+      <UnCode Active="true" ParmsName="vcode">
+        <Item Code="0">
+        </Item>
+      </UnCode>
+      <!--<Item Type="d306a51e">formhash</Item>-->
+      <Parms>
+        <Item Type="index.php">referer</Item>
+        <Item Type="yes">regsubmit</Item>
+        <Item Type="Rand">username</Item>
+        <Item Type="123123">password</Item>
+        <Item Type="123123">password2</Item>
+        <Item Type="RandEmail">email</Item>
+        <Item Type="admin">fromuser</Item>
+        <Item Type="1">advshow</Item>
+      </Parms>
+      <PreUrl>
+        <Item Type="GET" GetParmName="formhash" Regex="formhash=(.*)&quot;&gt;">http://localhost/dz6/register.php</Item>
+      </PreUrl>
+      <MainUrl Type="POST">http://localhost/dz6/register.php</MainUrl>
+      <Referer>http://localhost/dz6/index.php</Referer>
+      <SuccessText>感谢</SuccessText>
+    </Item>
+    <Item Name="dntreg">
+      <Count>1</Count>
+      <Charset>utf-8</Charset>
+      <UseProxy>0</UseProxy>
+      <UseCookie>1</UseCookie>
+      <ClearCookieEverytime>0</ClearCookieEverytime>
+      <WaitTime>0</WaitTime>
+      <VCodeUrl>
+      </VCodeUrl>
+      <UnCode Active="true" ParmsName="vcode">
+        <Item Code="0">
+        </Item>
+      </UnCode>
+      <Parms>
+        <Item Type="1">agree</Item>
+        <Item Type="1">createuser</Item>
+        <Item Type="yes">regsubmit</Item>
+        <Item Type="Rand">username</Item>
+        <Item Type="123123">password</Item>
+        <Item Type="123123">password2</Item>
+        <Item Type="RandEmail">email</Item>
+        <Item Type="admin">fromuser</Item>
+        <Item Type="1">advshow</Item>
+      </Parms>
+      <PreUrl>
+        <Item Type="GET">
+        </Item>
+      </PreUrl>
+      <MainUrl Type="POST">http://localhost/dz6/register.php</MainUrl>
+      <Referer>http://localhost/dz6/index.php</Referer>
+      <SuccessText>成功</SuccessText>
+    </Item>
+    <Item Name="regIP22">
+      <Count>1</Count>
+      <Charset>gbk</Charset>
+      <UseProxy>0</UseProxy>
+      <UseCookie>0</UseCookie>
+      <ClearCookieEverytime>0</ClearCookieEverytime>
+      <WaitTime>0</WaitTime>
+      <VCodeUrl>
+      </VCodeUrl>
+      <UnCode Active="true" ParmsName="vcode">
+        <Item Code="0">
+        </Item>
+      </UnCode>
+      <!--<Item Type="d306a51e">formhash</Item>-->
+      <Parms>
+        <Item Type="index.php">referer</Item>
+        <Item Type="yes">regsubmit</Item>
+        <Item Type="Rand">username</Item>
+        <Item Type="123123">password</Item>
+        <Item Type="123123">password2</Item>
+        <Item Type="RandEmail">email</Item>
+        <Item Type="Natsuwind">fromuser</Item>
+        <Item Type="1">advshow</Item>
+      </Parms>
+      <PreUrl>
+        <Item Type="GET" GetParmName="formhash" Regex="formhash=(.*)&quot;&gt;">http://bbs.ip22.net/register.php</Item>
+      </PreUrl>
+      <MainUrl Type="POST">http://bbs.ip22.net/register.php</MainUrl>
+      <Referer>http://bbs.ip22.net/index.php</Referer>
+      <SuccessText>感谢</SuccessText>
+    </Item>
+  </PostProject>
+  <Task>
+  </Task>
+  <Proxy>
+    <Item Address="142.103.2.1" Port="3128">暂无</Item>
+    <Item Address="204.56.0.137" Port="3124">暂无</Item>
+    <Item Address="128.112.139.96" Port="3127">暂无</Item>
+    <Item Address="141.24.33.161" Port="3128">暂无</Item>
+    <Item Address="195.116.60.2" Port="3124">暂无</Item>
+    <Item Address="210.107.249.50" Port="3128">暂无</Item>
+    <Item Address="210.107.249.51" Port="3124">暂无</Item>
+    <Item Address="143.225.229.236" Port="3127">暂无</Item>
+    <Item Address="164.107.127.12" Port="3127">暂无</Item>
+    <Item Address="165.230.49.114" Port="3127">暂无</Item>
+    <Item Address="planetlab2.pop-rs.rnp.br" Port="3124">暂无</Item>
+  </Proxy>
+  <ProxyGet>
+    <Item Regex="clip\(\'(.*)\'\);alert" Charset="gb2312">http://www.proxycn.com/html_proxy/securitylevel1-1.html</Item>
+  </ProxyGet>
+  <ProxyTest SuccessText="登录网易" GoodProxy="1">http://www.126.com/</ProxyTest>
+</AutoPostConfig>

@@ -1,0 +1,26 @@
+                    <option value="">默认</option>  
+					<option style="background: rgb(255, 0, 0)   none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" value="#FF0000"></option>  
+					<option style="background: rgb(255, 165, 0) none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" value="#FFA500"></option> 
+					<option style="background: rgb(255, 255, 0) none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" value="#FFFF00"></option> 
+					<option style="background: rgb(0, 128, 0)   none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" value="#008000"></option> 
+					<option style="background: rgb(0, 255, 255) none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" value="#00FFFF"></option> 
+					<option style="background: rgb(0, 0, 255)   none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" value="#0000FF"></option> 
+					<option style="background: rgb(128, 0, 128) none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" value="#800080"></option> 
+					<option style="background: rgb(128, 128, 12 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" value="#808080"></\\\\option>
+	
+	
+ #FF0000
+ #FFA500
+ #FFFF00
+ #008000
+ #00FFFF
+ #0000FF
+ #800080
+ #808080
+					
+					
+重庆工学院
+计算机学院
+网络信息中心
+计算机中心
+Intel(中国)

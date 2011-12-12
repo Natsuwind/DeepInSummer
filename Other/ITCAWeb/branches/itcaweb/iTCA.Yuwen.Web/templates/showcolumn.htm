@@ -1,0 +1,47 @@
+﻿<%namespace iTCA.Yuwen.Data%>
+<%namespace iTCA.Yuwen.Entity%>
+<%inherits iTCA.Yuwen.Web.showcolumn%>
+<%template _header%>
+<div id="pagebody" style="clear: both">
+    <!--main-->
+    <div id="maincenter" style="clear: both">
+        <center>
+            <div id="articlelist">
+                <br />
+                <table>
+                    <tr>
+                        <td background="images/cms/side07.jpg" width="25px">
+                        </td>
+                        <td>
+                            <table width="500px" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td id="title" align="left">
+                                        <img src="images/cms/cms01.jpg" height="22" align="right" /></a><!--width="337"-->
+                                    </td>
+                                    <td class="time" align="left">
+                                        <img src="images/cms/cms02.jpg" width="150" height="22" align="left" />
+                                    </td>
+                                </tr>
+                                <%loop (ArticleInfo) newinfo newslist%>
+                                <tr>
+                                    <td id="Td1" align="left">
+                                        &nbsp;[{newinfo.columnname}]&nbsp;<a href="showarticle-{newinfo.articleid}.aspx">{newinfo.title}</a>
+                                    </td>
+                                    <td class="time" align="center">
+                                        {newinfo.postdate}
+                                    </td>
+                                </tr>
+                                <%/loop%>
+                            </table>
+                        </td>
+                </table>
+            </div>
+            <img src="images/cms/cms04.jpg" height="3" />
+            <div id="pager">页码:{pagecounthtml}</div>
+        </center>
+    </div>
+</div>
+<%template _footer%>
+<!--{querycount}<br />
+{querydetail}<br />
+{processtime}秒<br />-->

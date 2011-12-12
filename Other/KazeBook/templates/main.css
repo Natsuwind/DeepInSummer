@@ -1,0 +1,87 @@
+/* 
+    Document   : main
+    Created on : 2010-1-22, 16:29:21
+    Author     : Adminywen
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    font: 12px verdana,helvetica,Arial,sans-serif;
+    background-color:black;
+}
+
+ul{
+    padding: 0px;
+    margin: 0px;
+}
+ul li{
+    padding: 0px;
+    margin: 0px;
+}
+
+#main{
+    width:950px;
+    margin:0px auto;
+    padding: 5px 5px;
+    background-color:white;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-box-shadow: 10px 10px 25px #ccc;
+    -webkit-box-shadow: 10px 10px 25px #ccc;
+}
+
+#post_list{
+    
+    margin-right: 200px;
+}
+#sidebar{
+    width: 160px;
+    float: right;
+}
+
+#main ul li{
+    margin: 5px 0px;
+    padding: 3px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}
+
+
+.gray{
+    background-color: #EDEDED;
+}
+.silver{
+    background-color: #F2F2F2;
+}
+
+#content,#replycontent{
+    width: 99%;
+    height: 60px;
+}
+.postuser{
+    font-weight: bold;
+}
+
+.postdate{
+    margin-top: 2px;
+    font-size: 11px;
+    font-weight: lighter;
+    color: gray;
+}
+
+.re{
+    width: 95%;
+    margin-left: 5%;
+}
+

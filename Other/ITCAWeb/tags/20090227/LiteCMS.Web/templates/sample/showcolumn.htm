@@ -1,0 +1,40 @@
+﻿<%namespace LiteCMS.Data%>
+<%namespace LiteCMS.Entity%>
+<%inherits LiteCMS.Web.showcolumn%>
+
+<%template _header%>
+	<!--内容开始-->
+	<%template _rightside%>
+	
+	<!--左栏开始-->
+	<div id="left-side">
+		<!--新闻列表开始-->
+		<!--推荐文章开始-->
+		<div class="div-header">{pagetitle}</div>
+		<!--分页开始-->
+		<div id="pager">页码:{pagecounthtml}</div>
+		<!--分页结束-->
+		<ul>
+		    <%loop (ArticleInfo) info articlelist%>
+			    <li class="article-list">
+			    <%if {config.urlrewrite}==1%>
+				    <h2 class="title"><a href="showarticle-{info.articleid}{config.urlrewriteextname}">{info.title}</a></h2>
+				<%else%>
+				    <h2 class="title"><a href="showarticle.aspx?id={info.articleid}">{info.title}</a></h2>
+				<%/if%>
+				    <span class="description">{info.summary}</span>
+				    <div class="post-info"><span class="author">{info.username}</span>投递 @ 发布于<span class="post-date">{info.postdate}</span><span>评论({info.commentcount})</span></div>
+			    </li>
+			<%/loop%>
+		</ul>		
+		<!--分页开始-->
+		<div id="pager">页码:{pagecounthtml}</div>
+		<!--分页结束-->
+		<!--推荐文章结束-->
+		<!--新闻列表结束-->
+	</div>
+	<!--左栏结束-->
+
+	<!--内容结束-->
+
+<%template _footer%>

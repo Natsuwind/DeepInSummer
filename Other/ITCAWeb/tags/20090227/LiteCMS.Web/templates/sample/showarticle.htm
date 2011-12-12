@@ -1,0 +1,41 @@
+﻿<%namespace LiteCMS.Data%>
+<%namespace LiteCMS.Entity%>
+<%inherits LiteCMS.Web.showarticle%>
+
+<%template _header%>
+	<!--内容开始-->
+	<%template _rightside%>
+	
+	<!--左栏开始-->
+	<div id="left-side">
+		<!--文章开始-->
+		<div class="div-header"><a href="<%if {config.urlrewrite}==1%>showcolumn-{articleinfo.columnid}{config.urlrewriteextname}<%else%>showcolumn.aspx?cid={articleinfo.columnid}<%/if%>">返回此栏目文章列表</a></div>
+		<h2 class="title article">{articleinfo.title}</h2>
+		<div class="post-info article"><span class="author">{articleinfo.username}</span>投递 @ 发布于<span class="post-date">{articleinfo.postdate}</span></div>
+		<div class="article-content article">{articleinfo.content}</div>
+		<!--文章结束-->
+		<div class="div-header">评论:</div>
+		<div id="comment">
+		    <form action="comment.aspx?action=postcomment&articleid={articleinfo.articleid}" method="post">
+		        <textarea cols="80" rows="5" name="commentcontent" id="commentcontent"></textarea>
+		        <br />
+		        <input type="submit" value="提交留言" /><input type="reset" value="清空输入框" />
+		    </form>
+		    <ul>
+		    <%loop (CommentInfo) info commentlist%>
+		        <li>
+		            <div class="content">{info.content}</div>
+		            <span><a href="comment.aspx?action=grade&type=1&commentid={info.commentid}">支持({info.goodcount})</a><a href="comment.aspx?action=grade&type=-1&commentid={info.commentid}">反对({info.badcount})</a></span><span>{info.username} 于 {info.postdate} 留言 <%if {userid}>0&&{adminid}==1%>[<a href="comment.aspx?action=del&commentid={info.commentid}">删除</a>]<%/if%></span>
+		            <hr />
+		        </li>
+		    <%/loop%>
+		    </ul>
+		    <!--分页开始-->
+		    <div id="pager">页码:{commentcounthtml}</div>
+		</div>
+	</div>
+	<!--左栏结束-->
+
+	<!--内容结束-->
+
+<%template _footer%>

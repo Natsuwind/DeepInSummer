@@ -1,0 +1,49 @@
+﻿<%namespace LiteCMS.Data%>
+<%namespace LiteCMS.Entity%>
+<%inherits LiteCMS.Web.register%>
+
+<%template _header%>
+	<!--内容开始-->
+	<%template _rightside%>
+	
+	<!--左栏开始-->
+	<div id="left-side">
+		<!--文章开始-->
+		<div class="div-header">用户注册</div>
+		<br />
+		<br />
+		<form action="" method="post" id="login">
+		    <table>
+		        <tr>
+		            <th>登录帐号: </th><td><input id="email" name="email" type="text" />(请填写使用中的邮箱地址,本站将采用Email激活登陆.)</td>
+		        </tr>
+		        <tr>
+		            <th>登录密码: </th><td><input id="password" name="password" type="password" /></td>
+		        </tr>
+		        <tr>
+		            <th>重复密码: </th><td><input id="password2" name="password2" type="password" />(请再次输入,以确认密码.)</td>
+		        </tr>
+		        <tr>
+		            <th>其他信息<br /><br /></th><td></td>
+		        </tr>
+		        <tr>
+		            <th>昵称: </th><td><input id="username" name="username" type="text" />(注册后无法修改.)</td>
+		        </tr>
+		        <tr>
+		            <th>找回密码提示问题: </th><td><input id="secretquestion" name="secretquestion" type="text" />(找回密码需要的验证问题.)</td>
+		        </tr>
+		        <tr>
+		            <th>找回密码提示答案: </th><td><input id="secretanswer" name="secretanswer" type="text" />(找回密码的验证回答.)</td>
+		        </tr>
+		        <tr>
+		            <th></th><td><input type="submit" value="注册" /></td>
+		        </tr>
+		    </table>
+		</form>
+		<!--文章结束-->
+	</div>
+	<!--左栏结束-->
+
+	<!--内容结束-->
+
+<%template _footer%>

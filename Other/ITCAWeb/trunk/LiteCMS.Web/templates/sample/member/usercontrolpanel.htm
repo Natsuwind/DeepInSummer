@@ -1,0 +1,46 @@
+﻿<%namespace LiteCMS.Data%>
+<%namespace LiteCMS.Entity%>
+<%inherits LiteCMS.Web.usercontrolpanel%>
+
+<%template _header%>
+	<!--内容开始-->
+	<%template _rightside%>
+	
+	<!--左栏开始-->
+	<div id="left-side">
+		<div class="div-header">用户控制面板</div>		
+		<form action="" method="post" id="login">
+		<table>
+		    <tr>
+		        <th>邮箱: </th><td>{userinfo.email}</td>
+		    </tr>
+		    <tr>
+		        <th>旧密码: </th><td><input id="oldpassword" name="oldpassword" type="password" /></td>
+		    </tr>
+		    <tr>
+		        <th>新的密码: </th><td><input id="newpassword" name="newpassword" type="password" /></td>
+		    </tr>
+		    <tr>
+		        <th>重复密码: </th><td><input id="newpassword2" name="newpassword2" type="password" /></td>
+		    </tr>
+		    <tr>
+		        <th></th><td><input type="submit" value="修改密码" /></td>
+		    </tr>
+		</table>
+		</form>
+		
+		<div class="div-header">我发布的文章</div>
+		<ul>
+		<%loop (ArticleInfo) info myarticlelist%>
+		    <li style="border-bottom:1px solid #666; line-height:200%;"><a href="showarticle-{info.articleid}.aspx">{info.title}</a><span style="margin-left:10px">{info.postdate}</span></li>
+		<%/loop%>
+		</ul>
+		<!--分页开始-->
+		    <div id="pager">页码:{pagecounthtml}</div>
+		<!--分页结束-->
+	</div>
+	<!--左栏结束-->
+
+	<!--内容结束-->
+
+<%template _footer%>

@@ -1,0 +1,36 @@
+body
+{
+	width:790px;
+	font:12px Tahoma;
+	margin:0px;
+	text-align:center;
+	background:#FFF;
+}
+a:link,a:hover,a:visited
+{
+	font-size:12px;text-decoration:none;color:#000;
+}
+table
+{
+	text-align:left;
+}
+table tr
+{
+	vertical-align:top;
+}
+#pager
+{
+    padding: 3px;
+}
+#pager a
+{
+    margin:3px;
+    padding:0px 2px;
+}
+#pager span
+{
+    margin:3px;
+    padding:0px 2px;
+    background-color:Gray;
+    color:White;
+}

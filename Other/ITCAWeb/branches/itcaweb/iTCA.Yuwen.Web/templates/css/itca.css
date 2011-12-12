@@ -1,0 +1,72 @@
+body {
+	font:12px Tahoma;
+	margin:0px;
+	text-align:center;
+	background:#000;
+}
+a:link,a:hover,a:visited{
+font-size:12px;text-decoration:none;color:#000;
+}
+
+#container 
+{
+	clear:both;
+	width:800px;height:auto;margin:0 auto;background:#FFF;
+}
+#header {background:url(../../images/logo.gif) no-repeat;height:30px;
+}
+#menu ul {list-style:none;margin:0px;float:right;}
+#menu ul li{float:left;line-height:30px;}
+.menudiv {background:url(../../images/dev.gif) no-repeat;}
+#menu a{
+display:block;width:65px;
+}
+#menu a:hover{
+color:#FFF; font-weight:bold;text-decoration:none;background:#3C458A;
+}
+#banner 
+{
+	clear:both;
+	background:url(../../images/banner.gif) no-repeat;height:45px;
+}
+
+#footer 
+{
+	clear:both;
+background:url(../../images/footer.gif) no-repeat;
+height:20px;
+text-align:right;
+color:#FFF;
+padding-top:10px;
+padding-bottom:5px;
+padding-right:10px;
+/*margin:0 auto;*/
+} 
+#pager
+{
+    padding: 3px;
+}
+#pager a
+{
+    margin:3px;
+    padding:0px 2px;
+}
+#pager span
+{
+    margin:3px;
+    padding:0px 2px;
+    background-color:Gray;
+    color:White;
+}
+
+/*CSS HACK*/
+#content
+{
+    min-height:510px;
+    _height:510px;
+} 
+#articlelist
+{
+    min-height:485px;
+    _height:485px;
+}

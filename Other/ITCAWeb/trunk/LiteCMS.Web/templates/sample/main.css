@@ -1,0 +1,166 @@
+﻿*{
+	margin:0px;
+	padding:0px;
+
+}
+body {
+	font:14px Tahoma;
+	text-align:center;
+	background:#EEEEFF;
+}
+a:link,a:hover,a:visited{
+	font-size:14px;
+	text-decoration:none;
+	color:#000;
+}
+ul {
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+
+h1,h2,h3 {
+	font-weight:normal;
+}
+
+
+#wrap{
+	width:100%;
+	margin:0px auto;
+}
+/*导航开始*/
+#main-menu{
+	width:100%;
+	clear:both;
+	background-color:#e5ecf9;
+}
+#main-menu a{
+	font-size:16px;
+	font-weight:bold;
+	color:#075DB3;
+	display:block;
+}
+#main-menu ul{
+	height:24px;
+}
+#main-menu ul li{
+	float:left;
+	padding-left:16px;
+}
+/*内容左栏开始*/
+#left-side{
+	background-color:#FFF;
+	margin:10px 275px 10px 5px;
+	text-align:left;
+	font-family:Verdana;
+	font-size:13px;	
+	border:1px solid #666;
+}
+.div-header{
+	background-color:#B6C9E7;
+	border-bottom:1px solid #666666;
+	font-family:Arial;
+	font-size:13px;
+	height:23px;
+	margin:0;
+	padding:5px 0 0 5px;
+	vertical-align:middle;
+}
+#left-side ul{
+	margin:5px 10px;
+}
+#left-side .title{
+	background-color:#E5EEF7;
+	border-bottom:1px dashed #666666;
+	border-top:1px solid #666666;
+	font-weight:bold;
+	padding:2px;
+}
+#left-side .title a{
+	padding-left:2px;
+}
+#left-side .description{
+	line-height:150%;
+	text-indent:2em;
+}
+#left-side .post-info{
+	font-family:Arial;
+	font-size:12px;
+	margin-bottom:5px;
+	margin-right:5px;
+	text-align:right;
+}
+#pager{
+	font-family:Arial;
+	margin:3px 10px;
+	text-align:right;
+}
+#pager a
+{
+    margin:3px;
+    padding:0px 2px;
+}
+#pager span
+{
+    margin:3px;
+    padding:0px 2px;
+    background-color:#B6C9E7;
+    color:White;
+}
+
+/*内容右栏开始*/
+#right-side{
+	clear:both;
+	float:right;
+	margin-top:10px;
+	width:270px;
+	text-align:left;
+	
+	background-color:#F7F3F7;
+	border:1px solid #666;
+}
+#right-side .right-list{
+	margin-bottom:10px;
+	font-size:12px;
+}
+#right-side .right-list ul{
+	padding-left:6px;
+}
+#right-side #latest-comment li{
+	border-bottom:1px #97acd2 dotted;
+}
+#right-side #hot-comment li{
+	border-bottom:1px #97acd2 dotted;
+}
+/*
+#right-side .right-list .div-column{
+	display:block;
+	width:100%;
+	background-color:#e5ecf9;
+}
+*/
+#right-side .right-list .comment-info{
+	text-align:right;
+}
+#right-side .right-list .from-article{
+	display:block;
+}
+
+
+#footer{
+	font-size:13px;
+	margin-right:5px;
+	margin-top:5px;
+	text-align:right;
+}
+#footer ul li{
+	float:left;
+	margin-left:10px;
+}
+
+
+
+/*文章显示页面*/
+.article{
+	margin:5px 10px;
+}

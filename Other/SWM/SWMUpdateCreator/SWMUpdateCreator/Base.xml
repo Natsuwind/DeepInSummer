@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="gb2312"?>
+<AutoUpdater>
+  <Description>SuperWebmaster AutoUpdate</Description>
+  <Updater>
+    <Url>http://zzzs.comsenz.com/data/update/0.2</Url>
+    <LastUpdateTime>2009-09-18</LastUpdateTime>
+  </Updater>
+  <Application applicationId="ProductManager">
+    <EntryPoint>SuperWebmaster.exe</EntryPoint>
+    <Location>.</Location>
+    <Version>0.2.0.4</Version>
+  </Application>
+  <Files>
+    <File Ver="0.2.0.2" Name="phpfiles/cmdserver.zip" MD5="9D43FDB1477730E6296F33C99CBDF44E" />
+    <File Ver="0.2.0.1" Name="Activities.dll" MD5="9B58C7CBB52355278A048B6D431F7A44" />
+    <File Ver="0.2.0.1" Name="Comsenz.App.Discuz_1.Installer.dll" MD5="EB0BC5C6ACD2FE65507248CDDB5EE4EE" />
+    <File Ver="0.2.0.1" Name="Comsenz.App.Supesite_1.Installer.dll" MD5="7FF626057EC6EBB5E122A14D31AFCF0A" />
+    <File Ver="0.2.0.1" Name="Comsenz.App.UCHome_1.Installer.dll" MD5="45600DE63B483EF0EDA2259310FC7830" />
+    <File Ver="0.2.0.1" Name="Comsenz.Client.CmdProxy.dll" MD5="ED616A9DDECE5012A4A2292A97C83311" />
+    <File Ver="0.2.0.2" Name="Comsenz.Client.Common.dll" MD5="50809EB93125BB78435DC588D6BF27BC" />
+    <File Ver="0.2.0.1" Name="Comsenz.Client.Data.dll" MD5="0651A52BD3FE761F2C1B4B9498413EFE" />
+    <File Ver="0.2.0.2" Name="Comsenz.Client.Interface.dll" MD5="976D8BD0671BFB99C9562DBB221BDB78" />
+    <File Ver="0.2.0.1" Name="Comsenz.Client.OperateFactory.dll" MD5="C92F60D40D91DA63303FE0E67C9975F2" />
+    <File Ver="0.2.0.1" Name="Comsenz.Entities.dll" MD5="C70618FDD2CB62FCF5F0F7ED6A137DB2" />
+    <File Ver="0.2.0.1" Name="Comsenz.Net.FTP.dll" MD5="506C74EE2F4ACF9E6A027263F4BEB64F" />
+    <File Ver="0.2.0.0" Name="Comsenz.SuperMaster.DataSync.dll" MD5="8DD6D282B54AF03B3B878FFB52E63631" />
+    <File Ver="0.2.0.0" Name="Comsenz.SuperMaster.DataSync.XmlSerializers.dll" MD5="A27B221D0E87A68A0CECD55A0B66721E" />
+    <File Ver="0.2.0.2" Name="Controls.dll" MD5="9A6E8EA94CD7445465315633751526EA" />
+    <File Ver="0.2.0.1" Name="Data.dll" MD5="88AC48732B3B33B6E2124BD6E9609BC3" />
+    <File Ver="0.2.0.3" Name="FilesChecksums.dll" MD5="3F9D6534A6D48E56268B82A590FAE351" />
+    <File Ver="1.0.1208.0" Name="Microsoft.Synchronization.Data.dll" MD5="01B68622F7B4A699D52F9A0B5EA5E4EC" />
+    <File Ver="3.5.5692.0" Name="Microsoft.Synchronization.Data.SqlServerCe.dll" MD5="5C8089FDA655A38440F279DEB7925C46" />
+    <File Ver="0.2.0.3" Name="Services.dll" MD5="01BA034FF81AD65BCC623E1667F5EE8C" />
+    <File Ver="0.2.0.3" Name="Services.XmlSerializers.dll" MD5="9866EB1CC3D38A0AD92ADE60C2ED8CF6" />
+    <File Ver="1.0.140.23" Name="Starksoft.Net.Ftp.dll" MD5="02131FB38ACF9504BF6493D79D983132" />
+    <File Ver="0.2.0.4" Name="SuperWebmaster.exe" MD5="9B2CD5D706F9130150BFDB17F0F1FCC7" />
+    <File Ver="0.2.0.1" Name="SuperWebmaster.exe.config" MD5="A5A8A33619F0AF2510BBCE090C50D497" />
+    <File Ver="0.2.0.1" Name="WorkController.dll" MD5="F9BD86000A320EBA866E2505B32FF156" />
+  </Files>
+  <ChangeLog />
+</AutoUpdater>

@@ -1,0 +1,32 @@
+﻿<%namespace iTCA.Yuwen.Data%>
+<%namespace iTCA.Yuwen.Core%>
+<%inherits iTCA.Yuwen.Web.news%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+</head>
+<body>
+校园新闻<br />
+    <ul>
+        <%loop (ArticleInfo) campusnewinfo campusnewslist%>
+            <li>[{campusnewinfo.columnname}]{campusnewinfo.title}&nbsp;&nbsp;&nbsp;{campusnewinfo.username}&nbsp;&nbsp;{campusnewinfo.postdate}</li>
+        <%/loop%>
+    </ul>
+协会新闻<br />
+    <ul>
+        <%loop (ArticleInfo) canewinfo canewslist%>
+            <li>[{canewinfo.columnname}]{canewinfo.title}&nbsp;&nbsp;&nbsp;{canewinfo.username}&nbsp;&nbsp;{canewinfo.postdate}</li>
+        <%/loop%>
+    </ul>
+业内新闻<br />
+    <ul>
+        <%loop (ArticleInfo) industrynewinfo industrynewslist%>
+            <li>[{industrynewinfo.columnname}]{industrynewinfo.title}&nbsp;&nbsp;&nbsp;{industrynewinfo.username}&nbsp;&nbsp;{industrynewinfo.postdate}</li>
+        <%/loop%>
+    </ul>
+{querycount}<br />
+{querydetail}<br />
+{processtime}秒<br />
+</body>
+</html>

@@ -1,0 +1,8 @@
+如果我要去11-20的gushu表的数据
+Select * From gushu Limit 9 Offset 10;
+以上语句表示从gushu表获取数据，跳过10行，取9行
+
+嗯，这个足够让很多的web中小型网站使用了。
+
+也可以这样写 select * from gushu WHERE tid>0 limit 10,9 和上面的的效果一样。(where字句必须在前)
+这种写法MySQL也支持。

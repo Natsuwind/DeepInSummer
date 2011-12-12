@@ -1,0 +1,1 @@
+﻿ALTER TABLE `wy_columns` ADD COLUMN `del` INTEGER NOT NULL  DEFAULT '0'
