@@ -1,0 +1,35 @@
+﻿<navigation:Page x:Class="HaoRan.WebCam.WebCam"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           mc:Ignorable="d"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+            d:DesignWidth="420" d:DesignHeight="280" Title="拍摄照片"
+           xmlns:local="clr-namespace:HaoRan.WebCam;assembly=HaoRan.WebCam" xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls">
+
+    <Canvas x:Name="LayoutRoot">      
+        <ProgressBar Height="15" Name="Percentage" Width="100" Canvas.Top="15" Canvas.Left="20" Visibility="Collapsed" Canvas.ZIndex="6000"  />
+        <StackPanel Width="420" Height="280" Background="#FF98DAFF" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Width="420" Height="270" Orientation="Horizontal" >
+                <StackPanel Width="10"/>
+                <StackPanel Width="270" Height="270" Orientation="Horizontal"   VerticalAlignment="Bottom" >
+                    <local:FocusRectangle x:Name="focusRectangle" Background="LightGreen" AllowDrop="True"></local:FocusRectangle>
+                </StackPanel>
+                <StackPanel Width="20"/>
+                <StackPanel VerticalAlignment="Center">
+                    <local:ImageButton  x:Name="BtnCapture" Text="启用摄像头" ImagePath="Images/cam.png" ButtonWidth="110" Click="BtnCapture_Click"/>
+                    <StackPanel Height="5"/>
+                    <local:ImageButton x:Name="goBack" Text="返  回 " ImagePath="Images/goback.png" ToolTipService.ToolTip="返回重新选择"  Click="goBack_Click"/>
+                    <StackPanel Height="40"/>
+                    <TextBlock Text="缩放:" />
+                    <Slider Name="ZoomInOut"  Width="80" Height="20"  Opacity="0.5" Canvas.Left="220"  Canvas.ZIndex="1000"/>
+                    <StackPanel Height="5"/>
+                    <local:ImageButton x:Name="BtnUploadImage" Text="确  定 " ImagePath="Images/ok.png"  Click="BtnUploadImage_Click"/>
+                    <StackPanel Height="5"/>
+                    <local:ImageButton x:Name="BtnAdvanceMode" Text="高级模式" ImagePath="Images/advancemode.png" ButtonWidth="100"  Click="BtnAdvanceMode_Click" ToolTipService.ToolTip="对选中区域进行特效编辑" Visibility="Visible"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Canvas>
+</navigation:Page>

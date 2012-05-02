@@ -1,0 +1,94 @@
+﻿<UserControl xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"  x:Class="MultiFileUpload.Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:local="clr-namespace:MultiFileUpload;assembly=MultiFileUpload"
+    xmlns:classes="clr-namespace:MultiFileUpload.Classes"
+             Background="White" x:Name="MainPageUC">
+    <UserControl.Resources>
+        <classes:ByteConverter x:Key="ByteConverter"/>
+    </UserControl.Resources>
+    <Canvas>
+        
+        <Grid x:Name="LayoutRoot" Width="500" Height="340" Style="{StaticResource GridStyle}" Background="AliceBlue">
+       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="65" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal"  Grid.Row="0" Width="Auto">
+            <TextBlock Text="文件名" Width="180" Margin="15,0,0,0" />   
+            <TextBlock Text="状态" Width="50"/>  
+            <TextBlock Text="大小" Width="50" TextAlignment="Right"/>  
+            <TextBlock Text="进度" Width="70" TextAlignment="Right"/>    
+        </StackPanel>
+
+     
+
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" Background="White">
+            <ItemsControl x:Name="FileList" >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:FileRowControl FileMouseEnter="MouseEnterFile" FileMouseLeave="MouseLeaveFile" FileCancelUpload="CancelUploadFile" FileUploadFinish="UploadFileFish"></local:FileRowControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        
+        <Grid Grid.Row="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15" />               
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="15,0,0,0">
+                <TextBlock Text="文件数: "></TextBlock><TextBlock x:Name="FilesCount" Text="{Binding Count}"></TextBlock>
+           
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
+                <TextBlock Text="上传累计: "></TextBlock><TextBlock x:Name="TotalKB" Text="{Binding BytesUploaded, Converter={StaticResource ByteConverter}}" ></TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="2" Height="15"  Orientation="Horizontal">
+                <ProgressBar x:Name="TotalProgress" Width="50" Value="{Binding Percentage}"></ProgressBar>
+            </StackPanel>
+
+        </Grid>
+        
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Bottom" >
+            <Button x:Name="SelectFilesButton" Content="选择..." Click="SelectFilesButton_Click" Margin="5" Width="80" IsEnabled="False"></Button>
+            <Button x:Name="UploadButton" Content="上传" Click="UploadButton_Click" Margin="5" Width="80" IsEnabled="False"></Button>
+            <Button x:Name="ClearButton" Content="清空" Click="ClearButton_Click" Margin="5" Width="80" IsEnabled="False" Visibility="Collapsed"></Button>
+            <Button x:Name="FinishUpload" Content="返回" Click="FinishUpload_Click"  Margin="5" Width="80"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="4" HorizontalAlignment="Left" Orientation="Vertical"  VerticalAlignment="Bottom" >
+            <TextBlock  x:Name="OtherMessage" Text="" Foreground="Blue" VerticalAlignment="Bottom"/>
+            <TextBlock  x:Name="Message" Text="" VerticalAlignment="Bottom"/>            
+        </StackPanel>
+        
+        <local:MessageBoxControl x:Name="MessageBoxControl" Visibility="Collapsed"  Grid.RowSpan="3" ></local:MessageBoxControl>
+    </Grid>  
+        
+        <StackPanel x:Name="ThumbnailImageBorder" Width="102"   Background="Black">
+        <Image x:Name="ThumbnailImage" Width="100"  Visibility="Collapsed" Opacity="0" Stretch="Fill"/>
+        </StackPanel>
+        <Canvas.Resources>
+            <Storyboard x:Name='expandImage'>
+                <DoubleAnimation Storyboard.TargetName='ThumbnailImage' Storyboard.TargetProperty='Opacity' From="0" To='1' Duration='0:0:0.3'/>
+                <DoubleAnimation Storyboard.TargetName='ThumbnailImage' Storyboard.TargetProperty='Width' From="0" To='100' Duration='0:0:0.3'/>
+            </Storyboard>
+            <Storyboard x:Name='collapseImage'>
+                <DoubleAnimation Storyboard.TargetName='ThumbnailImage' Storyboard.TargetProperty='Opacity'  To='0' Duration='0:0:0.3'/>
+                <DoubleAnimation Storyboard.TargetName='ThumbnailImage' Storyboard.TargetProperty='Width' To='0' Duration='0:0:0.3'/>
+            </Storyboard>
+        </Canvas.Resources>
+    </Canvas>
+</UserControl>

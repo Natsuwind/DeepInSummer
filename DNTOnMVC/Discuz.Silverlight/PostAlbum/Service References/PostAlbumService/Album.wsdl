@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAttachList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="topicid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="forumid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="onlyauthor" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="posterid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="creinfo" type="tns:CredentialInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CredentialInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAttachListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAttachListResult" type="tns:ArrayOfShowtopicPageAttachmentInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfShowtopicPageAttachmentInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ShowtopicPageAttachmentInfo" nillable="true" type="tns:ShowtopicPageAttachmentInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ShowtopicPageAttachmentInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AttachmentInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Getattachperm" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Attachimgpost" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Allowread" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Preview" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Isbought" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Inserted" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AttachmentInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Aid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Uid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Pid" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Postdatetime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Readperm" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Filename" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Filetype" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Filesize" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attachment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Downloads" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Attachprice" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Width" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sys_index" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sys_noupload" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAttachList" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAttachListResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpGetIn" />
+  <wsdl:message name="HelloWorldHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpPostIn" />
+  <wsdl:message name="HelloWorldHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="AlbumSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachList">
+      <wsdl:input message="tns:GetAttachListSoapIn" />
+      <wsdl:output message="tns:GetAttachListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AlbumHttpGet">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpGetIn" />
+      <wsdl:output message="tns:HelloWorldHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AlbumHttpPost">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpPostIn" />
+      <wsdl:output message="tns:HelloWorldHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AlbumSoap" type="tns:AlbumSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachList">
+      <soap:operation soapAction="http://tempuri.org/GetAttachList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AlbumSoap12" type="tns:AlbumSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachList">
+      <soap12:operation soapAction="http://tempuri.org/GetAttachList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AlbumHttpGet" type="tns:AlbumHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AlbumHttpPost" type="tns:AlbumHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Album">
+    <wsdl:port name="AlbumSoap" binding="tns:AlbumSoap">
+      <soap:address location="http://localhost:1998/services/Album.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AlbumSoap12" binding="tns:AlbumSoap12">
+      <soap12:address location="http://localhost:1998/services/Album.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AlbumHttpGet" binding="tns:AlbumHttpGet">
+      <http:address location="http://localhost:1998/services/Album.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AlbumHttpPost" binding="tns:AlbumHttpPost">
+      <http:address location="http://localhost:1998/services/Album.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

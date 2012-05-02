@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaoRan.WebCam", "HaoRan.WebCam\HaoRan.WebCam.csproj", "{920EF90B-3A78-4E2D-ABDA-68520723835A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{708F4AE6-33BA-4349-9FEB-3A859A3D2222} = {708F4AE6-33BA-4349-9FEB-3A859A3D2222}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaoRan.WebCam.Web", "HaoRan.WebCam.Web\HaoRan.WebCam.Web.csproj", "{708F4AE6-33BA-4349-9FEB-3A859A3D2222}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{920EF90B-3A78-4E2D-ABDA-68520723835A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{920EF90B-3A78-4E2D-ABDA-68520723835A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{920EF90B-3A78-4E2D-ABDA-68520723835A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{920EF90B-3A78-4E2D-ABDA-68520723835A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{708F4AE6-33BA-4349-9FEB-3A859A3D2222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{708F4AE6-33BA-4349-9FEB-3A859A3D2222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{708F4AE6-33BA-4349-9FEB-3A859A3D2222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{708F4AE6-33BA-4349-9FEB-3A859A3D2222}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

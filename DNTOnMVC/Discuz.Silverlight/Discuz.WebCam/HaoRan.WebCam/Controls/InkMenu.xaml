@@ -1,0 +1,201 @@
+﻿<UserControl x:Class="HaoRan.WebCam.InkMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="210" d:DesignWidth="100">
+    <Canvas x:Name="LayoutRoot" Background="AliceBlue">
+        <!--InkPresenter Start-->
+        <StackPanel Margin="0,0,8,0" Canvas.Top="5">           
+            <TextBlock FontSize="12"  Name="stroke">边框色:</TextBlock>
+            <Slider Name="inkStrokeSlider" Minimum="0" Maximum="1"  Width="100" Height="20" HorizontalAlignment="Left" Orientation="Horizontal" ValueChanged="inkStrokeSlider_ValueChanged">
+                <Slider.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" >
+                        <GradientStop Color="#FF000000" Offset="0"/>
+                        <GradientStop Color="#FFFF0000" Offset="0.143"/>
+                        <GradientStop Color="#FF00FF00" Offset="0.286"/>
+                        <GradientStop Color="#FF0000FF" Offset="0.429"/>
+                        <GradientStop Color="#FF00FFFF" Offset="0.571"/>
+                        <GradientStop Color="#FFFF00FF" Offset="0.714"/>
+                        <GradientStop Color="#FFFFFF00" Offset="0.857"/>
+                        <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Slider.Background>
+            </Slider>
+
+            <TextBlock FontSize="12" >填充色:</TextBlock>
+            <Slider Name="inkFillSlider" Minimum="0" Maximum="1"  Width="100" Height="20" HorizontalAlignment="Left"  Orientation="Horizontal" ValueChanged="inkFillSlider_ValueChanged">
+                <Slider.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#FF000000" Offset="0"/>
+                        <GradientStop Color="#FFFF0000" Offset="0.143"/>
+                        <GradientStop Color="#FF00FF00" Offset="0.286"/>
+                        <GradientStop Color="#FF0000FF" Offset="0.429"/>
+                        <GradientStop Color="#FF00FFFF" Offset="0.571"/>
+                        <GradientStop Color="#FFFF00FF" Offset="0.714"/>
+                        <GradientStop Color="#FFFFFF00" Offset="0.857"/>
+                        <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Slider.Background>
+               
+            </Slider>
+            <TextBlock FontSize="12" >边框:</TextBlock>
+            <Slider Name="inkThicknessSlider" Minimum="0" Maximum="1"  Width="100" Height="20" HorizontalAlignment="Left"  Orientation="Horizontal" ValueChanged="inkThicknessSlider_ValueChanged" />
+
+            <TextBlock FontSize="12" >透明:</TextBlock>
+            <Slider Name="inkTransparencySlider" Minimum="0" Maximum="1"  Width="100" Height="20" HorizontalAlignment="Left" Orientation="Horizontal" ValueChanged="inkTransparencySlider_ValueChanged" />
+
+            <TextBlock Canvas.Left="10" Canvas.Top="200" FontSize="12" >预览:</TextBlock>
+            <InkPresenter x:Name="inkPreview" Canvas.Top="215" Canvas.Left="15" Width="100" Height="35">
+                <InkPresenter.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="Gray" Offset="0"/>
+                        <GradientStop Color="Snow" Offset="1"/>
+                    </LinearGradientBrush>
+                </InkPresenter.Background>
+                <InkPresenter.Strokes>
+                    <StrokeCollection>
+                        <Stroke>
+                            <Stroke.DrawingAttributes>
+                                <DrawingAttributes Color="Black" OutlineColor="Black" Height="5" Width="5"/>
+                            </Stroke.DrawingAttributes>
+                            <Stroke.StylusPoints>
+                                <StylusPointCollection>
+                                    <StylusPoint X="6.365068435668945" Y="13.124124526977539"/>
+                                    <StylusPoint X="6.365068435668945" Y="13.124124526977539" />
+                                    <StylusPoint X="6.414070129394531" Y="13.76108169555664" />
+                                    <StylusPoint X="6.414070129394531" Y="13.76108169555664" />
+                                    <StylusPoint X="7.002099990844727" Y="14.153057098388671" />
+                                    <StylusPoint X="7.590129852294922" Y="14.104059219360351" />
+                                    <StylusPoint X="8.423171997070312" Y="13.859075546264648" />
+                                    <StylusPoint X="9.501224517822265" Y="13.46710205078125" />
+                                    <StylusPoint X="10.922296524047851" Y="12.830144882202148" />
+                                    <StylusPoint X="12.58837890625" Y="12.046195983886718" />
+                                    <StylusPoint X="14.401470184326171" Y="11.017265319824218" />
+                                    <StylusPoint X="16.41057014465332" Y="10.037330627441406" />
+                                    <StylusPoint X="18.41967010498047" Y="8.910406112670898" />
+                                    <StylusPoint X="20.526775360107422" Y="7.73448371887207" />
+                                    <StylusPoint X="22.437870025634765" Y="6.70555305480957" />
+                                    <StylusPoint X="24.299964904785156" Y="5.725618362426758" />
+                                    <StylusPoint X="25.770038604736328" Y="4.941671371459961" />
+                                    <StylusPoint X="25.770038604736328" Y="4.941671371459961" />
+                                    <StylusPoint X="27.19110870361328" Y="4.206720352172852" />
+                                    <StylusPoint X="28.171157836914062" Y="3.7167530059814453" />
+                                    <StylusPoint X="29.102203369140625" Y="3.2757816314697265" />
+                                    <StylusPoint X="29.690235137939453" Y="2.981801986694336" />
+                                    <StylusPoint X="29.690235137939453" Y="2.981801986694336" />
+                                    <StylusPoint X="30.278263092041015" Y="2.736818313598633" />
+                                    <StylusPoint X="30.278263092041015" Y="2.736818313598633" />
+                                    <StylusPoint X="30.278263092041015" Y="2.736818313598633" />
+                                    <StylusPoint X="30.033252716064453" Y="3.324777603149414" />
+                                    <StylusPoint X="29.837242126464843" Y="3.765748977661133" />
+                                    <StylusPoint X="29.298213958740234" Y="4.59869384765625" />
+                                    <StylusPoint X="28.75918960571289" Y="5.67662239074707" />
+                                    <StylusPoint X="27.975147247314453" Y="7.195520401000977" />
+                                    <StylusPoint X="27.2401123046875" Y="8.861410140991211" />
+                                    <StylusPoint X="26.35806655883789" Y="10.821279525756836" />
+                                    <StylusPoint X="25.5250244140625" Y="12.830144882202148" />
+                                    <StylusPoint X="24.789989471435547" Y="14.790014266967773" />
+                                    <StylusPoint X="24.201961517333984" Y="16.65188980102539" />
+                                    <StylusPoint X="23.858943939208984" Y="18.317779541015625" />
+                                    <StylusPoint X="23.809940338134765" Y="19.689685821533203" />
+                                    <StylusPoint X="24.103954315185547" Y="20.522632598876953" />
+                                    <StylusPoint X="24.740985870361328" Y="20.91460418701172" />
+                                    <StylusPoint X="25.770038604736328" Y="20.91460418701172" />
+                                    <StylusPoint X="27.28911590576172" Y="20.375640869140625" />
+                                    <StylusPoint X="29.200210571289062" Y="19.395706176757812" />
+                                    <StylusPoint X="29.200210571289062" Y="19.395706176757812" />
+                                    <StylusPoint X="31.356319427490234" Y="18.072795867919922" />
+                                    <StylusPoint X="33.70843505859375" Y="16.455902099609375" />
+                                    <StylusPoint X="36.20756149291992" Y="14.594026565551757" />
+                                    <StylusPoint X="38.75568771362305" Y="12.683155059814453" />
+                                    <StylusPoint X="41.15680694580078" Y="10.772281646728515" />
+                                    <StylusPoint X="41.15680694580078" Y="10.772281646728515" />
+                                    <StylusPoint X="43.410919189453125" Y="8.910406112670898" />
+                                    <StylusPoint X="45.273014068603516" Y="7.391508102416992" />
+                                    <StylusPoint X="46.74308776855469" Y="6.117591857910156" />
+                                    <StylusPoint X="47.82114028930664" Y="5.186655044555664" />
+                                    <StylusPoint X="48.55617904663086" Y="4.696687698364258" />
+                                    <StylusPoint X="48.55617904663086" Y="4.696687698364258" />
+                                    <StylusPoint X="48.55617904663086" Y="4.696687698364258" />
+                                    <StylusPoint X="48.55617904663086" Y="5.725618362426758" />
+                                    <StylusPoint X="47.91914749145508" Y="6.999532699584961" />
+                                    <StylusPoint X="47.08610534667969" Y="8.46943473815918" />
+                                    <StylusPoint X="46.05705261230469" Y="10.33131217956543" />
+                                    <StylusPoint X="44.979000091552734" Y="12.340177536010742" />
+                                    <StylusPoint X="44.979000091552734" Y="12.340177536010742" />
+                                    <StylusPoint X="43.85194396972656" Y="14.398040771484375" />
+                                    <StylusPoint X="42.82289123535156" Y="16.406906127929687" />
+                                    <StylusPoint X="42.82289123535156" Y="16.406906127929687" />
+                                    <StylusPoint X="41.94084548950195" Y="18.219783782958984" />
+                                    <StylusPoint X="41.30381393432617" Y="19.88567352294922" />
+                                    <StylusPoint X="41.30381393432617" Y="19.88567352294922" />
+                                    <StylusPoint X="40.91179656982422" Y="21.159587860107422" />
+                                    <StylusPoint X="40.86279296875" Y="22.139522552490234" />
+                                    <StylusPoint X="41.15680694580078" Y="22.62948989868164" />
+                                    <StylusPoint X="41.74483871459961" Y="22.72748565673828" />
+                                    <StylusPoint X="42.67588424682617" Y="22.33551025390625" />
+                                    <StylusPoint X="43.85194396972656" Y="21.60055923461914" />
+                                    <StylusPoint X="45.37101745605469" Y="20.620624542236328" />
+                                    <StylusPoint X="47.03710174560547" Y="19.297714233398437" />
+                                    <StylusPoint X="48.85019302368164" Y="17.82781219482422" />
+                                    <StylusPoint X="50.71228790283203" Y="16.161922454833984" />
+                                    <StylusPoint X="52.574378967285156" Y="14.54503059387207" />
+                                    <StylusPoint X="54.43647003173828" Y="12.928138732910156" />
+                                    <StylusPoint X="56.2005615234375" Y="11.605226516723632" />
+                                    <StylusPoint X="56.2005615234375" Y="11.605226516723632" />
+                                    <StylusPoint X="57.81764221191406" Y="10.380308151245117" />
+                                    <StylusPoint X="59.140708923339844" Y="9.449369430541992" />
+                                    <StylusPoint X="60.21875762939453" Y="8.763416290283203" />
+                                    <StylusPoint X="61.100807189941406" Y="8.371442794799804" />
+                                    <StylusPoint X="61.73783874511719" Y="8.371442794799804" />
+                                    <StylusPoint X="61.73783874511719" Y="8.371442794799804" />
+                                    <StylusPoint X="62.22785949707031" Y="9.498367309570312" />
+                                    <StylusPoint X="62.08085632324219" Y="10.62529182434082" />
+                                    <StylusPoint X="61.68883514404297" Y="12.242183685302734" />
+                                    <StylusPoint X="61.100807189941406" Y="14.251049041748046" />
+                                    <StylusPoint X="60.36576843261719" Y="16.602893829345703" />
+                                    <StylusPoint X="59.53273010253906" Y="19.15072250366211" />
+                                    <StylusPoint X="58.65068054199219" Y="21.74755096435547" />
+                                    <StylusPoint X="57.81764221191406" Y="24.246383666992187" />
+                                    <StylusPoint X="57.082603454589844" Y="26.69622039794922" />
+                                    <StylusPoint X="56.5435791015625" Y="28.75408172607422" />
+                                    <StylusPoint X="56.29856872558594" Y="30.419971466064453" />
+                                    <StylusPoint X="56.347564697265625" Y="31.497901916503906" />
+                                    <StylusPoint X="56.78858947753906" Y="31.93886947631836" />
+                                    <StylusPoint X="57.5726318359375" Y="31.791881561279297" />
+                                    <StylusPoint X="58.797691345214844" Y="31.20391845703125" />
+                                    <StylusPoint X="60.36576843261719" Y="30.17498779296875" />
+                                    <StylusPoint X="62.42387390136719" Y="28.70508575439453" />
+                                    <StylusPoint X="64.62898254394531" Y="27.039196014404297" />
+                                    <StylusPoint X="66.9811019897461" Y="25.079326629638672" />
+                                    <StylusPoint X="69.43122100830078" Y="23.119457244873047" />
+                                    <StylusPoint X="71.83234405517578" Y="21.257583618164062" />
+                                    <StylusPoint X="74.18445587158203" Y="19.54269790649414" />
+                                    <StylusPoint X="76.38957214355469" Y="18.072795867919922" />
+                                    <StylusPoint X="78.34967041015625" Y="16.847877502441406" />
+                                    <StylusPoint X="78.34967041015625" Y="16.847877502441406" />
+                                    <StylusPoint X="79.96675109863281" Y="15.916938781738281" />
+                                    <StylusPoint X="81.33881378173828" Y="15.27998161315918" />
+                                    <StylusPoint X="82.36786651611328" Y="14.986000061035156" />
+                                    <StylusPoint X="83.15190887451172" Y="15.083993911743164" />
+                                    <StylusPoint X="83.64192962646484" Y="15.57396125793457" />
+                                    <StylusPoint X="83.7889404296875" Y="16.504899978637695" />
+                                    <StylusPoint X="83.49492645263672" Y="17.77881622314453" />
+                                    <StylusPoint X="83.00489807128906" Y="19.4447021484375" />
+                                    <StylusPoint X="82.31886291503906" Y="21.208587646484375" />
+                                    <StylusPoint X="81.53482818603515" Y="23.16845703125" />
+                                    <StylusPoint X="80.75078582763672" Y="25.030330657958984" />
+                                    <StylusPoint X="79.96675109863281" Y="26.843212127685547" />
+                                </StylusPointCollection>
+                            </Stroke.StylusPoints>
+                        </Stroke>
+                    </StrokeCollection>
+                </InkPresenter.Strokes>
+            </InkPresenter>
+            <CheckBox Name="Erase"  Content="橡皮擦" ToolTipService.ToolTip="选中后可擦除指定画笔" />
+            <!--InkPresenter End-->
+        </StackPanel>
+    </Canvas>
+</UserControl>

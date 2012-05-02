@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="MultiFileUpload.MessageBoxControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="400" Height="100">
+    <Grid x:Name="LayoutRoot" Background="Transparent" >
+        <Border Style="{StaticResource BorderStyle}" Background="AliceBlue"  CornerRadius="10">
+            <StackPanel Orientation="Vertical"  Background="White" Margin="5">                
+                <TextBlock x:Name="MessageTextBlock" HorizontalAlignment="Center" MinHeight="40"  FontWeight="Bold" Foreground="Red" FontSize="14"></TextBlock>
+                <Button x:Name="CloseButton" Content="关 闭" Click="CloseButton_Click" Width="50" Margin="20"></Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

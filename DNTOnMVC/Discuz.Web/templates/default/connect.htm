@@ -1,0 +1,248 @@
+﻿<%template _header%>
+<script type="text/javascript" src="{jsdir}/template_register.js"></script>
+<div class="wrap cl pageinfo">
+    <div id="nav">
+        <a href="{config.forumurl}">{config.forumtitle}</a> &raquo; <strong>QQ Connect</strong>
+    </div>
+</div>
+<%if page_err==0%>
+    <%if ispost%>
+        <script type="text/javascript">
+            function con_handle_response(obj) {
+                if (obj.errMessage != '')
+                    alert(obj.errMessage);
+            }
+        </script>
+        {notifyscript}
+        <%template _msgbox%>
+    <%else%>
+        <div class="wrap cl">
+            <div class="main cl regbox">
+                <%if {action}=="access"%>
+                <div class="f_tab cl">
+                    <ul style="padding-left: 100px;">
+                        <%if {allowreg}&&{userid}<0%>
+                        <li id="connect_tab_1"><a tabindex="900" onclick="connect_switch(1);" href="javascript:;">完善帐号信息</a></li>
+                        <%/if%>
+                        <li id="connect_tab_2"><a tabindex="900" href="javascript:;" onclick="connect_switch(2);">已有帐号？ 绑定我的帐号</a></li>
+                    </ul>
+                </div>
+                <div class="blr">
+                    <form id="form1" action="connect.aspx?action=bind" method="post" name="form1">
+                    <input type="hidden" name="openid" value="{openid}" />
+                    <input type="hidden" id="bindtype" name="bind_type" value="new" />
+                    <div class="c cl">
+                        <div style="overflow: hidden; overflow-y: auto" class="lgfm" id="reginfo_a">
+                            <span id="activation_hidden_1" style="display:none;">
+                                <label><em><img class="mtn" alt="QQ" src="{forumpath}images/common/connect_qq.gif" /></em>您将使用QQ账号注册本站，
+                                    <a href="connect.aspx" class="xg2">更换QQ账号？</a></label>
+                                <%if {config.regstatus}==3%>
+                                <label>
+                                    <em>邀请码:</em><input name="invitecode" type="text" id="invitecode" size="20" class="txt"/>
+                                </label>
+                                <%/if%>
+                                <label><em>用户名:</em>
+                                    <input name="{config.antispamregisterusername}" type="text" id="username" onfocus="showTipInfo(this);" onblur="checkusername(this);" size="20" class="txt" maxlength="20" tabindex="1" />* 
+                                    <%if {usedusernames}!=""%>
+                                    <a href="###" id="usedusername" onclick="showMenu(this.id);">(曾用论坛用户名)</a>
+                                    <%/if%> 
+                                    <i id="username_tip"></i><span id="username_error"></span>
+                                </label>
+                                <label>
+                                    <em>Email:</em><input type="text" class="txt" value="{email}" maxlength="20" size="25" autocomplete="off" name="{config.antispamregisteremail}" id="email" onfocus="showTipInfo(this);" onblur="checkemail(this)"/>
+                                    * <i id="email_tip"></i><span id="email_error"></span>
+                                </label>
+                                <%if {birthday}!=""%>
+                                <label>
+                                    <em>生日:</em>
+                                    <input name="bday" type="text" class="txt" id="bday" size="10" value="{birthday}" style="cursor:default" onclick="showcalendar(event, 'bday', 'cal_startdate', 'cal_enddate', this.value);" readonly="readonly" />&nbsp;<button type="button" onclick="$('bday').value='';" class="pn">清空</button>
+                                    <input type="hidden" name="cal_startdate" id="cal_startdate" size="10"  value="1900-01-01" />
+					                <input type="hidden" name="cal_enddate" id="cal_enddate" size="10"  value="{nowdatetime}" />
+                                </label>
+                                <%/if%>
+                                <label>
+                                    <em>性别:</em>
+							        <select name="gender" id="gender">
+								        <option value="0" <%if {gender}==0%>selected="selected"<%/if%>>保密</option>
+								        <option value="1" <%if {gender}==1%>selected="selected"<%/if%>>男</option>
+								        <option value="2" <%if {gender}==2%>selected="selected"<%/if%>>女</option>
+							        </select>
+                                    <script type="text/javascript">simulateSelect('gender');</script>
+                                </label>
+                                <%if {cloudconfig.allowuseqzavater}==1%>
+                                <label><em>头像:</em><img src="{avatarurl}"  onerror="this.onerror=null;this.src='{forumpath}images/common/noavatar_medium.gif';"  alt="用户头像" /><p style="padding-left: 70px; margin-top: 4px;">
+                                    <input id="use_qzone_avatar" class="pc" type="checkbox" tabindex="1" checked="checked" value="1" name="use_qzone_avatar" />使用QQ空间头像</p>
+                                </label>
+                                <%/if%>
+                            </span>
+                            <span id="activation_hidden_2" style="display:none;">
+                                <%if {userid}<0%>
+                                <%if {isbindoverflow}%>
+                                <label>您的QQ帐号在本论坛已经注册了过多的帐号,无法再注册新的帐号.您可以绑定已有的论坛帐号</label>
+                                <%/if%>
+                                <label>
+                                    <em>帐号:</em><input name="loginusername" type="text" id="loginusername" size="20" class="txt"/>
+                                </label>
+                                <label>
+                                    <em>密码:</em><input name="password" type="password" id="password" size="20" class="txt"/>
+                                </label>
+                                <label>
+                                    <em>安全提问:</em>
+                                    <select name="question" id="bindquestion" change="changequestion();">
+						                <option value="0" selected="selected">安全提问</option>
+						                <option value="1">母亲的名字</option>
+						                <option value="2">爷爷的名字</option>
+						                <option value="3">父亲出生的城市</option>
+						                <option value="4">您其中一位老师的名字</option>
+						                <option value="5">您个人计算机的型号</option>
+						                <option value="6">您最喜欢的餐馆名称</option>
+						                <option value="7">驾驶执照的最后四位数字</option>
+					                </select>
+					                <script type="text/javascript">simulateSelect('bindquestion','214');</script>
+                                </label>
+                                <label id="answerlabel" style=" display:none;">
+                                    <em>答案:</em><input name="answer" type="text" id="answer" size="20" class="txt" />
+                                </label>
+                                <script type="text/javascript">
+                                    function changequestion() {
+                                        if ($('bindquestion').getAttribute("selecti") != "0") {
+                                            $('answerlabel').style.display = '';
+                                            $('answerlabel').focus();
+                                        }
+                                        else {
+                                            $('answerlabel').style.display = 'none';
+                                        }
+                                    }
+                                </script>
+                                <%else%>
+                                <label><em>当前用户:</em>{username}</label>
+                                <%/if%>
+                            </span>
+                        </div>
+                    </div>
+                    <p class="fsb pns cl">
+                        <span id="submit_b_btn_1" style="display:none;">
+                            <button tabindex="5" value="true" name="regsubmit" type="submit" id="registerformsubmit" class="pn"><span>完成，继续浏览</span></button>
+                        </span>
+                        <span id="submit_b_btn_2" style="display:none;">
+                            <button tabindex="5" value="true" name="bindsubmit" type="submit" id="bindsubmit" class="pn"><span>绑定帐号,继续浏览</span></button>
+                        </span>
+                    </p>
+                    <ul id="usedusername_menu" class="popupmenu_popup" style="display: none;">
+                    </ul>
+                    <%if {usedusernames}!=""%>
+                    <script type="text/javascript">
+                        var usedusername = '{usedusernames}';
+                        var userusernamearray = usedusername.split(',');
+                        if (userusernamearray.length > 0) {
+                            for (i = 0; i < userusernamearray.length; i++) {
+                                jQuery('#usedusername_menu').append('<li><a href="###" onclick="appendvalue(this);">' + userusernamearray[i] + '</a></li>');
+                                if (i + 1 == userusernamearray.length)
+                                    jQuery('#username').val(userusernamearray[i]);
+                            }
+                        }
+
+                        function appendvalue(obj) {
+                            jQuery('#username').val(obj.innerHTML);
+                        }
+                    </script>
+                    <%/if%>
+                    <script type="text/javascript">
+                        if ($('username').value != "") {
+                            checkusername($('username'));
+                        }
+                        if ($('email').value != "") {
+                            checkemail($('email'));
+                        }
+
+                        function connect_switch(type) {
+                            jQuery('#connect_tab_1').attr('class', '');
+                            jQuery('#activation_hidden_1').css('display', 'none');
+                            jQuery('#submit_b_btn_1').css('display', 'none');
+                            jQuery('#connect_tab_2').attr('class', '');
+                            jQuery('#activation_hidden_2').css('display', 'none');
+                            jQuery('#submit_b_btn_2').css('display', 'none');
+
+                            jQuery('#connect_tab_' + type).attr('class', 'cur_tab');
+                            jQuery('#activation_hidden_' + type).css('display', '');
+                            jQuery('#submit_b_btn_' + type).css('display', '');
+                            jQuery('#bindtype').val(type == 1 ? 'new' : 'bind');
+                        }
+                        connect_switch({connectswitch});
+                    </script>
+                    </form>
+                    <%if {connectswitch}==1%>
+                    <div id="regrules_d" style="display:none;">
+                        <div id="regrules">
+			                <div class="c cl floatwrap">
+				                {config.rulestxt}
+			                </div>
+			                <p class="fsb pns cl">
+				                <button type="submit" id="btnagree" class="pn pnc"  onclick="hideMenu('fwin_dialog', 'dialog');"><span>同意</span></button>
+				                <button name="cancel" id="cancel" onclick="window.location.href = forumpath + 'index.aspx';" class="pn"><span>不同意</span></button>
+			                </p>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        showDialog($('regrules_d').innerHTML, 'info', '网站服务条款', null, 1);
+                    </script>
+                    <%/if%>
+                </div>
+                <%else if {action}=="unbind"%>
+                <div class="blr">
+                    <form id="unbind" action="connect.aspx?action=unbind" method="post" name="unbind">
+                        <%if {userconnectinfo.IsSetPassword}==0%>
+                        <div class="c cl">
+                            <div style="overflow: hidden; overflow-y: auto" class="lgfm" id="unbind_d">
+                                <span>
+                                    <label>
+                                        <em>新密码:</em><input name="newpasswd" type="password" id="newpwd" size="20" class="txt" onblur="checkpasswd(this);" /> *
+                                        <i id="newpwd_tip"></i><span id="newpwd_error"></span>
+                                    </label>
+                                    <label id="passwdpower" style="display:none;"><em>密码强度</em><strong id="showmsg"></strong>
+                                    </label>
+                                    <label>
+                                        <em>确认密码:</em><input name="confirmpasswd" type="password" id="confirmpwd" onblur="checkconfirmpasswd();" size="20" class="txt"/> *
+                                        <i id="confirmpwd_tip"></i><span id="confirmpwd_error"></span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            function checkconfirmpasswd() {
+                                var pw1 = $('newpwd');
+                                var pw2 = $('confirmpwd');
+                                if (pw2.value.length < 6) {
+                                    setError(pw2, "确认密码不得少于6个字符");
+                                    return;
+                                }
+                                var str;
+                                if (pw1.value != pw2.value) {
+                                    str = "两次输入的密码不一致";
+                                }
+                                if (str != '' && str != null && str != undefined) {
+                                    setError(pw2, str);
+                                }
+                                else {
+                                    setError(pw2, "");
+                                }
+                            }
+                        </script>
+                        <%/if%>
+                        <p class="fsb pns cl">
+                            <span id="unbind_btn">
+                                <button tabindex="5" value="true" name="unbindsubmit" type="submit" id="unbindsubmit" class="pn"><span>解绑QQ</span></button>
+                            </span>
+                        </p>
+                    </form>
+                </div>
+                <%/if%>
+            </div>
+        </div>
+        <script type="text/javascript"  src="{jsdir}/template_calendar.js"></script>
+    <%/if%>
+<%else%>
+    <%template _errmsgbox%>
+<%/if%>
+<%template _copyright%>
+<%template _footer%>
