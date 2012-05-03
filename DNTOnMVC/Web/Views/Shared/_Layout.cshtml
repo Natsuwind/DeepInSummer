@@ -92,7 +92,7 @@
                                     &nbsp;<input type="submit" style="width: 0px; filter: alpha(opacity=0); -moz-opacity: 0;
                                         opacity: 0; display: none;" />
                                     <button class="pn" type="submit">
-                                            <span>登录</span></button>
+                                        <span>登录</span></button>
                                 </p>
                             </div>
                             @if (ViewBag.isopenconnect)
@@ -190,9 +190,8 @@
                                 <strong><a href="{forumpath}userinfo.aspx?userid={userid}" class="vwmy<%if {isbindconnect}%> qq<%/if%>">@ViewBag.username</a></strong><span
                                     class="xg1">在线</span><span class="pipe">|</span>
                                 @if (ViewBag.isopenconnect && !ViewBag.isbindconnect)
-                                { <a href="{forumpath}connect.aspx?action=bindscript"><img
-                                    alt="QQ绑定" class="vm qq_bind" src="{forumpath}images/common/qq_bind_small.gif"></a><span
-                                        class="pipe">|</span>}
+                                { <a href="{forumpath}connect.aspx?action=bindscript"><img alt="QQ绑定" class="vm qq_bind"
+                                    src="{forumpath}images/common/qq_bind_small.gif"></a><span class="pipe">|</span>}
                                 @{                                                                 
                                 string linktitle = "";
                                 string showoverflow = "";
@@ -321,6 +320,8 @@
             </div>
         </div>
         @RenderBody()
+        <div>执行时间：@ViewBag.Processtime 查询次数：@ViewBag.Querycount</div>
+        @Html.Raw(ViewBag.DebugHtml)
     </body>
     </html>
 }
