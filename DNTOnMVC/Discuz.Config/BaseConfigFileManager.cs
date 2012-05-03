@@ -14,7 +14,7 @@ namespace Discuz.Config
     /// </summary>
     class BaseConfigFileManager : Discuz.Config.DefaultConfigFileManager
     {
-        private static  BaseConfigInfo m_configinfo ;
+        private static BaseConfigInfo m_configinfo;
 
         /// <summary>
         /// 锁对象
@@ -26,7 +26,7 @@ namespace Discuz.Config
         /// </summary>
         private static DateTime m_fileoldchange;
 
-     
+
 
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Discuz.Config
         static BaseConfigFileManager()
         {
             m_fileoldchange = System.IO.File.GetLastWriteTime(ConfigFilePath);
-            m_configinfo = (BaseConfigInfo) DefaultConfigFileManager.DeserializeInfo(ConfigFilePath, typeof(BaseConfigInfo));
+            m_configinfo = (BaseConfigInfo)DefaultConfigFileManager.DeserializeInfo(ConfigFilePath, typeof(BaseConfigInfo));
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Discuz.Config
 
                     if (!File.Exists(filename))
                     {
-                        throw new DNTException("发生错误: 虚拟目录或网站根目录下没有正确的DNT.config文件");
+                        throw new DNTException("发生错误: 虚拟目录或网站根目录下没有正确的DNT.config文件，预期地址：" + filename);
                     }
                 }
                 return filename;

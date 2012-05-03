@@ -1,0 +1,13 @@
+﻿@model Discuz.Common.Generic.List<Discuz.Entity.IndexPageForumInfo>
+@{
+    //ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<ul>
+@foreach (var forum in Model)
+{
+    <li>@forum.Name</li>
+}
+</ul>
+@ViewBag.Processtime

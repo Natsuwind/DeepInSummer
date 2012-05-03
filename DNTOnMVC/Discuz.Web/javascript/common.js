@@ -4192,4 +4192,4 @@ function checkLength(which, maxChars) {
         else
             document.getElementById("chLeft").innerHTML = maxChars - which.value.length;
     }
-}                                                                             
+}                                                                              
