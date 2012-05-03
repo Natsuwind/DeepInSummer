@@ -543,6 +543,7 @@ namespace Wysky.Donmvc.Web
         /// </summary>
         public BaseController()
         {
+            m_starttick = DateTime.Now;            
             if (recordPageView)
                 PageViewStatistic(pagename);
 
@@ -752,19 +753,6 @@ namespace Wysky.Donmvc.Web
                 return;
 
             newtopicminute = config.Viewnewtopicminute;
-            m_starttick = DateTime.Now;
-
-            ShowPage();
-
-            m_processtime = DateTime.Now.Subtract(m_starttick).TotalMilliseconds / 1000;
-
-            querycount = Discuz.Data.DbHelper.QueryCount;
-            Discuz.Data.DbHelper.QueryCount = 0;
-
-#if DEBUG
-            querydetail = Discuz.Data.DbHelper.QueryDetail;
-            Discuz.Data.DbHelper.QueryDetail = "";
-#endif
         }
 
         #region 子方法
@@ -1132,14 +1120,6 @@ namespace Wysky.Donmvc.Web
         #endregion
 
         /// <summary>
-        /// 页面处理虚方法
-        /// </summary>
-        protected virtual void ShowPage()
-        {
-            return;
-        }
-
-        /// <summary>
         /// OnUnload事件处理
         /// </summary>
         /// <param name="e"></param>
@@ -1192,12 +1172,18 @@ namespace Wysky.Donmvc.Web
                 }
             }
 
+            m_processtime = DateTime.Now.Subtract(m_starttick).TotalMilliseconds / 1000;
+            querycount = Discuz.Data.DbHelper.QueryCount;
+            Discuz.Data.DbHelper.QueryCount = 0;
+
+#if DEBUG
+            querydetail = Discuz.Data.DbHelper.QueryDetail;
+            Discuz.Data.DbHelper.QueryDetail = "";
+#endif
 #if DEBUG
             else
             {
-                System.Web.HttpContext.Current.Response.Clear();
-                System.Web.HttpContext.Current.Response.Write(templateBuilder.Replace("</body>", "<div>注意: 以下为数据查询分析工具，正式站点使用请使用官方发布版本或自行Release编译。</div>" + querydetail + "</body>").ToString());
-                System.Web.HttpContext.Current.Response.End();
+                ViewBag.DebugHtml = "<div>注意: 以下为数据查询分析工具，正式站点使用请使用官方发布版本或自行Release编译。</div>" + querydetail;
             }
 #endif 
             base.OnResultExecuted(filterContext);
