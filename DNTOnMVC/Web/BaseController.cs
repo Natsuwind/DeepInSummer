@@ -543,7 +543,7 @@ namespace Wysky.Donmvc.Web
         /// </summary>
         public BaseController()
         {
-            m_starttick = DateTime.Now;            
+            m_starttick = DateTime.Now;
             if (recordPageView)
                 PageViewStatistic(pagename);
 
@@ -1123,8 +1123,40 @@ namespace Wysky.Donmvc.Web
         /// OnUnload事件处理
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnResultExecuted(ResultExecutedContext filterContext)
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)//viewbag只在OnActionExecuted/ing中才有效，所以不用resultExecuted了
         {
+            ViewBag.Infloat = infloat;
+            ViewBag.Config = config;
+            ViewBag.pagename = pagename;
+            ViewBag.meta = meta;
+            ViewBag.isnarrowpage = isnarrowpage;
+            ViewBag.link = link;
+            ViewBag.forumpath = forumpath;
+            ViewBag.jsdir = jsdir;
+            ViewBag.imagedir = imagedir;
+            ViewBag.rooturl = rooturl;
+            ViewBag.cssdir = cssdir;
+            ViewBag.script = script;
+            ViewBag.headerad = headerad;
+            ViewBag.userid = userid;
+            ViewBag.isopenconnect = isopenconnect;
+            ViewBag.isLoginCode = isLoginCode;
+            ViewBag.isbindconnect = isbindconnect;
+            ViewBag.username = username;
+            ViewBag.oluserinfo = oluserinfo;
+            ViewBag.useradminid = useradminid;
+            ViewBag.userinfotips = userinfotips;
+            ViewBag.mainnavigation = mainnavigation;
+
+
+
+            m_processtime = DateTime.Now.Subtract(m_starttick).TotalMilliseconds / 1000;
+            querycount = Discuz.Data.DbHelper.QueryCount;
+            Discuz.Data.DbHelper.QueryCount = 0;
+            
+            ViewBag.Processtime = Processtime;
+            ViewBag.Querycount = querycount;
+
             if (isguestcachepage == 1)
             {
                 switch (pagename)
@@ -1171,22 +1203,15 @@ namespace Wysky.Donmvc.Web
                         break;
                 }
             }
-
-            m_processtime = DateTime.Now.Subtract(m_starttick).TotalMilliseconds / 1000;
-            querycount = Discuz.Data.DbHelper.QueryCount;
-            Discuz.Data.DbHelper.QueryCount = 0;
-
-#if DEBUG
-            querydetail = Discuz.Data.DbHelper.QueryDetail;
-            Discuz.Data.DbHelper.QueryDetail = "";
-#endif
 #if DEBUG
             else
             {
+                querydetail = Discuz.Data.DbHelper.QueryDetail;
+                Discuz.Data.DbHelper.QueryDetail = "";
                 ViewBag.DebugHtml = "<div>注意: 以下为数据查询分析工具，正式站点使用请使用官方发布版本或自行Release编译。</div>" + querydetail;
             }
-#endif 
-            base.OnResultExecuted(filterContext);
+#endif
+            base.OnActionExecuted(filterContext);
         }
 
         /// <summary>

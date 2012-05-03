@@ -11,9 +11,9 @@ namespace Wysky.Donmvc.Web.Controllers
         //
         // GET: /Test/
 
-        public string Index()
+        public ActionResult Index()
         {
-            return "hello dntonmvc";
+            return View();
         }
 
     }

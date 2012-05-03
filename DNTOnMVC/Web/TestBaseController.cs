@@ -19,7 +19,9 @@ namespace Wysky.Donmvc.Web
         /// </summary>
         /// <param name="e"></param>
         protected override void OnResultExecuted(ResultExecutedContext filterContext)
-        {           
+        {
+            ViewBag.StrVar2 = "abc22222222";
+            ViewBag.IntVar2 = 222222222;
             base.OnResultExecuted(filterContext);
         }
 
@@ -29,7 +31,16 @@ namespace Wysky.Donmvc.Web
         /// <param name="e"></param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            ViewBag.StrVar = "abc";
+            ViewBag.IntVar = 1111111111;
             base.OnActionExecuting(filterContext);
+        }
+
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            ViewBag.StrVar3 = "abc333333";
+            ViewBag.IntVar3 = 33333333333;
+            base.OnActionExecuted(filterContext);
         }
     }
 }

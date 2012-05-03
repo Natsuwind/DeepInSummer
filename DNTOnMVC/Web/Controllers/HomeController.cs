@@ -188,7 +188,6 @@ namespace Wysky.Donmvc.Web.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "首页";
-            ViewBag.Processtime = Processtime;
             if (userid > 0 && useradminid > 0)
             {
                 AdminGroupInfo admingroupinfo = AdminGroups.GetAdminGroupInfo(usergroupid);
