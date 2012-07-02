@@ -43,6 +43,12 @@
     </References>
   </Dependency>
   <Dependency>
+    <ModuleName>LunaWay</ModuleName>
+    <VirtualPath>~/Theme/LunaWay</VirtualPath>
+    <LoaderName>RawThemeExtensionLoader</LoaderName>
+    <References />
+  </Dependency>
+  <Dependency>
     <ModuleName>Markdown</ModuleName>
     <VirtualPath>~/Modules/Markdown/Markdown.csproj</VirtualPath>
     <LoaderName>DynamicExtensionLoader</LoaderName>

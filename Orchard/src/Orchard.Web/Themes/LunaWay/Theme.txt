@@ -1,0 +1,8 @@
+Name: LunaWay
+Author: Luna
+Website: http://lunaway.org
+Description: LunaWay is a simple theme that provides .
+Version: 1.0
+# todo: provide tags
+Tags: lunaway, simple
+Zones: Header, Navigation

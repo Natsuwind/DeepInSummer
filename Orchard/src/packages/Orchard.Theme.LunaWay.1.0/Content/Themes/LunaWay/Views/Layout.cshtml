@@ -1,0 +1,49 @@
+﻿@{
+    SetMeta("X-UA-Compatible", "IE=edge,chrome=1");
+    Style.Include("http://fonts.googleapis.com/css?family=Lobster&subset=latin");
+    Style.Include("site.css");
+}
+<header id="theader">
+    <h1 id="logo">@WorkContext.CurrentSite.SiteName</h1>
+	<nav id="usernav">
+	    <ul>
+		    <li>SailorMoon</li>
+			<li><a id="pm_ntc" href="home.php?mod=space&do=pm">消息</a></li>
+			<li><a id="myprompt" href="home.php?mod=space&do=notice">提醒</a></li>
+			<li><a target="_blank" href="admin.php">管理中心</a></li>
+			<li><a href="member.php?mod=logging&action=logout&formhash=cf8239cc">退出</a></li>
+	    </ul>
+	</nav>
+</header>
+<nav id="mainnav">
+    <ul>
+        <li class="cur">
+            <h2>
+                <a href="index.php">首页</a>
+            </h2>
+        </li>
+        <li class="">
+            <h2>
+                <a href="home.php?mod=space&do=doing">碎碎念</a>
+            </h2>
+        </li>
+        <li class="">
+            <h2>
+                <a href="home.php?mod=space&do=blog&view=me">日记</a>
+            </h2>
+        </li>
+        <li class="">
+            <h2>
+                <a href="forum.php">广场</a>
+            </h2>
+        </li>
+    </ul>
+</nav>
+<div id="wp">
+    @Display(Model.Content)
+</div>
+<footer>
+推荐使用 Chrome(谷歌浏览器) 或 Firefox 浏览器访问本站
+<br>
+Powered by LunaWay.org @@2012
+</footer>
