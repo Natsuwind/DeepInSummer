@@ -1,0 +1,36 @@
+2012-07-02 17:54:08,863 [11] Orchard.Environment.ShellBuilders.ShellContextFactory - No shell settings available. Creating shell context for setup
+2012-07-02 17:54:17,939 [11] Orchard.Environment.ShellBuilders.ShellContextFactory - No shell settings available. Creating shell context for setup
+2012-07-02 17:56:53,064 [11] NHibernate.AdoNet.AbstractBatcher - Could not execute query: SELECT this_.Id as Id11_0_, this_.SerialNumber as SerialNu2_11_0_ FROM Settings_ShellDescriptorRecord this_ WHERE 1=1
+System.Data.SqlServerCe.SqlCeException (0x80004005): 指定的表不存在。 [ Settings_ShellDescriptorRecord ]
+   在 System.Data.SqlServerCe.SqlCeCommand.ProcessResults(Int32 hr)
+   在 System.Data.SqlServerCe.SqlCeCommand.CompileQueryPlan()
+   在 System.Data.SqlServerCe.SqlCeCommand.ExecuteCommand(CommandBehavior behavior, String method, ResultSetOptions options)
+   在 System.Data.SqlServerCe.SqlCeCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SqlServerCe.SqlCeCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   在 NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+2012-07-02 17:56:53,625 [11] NHibernate.Util.ADOExceptionReporter - System.Data.SqlServerCe.SqlCeException (0x80004005): 指定的表不存在。 [ Settings_ShellDescriptorRecord ]
+   在 System.Data.SqlServerCe.SqlCeCommand.ProcessResults(Int32 hr)
+   在 System.Data.SqlServerCe.SqlCeCommand.CompileQueryPlan()
+   在 System.Data.SqlServerCe.SqlCeCommand.ExecuteCommand(CommandBehavior behavior, String method, ResultSetOptions options)
+   在 System.Data.SqlServerCe.SqlCeCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SqlServerCe.SqlCeCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   在 NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   在 NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+2012-07-02 17:56:53,625 [11] NHibernate.Util.ADOExceptionReporter - 指定的表不存在。 [ Settings_ShellDescriptorRecord ]
+2012-07-02 17:56:54,107 [11] NHibernate.Util.ADOExceptionReporter - System.Data.SqlServerCe.SqlCeException (0x80004005): 指定的表不存在。 [ Settings_ShellDescriptorRecord ]
+   在 System.Data.SqlServerCe.SqlCeCommand.ProcessResults(Int32 hr)
+   在 System.Data.SqlServerCe.SqlCeCommand.CompileQueryPlan()
+   在 System.Data.SqlServerCe.SqlCeCommand.ExecuteCommand(CommandBehavior behavior, String method, ResultSetOptions options)
+   在 System.Data.SqlServerCe.SqlCeCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SqlServerCe.SqlCeCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   在 NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   在 NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   在 NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   在 NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   在 NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+2012-07-02 17:56:54,108 [11] NHibernate.Util.ADOExceptionReporter - 指定的表不存在。 [ Settings_ShellDescriptorRecord ]
+2012-07-02 17:56:57,740 [11] Orchard.Environment.ShellBuilders.ShellContextFactory - No shell settings available. Creating shell context for setup
+2012-07-02 17:57:11,766 [11] Orchard.FileSystems.AppData.AppDataFolder - Could not delete recipe execution folder D:\Doctments\Documents\Works\Mine\DIS@Github\Orchard\src\Orchard.Web\App_Data\RecipeQueue\f3aa17504fec45c7b20a381d7c536ea7 under "App_Data" folder
