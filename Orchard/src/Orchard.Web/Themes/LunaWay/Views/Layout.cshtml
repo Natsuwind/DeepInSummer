@@ -7,11 +7,15 @@
     <h1 id="logo">@WorkContext.CurrentSite.SiteName</h1>
 	<nav id="usernav">
 	    <ul>
-		    <li>SailorMoon</li>
-			<li><a id="pm_ntc" href="home.php?mod=space&do=pm">消息</a></li>
-			<li><a id="myprompt" href="home.php?mod=space&do=notice">提醒</a></li>
-			<li><a target="_blank" href="admin.php">管理中心</a></li>
-			<li><a href="member.php?mod=logging&action=logout&formhash=cf8239cc">退出</a></li>
+        @if (WorkContext.CurrentUser != null) {
+		    <li>@Html.ActionLink(WorkContext.CurrentUser.UserName, "ChangePassword", new { Controller = "Account", Area = "Orchard.Users" })</li>            
+            if (AuthorizedFor(Orchard.Security.StandardPermissions.AccessAdminPanel)) {
+			<li>@Html.ActionLink(T("Dashboard").ToString(), "Index", new {Area = "Dashboard", Controller = "Admin"})</li>
+            }
+			<li>@Html.ActionLink(T("Sign Out").ToString(), "LogOff", new { Controller = "Account", Area = "Orchard.Users", ReturnUrl = Context.Request.RawUrl }, new { rel = "nofollow" })</li>
+        } else {
+            <li>@Html.ActionLink(T("Sign In").ToString(), "LogOn", new { Controller = "Account", Area = "Orchard.Users", ReturnUrl = (Request.QueryString["ReturnUrl"] ?? Request.RawUrl) }, new { rel = "nofollow" })</li>
+        }
 	    </ul>
 	</nav>
 </header>
@@ -19,22 +23,22 @@
     <ul>
         <li class="cur">
             <h2>
-                <a href="index.php">首页</a>
+                <a href="#">首页</a>
             </h2>
         </li>
         <li class="">
             <h2>
-                <a href="home.php?mod=space&do=doing">碎碎念</a>
+                <a href="#">碎碎念</a>
             </h2>
         </li>
         <li class="">
             <h2>
-                <a href="home.php?mod=space&do=blog&view=me">日记</a>
+                <a href="#">日记</a>
             </h2>
         </li>
         <li class="">
             <h2>
-                <a href="forum.php">广场</a>
+                <a href="#">广场</a>
             </h2>
         </li>
     </ul>
