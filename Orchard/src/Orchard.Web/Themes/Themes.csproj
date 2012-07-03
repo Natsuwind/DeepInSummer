@@ -170,6 +170,10 @@
     <Content Include="LunaWay\Views\Web.config" />
     <Content Include="LunaWay\Web.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="LunaWay\Views\Menu.cshtml" />
+    <Content Include="LunaWay\Views\MenuItem.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
