@@ -40,7 +40,7 @@
     <ExtensionId>Orchard.CodeGeneration</ExtensionId>
     <LoaderName>DynamicExtensionLoader</LoaderName>
     <VirtualPath>~/Modules/Orchard.CodeGeneration/Orchard.CodeGeneration.csproj</VirtualPath>
-    <Hash>23835bea5de9b600</Hash>
+    <Hash>23835cbfec9a9e7b</Hash>
   </Dependency>
   <Dependency>
     <ExtensionId>Orchard.Comments</ExtensionId>
@@ -58,7 +58,7 @@
     <ExtensionId>Orchard.DesignerTools</ExtensionId>
     <LoaderName>DynamicExtensionLoader</LoaderName>
     <VirtualPath>~/Modules/Orchard.DesignerTools/Orchard.DesignerTools.csproj</VirtualPath>
-    <Hash>7f4acb71ff236fa</Hash>
+    <Hash>7f4ad8cad431cf6</Hash>
   </Dependency>
   <Dependency>
     <ExtensionId>Orchard.Email</ExtensionId>
@@ -148,7 +148,7 @@
     <ExtensionId>Orchard.MultiTenancy</ExtensionId>
     <LoaderName>DynamicExtensionLoader</LoaderName>
     <VirtualPath>~/Modules/Orchard.MultiTenancy/Orchard.MultiTenancy.csproj</VirtualPath>
-    <Hash>4464b7e40dc541a4</Hash>
+    <Hash>4464b8b99b9c04de</Hash>
   </Dependency>
   <Dependency>
     <ExtensionId>Orchard.Packaging</ExtensionId>
