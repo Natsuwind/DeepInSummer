@@ -590,12 +590,11 @@ footer {
 .zone-content{
     margin:0 10px;
 }
-.zone-content li article{
-    background-color: #E9EAEE;
+.zone-content li article{    
     margin:6px 0;
-    padding:0 6px;
+    padding:6px 6px;
     border-radius: 3px 3px 3px 3px;
-    
+    box-shadow: 1px 1px 3px #000000;
 }
 article a {
     color: #5F97AF;
@@ -603,4 +602,11 @@ article a {
 }
 article a:hover, article a:focus {    
     text-decoration: underline;
+}
+.tags {
+    margin: 0 !important;
+}
+.tags a {
+    padding: 0 !important;
+    background:none;
 }
